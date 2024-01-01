@@ -1,10 +1,11 @@
 import 'package:get/get.dart';
-import 'package:readerkit/app/modules/book_details/bindings/book_details_binding.dart';
-import 'package:readerkit/app/modules/book_details/views/book_details_view.dart';
-import 'package:readerkit/app/modules/home/bindings/home_binding.dart';
-import 'package:readerkit/app/modules/home/views/home_view.dart';
 
-
+import '../modules/book_details/bindings/book_details_binding.dart';
+import '../modules/book_details/views/book_details_view.dart';
+import '../modules/book_view/bindings/book_view_binding.dart';
+import '../modules/book_view/views/book_view_view.dart';
+import '../modules/home/bindings/home_binding.dart';
+import '../modules/home/views/home_view.dart';
 import '../modules/main/bindings/main_binding.dart';
 import '../modules/main/views/main_view.dart';
 import '../modules/settings/bindings/settings_binding.dart';
@@ -37,6 +38,11 @@ class AppPages {
       name: _Paths.BOOK_DETAILS,
       page: () => const BookDetailsView(),
       binding: BookDetailsBinding(),
+    ),
+    GetPage(
+      name: _Paths.BOOK_VIEW,
+      page: () => const BookViewView(),
+      binding: BookViewBinding(),
     ),
   ];
 }

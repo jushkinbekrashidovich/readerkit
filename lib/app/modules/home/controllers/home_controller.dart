@@ -49,6 +49,16 @@ class HomeController extends GetxController {
       prefs.setStringList('books', bookJsonList);
     }
   }
+
+  Future<void> deleteBook(Book book) async {
+    // Remove the book from the list
+    books.remove(book);
+
+    // Update local storage after removing the book
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String> bookJsonList = books.map((book) => jsonEncode(book.toJson())).toList();
+    prefs.setStringList('books', bookJsonList);
+  }
    
   
   @override

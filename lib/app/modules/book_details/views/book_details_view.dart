@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:readerkit/app/const/theme/app_colors.dart';
+import 'package:readerkit/app/data/book_model.dart';
+import 'package:readerkit/app/modules/home/controllers/home_controller.dart';
+import 'package:readerkit/app/routes/app_pages.dart';
 
 import '../controllers/book_details_controller.dart';
 
@@ -10,6 +13,13 @@ class BookDetailsView extends GetView<BookDetailsController> {
   const BookDetailsView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+     final Book book = Get.arguments as Book;
+       final HomeController controller = Get.find<HomeController>();
+
+    void deleteBook() async {
+      await controller.deleteBook(book);
+      Get.back(); // Navigate back after deletion
+    }
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.darkBackground,
@@ -54,8 +64,8 @@ class BookDetailsView extends GetView<BookDetailsController> {
                             CupertinoDialogAction(
                               child: Text("Yes"),
                               onPressed: () {
-                                // Perform delete action here
-                                Navigator.pop(context);
+                                deleteBook();
+                                Get.back();
                               },
                             ),
                           ],
@@ -96,7 +106,7 @@ class BookDetailsView extends GetView<BookDetailsController> {
                         height: 20,
                       ),
                       Text(
-                        "title" * 10,
+                        book.title,
                         style: TextStyle(
                           fontSize: 15,
                           color: AppColors.white,
@@ -143,12 +153,11 @@ class BookDetailsView extends GetView<BookDetailsController> {
                       height: 5,
                     ),
                     Text(
-                      "111",
+                      "11",
                       style: TextStyle(fontSize: 11, color: AppColors.white),
                     ),
                   ],
                 ),
-                // Format
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -161,7 +170,7 @@ class BookDetailsView extends GetView<BookDetailsController> {
                       height: 5,
                     ),
                     Text(
-                      'PDF',
+                      book.format.toUpperCase(),
                       style: TextStyle(fontSize: 11, color: AppColors.white),
                     ),
                   ],
@@ -170,7 +179,10 @@ class BookDetailsView extends GetView<BookDetailsController> {
             ),
             Expanded(child: SizedBox()),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                String pathToPdf = book.path;
+                Get.toNamed(Routes.BOOK_VIEW, arguments:pathToPdf );
+              },
               child: Container(
                 height: 41,
                 alignment: Alignment.center,

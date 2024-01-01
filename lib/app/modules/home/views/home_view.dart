@@ -113,10 +113,10 @@ class HomeView extends GetView<HomeController> {
                       childAspectRatio: 0.88),
                   itemCount: controller.books.length,
                   itemBuilder: (BuildContext context, int index) {
-                    Book book = controller.books[index];
+                    Book book = controller.books.reversed.toList()[index];
                     return InkWell(
                       onTap: (){
-                        Get.toNamed(Routes.BOOK_DETAILS);
+                        Get.toNamed(Routes.BOOK_DETAILS, arguments: book);
                       },
                       child: Container(
                         decoration: BoxDecoration(

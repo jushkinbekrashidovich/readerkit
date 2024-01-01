@@ -12,6 +12,8 @@ dependencies:
   flutter_svg: ^2.0.9
   file_picker: ^6.1.1
   shared_preferences: ^2.2.2
+  syncfusion_flutter_pdfviewer: ^24.1.43
+  read_pdf_text: ^0.2.1
   flutter: 
     sdk: flutter
 
