@@ -1,17 +1,16 @@
-
 import 'package:get/get.dart';
 import 'package:read_pdf_text/read_pdf_text.dart';
 
 class BookViewController extends GetxController {
-late RxString pdfText = ''.obs;
+  late RxString pdfText = ''.obs;
+  late RxBool isCanceled = false.obs;
   @override
   void onInit() {
     extractTextFromPDF();
     super.onInit();
   }
 
-
-    Future<void> extractTextFromPDF() async {
+  Future<void> extractTextFromPDF() async {
     final path = Get.arguments;
 
     try {
@@ -24,6 +23,16 @@ late RxString pdfText = ''.obs;
     }
   }
 
+    Future<String> _getPDFTextWithCancellation(String path) async {
+    // Simulating long-running task
+    for (var i = 0; i < 1000000000; i++) {
+      if (isCanceled.value) {
+        throw 'Operation cancelled';
+      }
+    }
+    return ReadPdfText.getPDFtext(path);
+  }
+
   @override
   void onReady() {
     super.onReady();
@@ -31,7 +40,7 @@ late RxString pdfText = ''.obs;
 
   @override
   void onClose() {
+    isCanceled.value = true;
     super.onClose();
   }
-
 }
