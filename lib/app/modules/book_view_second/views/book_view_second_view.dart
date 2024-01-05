@@ -12,13 +12,14 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
   Widget build(BuildContext context) {
     var path = Get.arguments;
     return Scaffold(
-      backgroundColor: Color(0xffFFF8DC),
+      backgroundColor: Color.fromARGB(255, 192, 171, 84),
       body: SfPdfViewer.file(
         File(path),
-        enableTextSelection: true,
-
-
         
+        enableTextSelection: true,
+        pageLayoutMode: PdfPageLayoutMode.continuous,
+        scrollDirection: PdfScrollDirection.vertical,
+        initialScrollOffset: Offset(0, 1),
       ),
     );
   }

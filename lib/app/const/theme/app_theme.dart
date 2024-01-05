@@ -85,7 +85,7 @@ class AppThemes {
 
   static final ThemeData dark = ThemeData(
     scaffoldBackgroundColor: AppColors.darkBackground,
-bottomNavigationBarTheme: BottomNavigationBarThemeData(
+bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           backgroundColor: Colors.red, // Change the background color here
           selectedItemColor: Colors.white, // Change the selected item color
           unselectedItemColor: Colors.grey, // Change the unselected item color
