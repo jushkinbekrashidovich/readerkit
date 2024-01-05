@@ -20,24 +20,28 @@ class BookViewView extends GetView<BookViewController> {
           padding: const EdgeInsets.only(left: 10, right: 10, top: 15),
           child:  SingleChildScrollView(
             child: BionicReader(
+              wordSpacingFactor: 1.01,
               text: controller.pdfText.value,
-              startStyle:  TextStyle(
-                letterSpacing: 0.8,
+              startStyle: 
+                GoogleFonts.newsreader(
+                  
+                letterSpacing: 0.5,
+                height: 1.2,
                 fontSize: 18,
-                fontWeight: FontWeight.w800,
+                fontWeight: FontWeight.w600,
+                
                 color: Color.lerp(Colors.black, Colors.black, 0.40),
               ),
-              midStyle: TextStyle(
+              midStyle:  GoogleFonts.newsreader(
+                letterSpacing: 0.5,
+                
+                height: 1.2,
                 fontSize: 18,
                 fontWeight: FontWeight.w400,
-                color: Color.lerp(Colors.black, Colors.black, 0.35),
+                color: Color.fromARGB(255, 154, 148, 122),
               ),
               // Note: For the endStyle, you may set it to make the end characters almost invisible or transparent if needed.
-              endStyle: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w200,
-                color: Color.lerp(Colors.black, Colors.black, 0.35),
-              ),
+              
             ),
           ),
         
