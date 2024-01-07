@@ -693,6 +693,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.2"
+  word_selectable_text:
+    dependency: "direct main"
+    description:
+      name: word_selectable_text
+      sha256: "04e2c131709f2bad8d7078462464a823ca96dfa77bbd6fd76610eb0f1958ab8d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.0"
   xdg_directories:
     dependency: transitive
     description:

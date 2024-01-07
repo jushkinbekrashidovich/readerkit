@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,6 @@ import 'package:readerkit/app/data/book_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeController extends GetxController {
-
   RxList<Book> books = <Book>[].obs;
   late final FocusNode myfocusNode;
   @override
@@ -16,16 +16,16 @@ class HomeController extends GetxController {
     super.onInit();
     loadBooks();
   }
-  
-    Future<void> loadBooks() async {
+
+  Future<void> loadBooks() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     List<String>? bookJsonList = prefs.getStringList('books');
 
     if (bookJsonList != null) {
-      books.assignAll(bookJsonList.map((json) => Book.fromJson(jsonDecode(json))).toList());
+      books.assignAll(
+          bookJsonList.map((json) => Book.fromJson(jsonDecode(json))).toList());
     }
   }
-
 
   Future<void> addBook() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
@@ -36,16 +36,18 @@ class HomeController extends GetxController {
       String path = result.files.single.path!;
       String fileName = result.files.single.name;
       String format = fileName.split('.').last.toLowerCase();
-
+      File file = File(path);
+      int pdfSize = await file.length();
       books.add(Book(
-        title: fileName,
-        path: path,
-        pageNumber: 1,
-        format: format,
-      ));
+          title: fileName,
+          path: path,
+          pageNumber: 1,
+          format: format,
+          pdfSize: pdfSize));
 
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      List<String> bookJsonList = books.map((book) => jsonEncode(book.toJson())).toList();
+      List<String> bookJsonList =
+          books.map((book) => jsonEncode(book.toJson())).toList();
       prefs.setStringList('books', bookJsonList);
     }
   }
@@ -56,11 +58,11 @@ class HomeController extends GetxController {
 
     // Update local storage after removing the book
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    List<String> bookJsonList = books.map((book) => jsonEncode(book.toJson())).toList();
+    List<String> bookJsonList =
+        books.map((book) => jsonEncode(book.toJson())).toList();
     prefs.setStringList('books', bookJsonList);
   }
-   
-  
+
   @override
   void onReady() {
     super.onReady();
@@ -70,6 +72,7 @@ class HomeController extends GetxController {
   void onClose() {
     super.onClose();
   }
+
   @override
   void dispose() {
     // TODO: implement dispose

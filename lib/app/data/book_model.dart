@@ -3,12 +3,14 @@ class Book {
   final String path;
   final int pageNumber;
   final String format;
+  final int pdfSize; // New property for PDF size in bytes
 
   Book({
     required this.title,
     required this.path,
     required this.pageNumber,
     required this.format,
+    required this.pdfSize, // Include pdfSize in the constructor
   });
 
   // Method to convert Book object to JSON
@@ -18,6 +20,7 @@ class Book {
       'path': path,
       'pageNumber': pageNumber,
       'format': format,
+      'pdfSize': pdfSize, // Include pdfSize in the JSON object
     };
   }
 
@@ -28,6 +31,7 @@ class Book {
       path: json['path'],
       pageNumber: json['pageNumber'],
       format: json['format'],
+      pdfSize: json['pdfSize'], // Initialize pdfSize from JSON
     );
   }
 }

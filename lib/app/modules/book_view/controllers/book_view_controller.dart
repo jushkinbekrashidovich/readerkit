@@ -20,7 +20,8 @@ class BookViewController extends GetxController {
       print('Failed to extract text from PDF: $e');
     }
   }
-
+  
+  
   
 
   @override
