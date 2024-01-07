@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -22,32 +23,40 @@ class BookViewView extends GetView<BookViewController> {
           padding: const EdgeInsets.only(left: 10, right: 10, top: 15),
           child: SingleChildScrollView(
             child:
-            //  WordSelectableText(
-            //   selectable: true,
-            //   text: controller.pdfText.value,
-            //  highlight: true,
-            //  highlightColor: Colors.yellow,
-            //   onWordTapped: (word, index) {
-                
-            //   },
-            //   style: GoogleFonts.newsreader(
-            //       fontSize: 18,
-            //       letterSpacing: 0.5,
-            //       //height: 1.2,
-            //       color: AppColors.black),
-            // ),
+                //  WordSelectableText(
+                //   selectable: true,
+                //   text: controller.pdfText.value,
+                //  highlight: true,
+                //  highlightColor: Colors.yellow,
+                //   onWordTapped: (word, index) {
 
-            SelectableText(
-              controller.pdfText.value,
+                //   },
+                //   style: GoogleFonts.newsreader(
+                //       fontSize: 18,
+                //       letterSpacing: 0.5,
+                //       //height: 1.2,
+                //       color: AppColors.black),
+                // ),
+
+                SelectableText.rich(
+              TextSpan(
+                children: controller.pdfText.value.split(' ').map((word) {
+                  return TextSpan(
+                    text: '$word ',
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () {
+                        showTranslationBottomSheet(context, word);
+                      },
+                  );
+                }).toList(),
+              ),
               style: GoogleFonts.newsreader(
                 fontSize: 18,
                 letterSpacing: 0.5,
                 height: 1.2,
-                color: AppColors.black
+                color: AppColors.black,
               ),
-              
             ),
-            
 
             // BionicReader(
             //   wordSpacingFactor: 1.01,
@@ -78,4 +87,29 @@ class BookViewView extends GetView<BookViewController> {
       ),
     );
   }
+}
+
+void showTranslationBottomSheet(BuildContext context, String selectedWord) {
+  // Replace this with logic to fetch translation/definition
+  String translation = fetchTranslation(selectedWord);
+
+  showModalBottomSheet(
+    context: context,
+    builder: (BuildContext context) {
+      return Container(
+        height: 200,
+        child: Center(
+          child:
+              Text('Translation or Definition of $selectedWord: $translation'),
+        ),
+      );
+    },
+  );
+}
+
+String fetchTranslation(String word) {
+  // Implement your logic here to fetch translation or definition from an API or service
+  // Example: You might use an HTTP package to make a GET request to an API
+  // and return the translation or definition as a string
+  return 'This is the translation of $word';
 }
