@@ -5,14 +5,11 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:readerkit/app/const/theme/app_colors.dart';
 import 'package:readerkit/app/modules/book_view/controllers/book_view_controller.dart';
 
-
-
 class BookViewView extends GetView<BookViewController> {
   const BookViewView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       backgroundColor: Color(0xffFFF8DC),
       body: Obx(
@@ -21,18 +18,19 @@ class BookViewView extends GetView<BookViewController> {
           height: double.infinity,
           padding: const EdgeInsets.only(left: 10, right: 10, top: 15),
           child: SingleChildScrollView(
-            child:
-                
-                SelectableText.rich(
+            child: SelectableText.rich(
               TextSpan(
                 children: controller.pdfText.value.split(' ').map((word) {
                   return TextSpan(
                     text: '$word ',
+                    style: TextStyle(
+                      fontWeight: controller.selectedWord.value == word
+                          ? FontWeight.bold
+                          : FontWeight.normal,
+                    ),
                     recognizer: TapGestureRecognizer()
                       ..onTap = () {
                         controller.fetchWordDefinition(word);
-
-                   
                       },
                   );
                 }).toList(),

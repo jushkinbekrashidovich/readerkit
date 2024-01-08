@@ -215,6 +215,24 @@ class BookDetailsView extends GetView<BookDetailsController> {
                 ),
               ),
             ),
+             SizedBox(height: 7,),
+            InkWell(
+              onTap: () {
+                String pathToPdf = book.path;
+                Get.toNamed(Routes.BOOK_VIEW_THIRD, arguments:pathToPdf );
+              },
+              child: Container(
+                height: 41,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: AppColors.mainColor),
+                child: Text(
+                  "Read 3",
+                  style: TextStyle(color: AppColors.white),
+                ),
+              ),
+            ),
             SizedBox(
               height: 15,
             )
