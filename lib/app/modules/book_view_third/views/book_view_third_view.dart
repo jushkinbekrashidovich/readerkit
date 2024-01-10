@@ -1,6 +1,9 @@
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:readerkit/app/const/theme/app_colors.dart';
+import 'package:vocsy_epub_viewer/epub_viewer.dart';
 
 import '../controllers/book_view_third_controller.dart';
 
@@ -9,20 +12,19 @@ class BookViewThirdView extends GetView<BookViewThirdController> {
 
   @override
   Widget build(BuildContext context) {
+    var path = Get.arguments;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('BookViewThirdView'),
-        centerTitle: true,
+      backgroundColor: AppColors.white,
+      body:Center(
+        child: IconButton(
+          icon: Icon(Icons.add),
+          onPressed: (){
+            VocsyEpub.open(
+      path,
+    );
+          },
+        ),
       ),
-      body:Obx(
-  () {
-    if (controller.epubView != null) {
-      return controller.epubView; // Use epubView when initialized
-    } else {
-      return CircularProgressIndicator(); // Placeholder or loading indicator
-    }
-  },
-)
     );
   }
 }
