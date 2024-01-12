@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,10 +12,35 @@ class BookViewView extends GetView<BookViewController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffFFF8DC),
+      backgroundColor: AppColors.themeDark,
+      appBar: AppBar(
+        toolbarHeight: 39,
+        backgroundColor: AppColors.themeDark,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            InkWell(
+              child: Container(
+                margin: EdgeInsets.only(top: 5),
+                height: 31,
+                width: 30,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: AppColors.darkSearch,
+                ),
+                child: Icon(
+                  CupertinoIcons.doc_plaintext,
+                  size: 18,
+                ),
+              ),
+            ),
+          ],
+        ),
+        elevation: 0,
+      ),
       body: Obx(
         () => Container(
-          color: Color(0xffFFF8DC),
+          //color: Color(0xffFFF8DC),
           height: double.infinity,
           padding: const EdgeInsets.only(left: 10, right: 10, top: 15),
           child: SingleChildScrollView(
@@ -39,7 +65,7 @@ class BookViewView extends GetView<BookViewController> {
                 fontSize: 18,
                 letterSpacing: 0.5,
                 height: 1.2,
-                color: AppColors.black,
+                color: AppColors.white,
               ),
             ),
 

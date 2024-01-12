@@ -64,6 +64,7 @@ void showTranslationBottomSheet() {
 
     try {
       pdfText.value = await ReadPdfText.getPDFtext(path);
+      
       update(); 
     } catch (e) {
       print('Failed to extract text from PDF: $e');

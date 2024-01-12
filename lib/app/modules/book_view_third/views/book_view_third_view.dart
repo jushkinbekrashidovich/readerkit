@@ -1,9 +1,9 @@
+import 'dart:io';
 
 import 'package:flutter/material.dart';
-
+import 'package:epub_view/epub_view.dart';
 import 'package:get/get.dart';
 import 'package:readerkit/app/const/theme/app_colors.dart';
-import 'package:vocsy_epub_viewer/epub_viewer.dart';
 
 import '../controllers/book_view_third_controller.dart';
 
@@ -14,13 +14,13 @@ class BookViewThirdView extends GetView<BookViewThirdController> {
   Widget build(BuildContext context) {
     var path = Get.arguments;
     return Scaffold(
-      backgroundColor: AppColors.white,
-      body:Center(
-        child: IconButton(
-          icon: Icon(Icons.add),
-          onPressed: (){
-            VocsyEpub.openAsset('assets/sample.epub');
-          },
+      backgroundColor: AppColors.themeCream,
+      
+      body: Center(
+        child: EpubView(
+          controller: EpubController(
+            document: EpubDocument.openFile(File(path)),
+          ),
         ),
       ),
     );

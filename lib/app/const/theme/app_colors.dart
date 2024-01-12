@@ -17,7 +17,7 @@ class AppColors {
   static const themeCream = Color(0xffFFF8DC);
   static const themeLightGray = Color(0xffD3D3D3);
   static const themeBeige = Color(0xffF5F5DC);
-  
+  static const themeDark = Color(0xff14161B);
 
   static const mainColor = Color(0xff8C31FF); 
   static const secondaryColor = Color(0xff7365E0); 
