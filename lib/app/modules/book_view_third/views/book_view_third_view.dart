@@ -19,9 +19,7 @@ class BookViewThirdView extends GetView<BookViewThirdController> {
         child: IconButton(
           icon: Icon(Icons.add),
           onPressed: (){
-            VocsyEpub.open(
-      path,
-    );
+            VocsyEpub.openAsset('assets/sample.epub');
           },
         ),
       ),
