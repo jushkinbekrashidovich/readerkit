@@ -20,6 +20,7 @@ dependencies:
   http: ^1.1.0
   epub_view: ^3.2.0
   syncfusion_flutter_pdf: ^24.1.45
+  dots_indicator: ^2.1.1
   flutter: 
     sdk: flutter
 
