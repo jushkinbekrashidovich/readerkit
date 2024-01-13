@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:readerkit/app/const/theme/app_colors.dart';
 import 'package:readerkit/app/modules/book_view/controllers/book_view_controller.dart';
+import 'package:readerkit/app/routes/app_pages.dart';
 
 class BookViewView extends GetView<BookViewController> {
   const BookViewView({Key? key}) : super(key: key);
@@ -14,23 +15,56 @@ class BookViewView extends GetView<BookViewController> {
     return Scaffold(
       backgroundColor: AppColors.themeDark,
       appBar: AppBar(
-        toolbarHeight: 39,
+        toolbarHeight: 34,
+        leadingWidth: 8,
         backgroundColor: AppColors.themeDark,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             InkWell(
+              onTap: (){
+                showModalBottomSheet(
+
+                  context: context,
+                  isScrollControlled: true, // Allow full-height sheet
+                  builder: (BuildContext context) {
+                    return DraggableScrollableSheet(
+                      maxChildSize: 0.6,
+                      builder: (BuildContext context, ScrollController scrollController) {
+                        return PageView(
+                          controller: PageController(),
+                          children: [
+                            // Your pages go here
+                            Container(
+                              color: Colors.red,
+                              child: Center(child: Text('Page 1')),
+                            ),
+                            Container(
+                              color: Colors.green,
+                              child: Center(child: Text('Page 2')),
+                            ),
+                            Container(
+                              color: Colors.blue,
+                              child: Center(child: Text('Page 3')),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                );
+              },
               child: Container(
-                margin: EdgeInsets.only(top: 5),
-                height: 31,
-                width: 30,
+                margin: EdgeInsets.only(top: 6),
+                height: 28,
+                width: 28,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   color: AppColors.darkSearch,
                 ),
                 child: Icon(
                   CupertinoIcons.doc_plaintext,
-                  size: 18,
+                  size: 16,
                 ),
               ),
             ),

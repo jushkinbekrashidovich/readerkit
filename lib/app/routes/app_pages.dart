@@ -6,6 +6,8 @@ import '../modules/book_view/bindings/book_view_binding.dart';
 import '../modules/book_view/views/book_view_view.dart';
 import '../modules/book_view_second/bindings/book_view_second_binding.dart';
 import '../modules/book_view_second/views/book_view_second_view.dart';
+import '../modules/book_view_settings/bindings/book_view_settings_binding.dart';
+import '../modules/book_view_settings/views/book_view_settings_view.dart';
 import '../modules/book_view_third/bindings/book_view_third_binding.dart';
 import '../modules/book_view_third/views/book_view_third_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -57,6 +59,12 @@ class AppPages {
       name: _Paths.BOOK_VIEW_THIRD,
       page: () => const BookViewThirdView(),
       binding: BookViewThirdBinding(),
+    ),
+    GetPage(
+      name: _Paths.BOOK_VIEW_SETTINGS,
+      page: () => const BookViewSettingsView(),
+      binding: BookViewSettingsBinding(),
+      transition: Transition.rightToLeft
     ),
   ];
 }

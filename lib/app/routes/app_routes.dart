@@ -10,6 +10,7 @@ abstract class Routes {
   static const BOOK_VIEW = _Paths.BOOK_VIEW;
   static const BOOK_VIEW_SECOND = _Paths.BOOK_VIEW_SECOND;
   static const BOOK_VIEW_THIRD = _Paths.BOOK_VIEW_THIRD;
+  static const BOOK_VIEW_SETTINGS = _Paths.BOOK_VIEW_SETTINGS;
 }
 
 abstract class _Paths {
@@ -21,4 +22,5 @@ abstract class _Paths {
   static const BOOK_VIEW = '/book-view';
   static const BOOK_VIEW_SECOND = '/book-view-second';
   static const BOOK_VIEW_THIRD = '/book-view-third';
+  static const BOOK_VIEW_SETTINGS = '/book-view-settings';
 }
