@@ -37,6 +37,24 @@ flutter:
     - family: Bookerly
       fonts:
         - asset: fonts/Bookerly.ttf
+    - family: AmazonEmber
+      fonts:
+        - asset: fonts/AmazonEmber.ttf
+    - family: Baskervi
+      fonts:
+        - asset: fonts/Baskervi.ttf
+    - family: Caec
+      fonts:
+        - asset: fonts/Caec.ttf
+    - family: Futura
+      fonts:
+        - asset: fonts/Futura.ttf
+    - family: Palatino
+      fonts:
+        - asset: fonts/Palatino.ttf            
+    - family: News
+      fonts:
+        - asset: fonts/News.ttf
 
   assets:
     - assets/

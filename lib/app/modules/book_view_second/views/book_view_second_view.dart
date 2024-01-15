@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:readerkit/app/const/custom_widgets/theme_edit_style.dart';
+import 'package:readerkit/app/const/custom_widgets/edit_font_view/theme_edit_style.dart';
 import 'package:readerkit/app/const/theme/app_colors.dart';
 import 'package:readerkit/app/modules/book_view_second/controllers/book_view_second_controller.dart';
 
@@ -88,8 +88,7 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                               builder:
                                   (BuildContext context, StateSetter setState) {
                                 List<Widget> pages = [
-                                  
-                               ThemeEditStyle(),
+                                  ThemeEditStyle(),
                                   //font style
                                   //font family
                                   Column(
@@ -520,7 +519,7 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                       letterSpacing: 0.5,
                       height: 1.2,
                       color: AppColors.black,
-                      fontFamily: 'Bookerly'
+                      fontFamily: 'Futura',
                     ),
                   ),
           ),
