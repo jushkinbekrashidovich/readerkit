@@ -33,8 +33,15 @@ flutter:
   uses-material-design: true
   
 
+  fonts:
+    - family: Bookerly
+      fonts:
+        - asset: fonts/Bookerly.ttf
+
   assets:
     - assets/
     - assets/svg/
     - assets/sample.epub
     - assets/sample.pdf
+  
+  

@@ -11,6 +11,7 @@ class BookViewSecondController extends GetxController {
   late RxBool isLoading = true.obs;
   RxInt currentPage = 0.obs;
   RxBool isBionicMode = false.obs; 
+  RxBool isAppBarVisible = true.obs;
 
   final List<Color> colorList = [
   Colors.white,
@@ -21,7 +22,8 @@ class BookViewSecondController extends GetxController {
 ]; 
 
 final List<String> fontStyles = ["Roboto", "Instrument Serif", "Lato", "Open Sans"];
-   
+   final PageController pageController = PageController();
+
 
 // String getHtmlContent(String text) {
 //   return '''
