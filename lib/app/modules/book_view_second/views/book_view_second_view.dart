@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:readerkit/app/const/custom_widgets/edit_font_view/font_edit_style.dart';
 import 'package:readerkit/app/const/custom_widgets/edit_font_view/theme_edit_style.dart';
 import 'package:readerkit/app/const/theme/app_colors.dart';
 import 'package:readerkit/app/modules/book_view_second/controllers/book_view_second_controller.dart';
@@ -112,7 +113,8 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                                       controller.fontFamily.value = "Caec";
                                     },
                                     styleAmazaonOntap: () {
-                                      controller.fontFamily.value = "AmazonEmber";
+                                      controller.fontFamily.value =
+                                          "AmazonEmber";
                                     },
                                     styleNewsOntap: () {
                                       controller.fontFamily.value = "News";
@@ -125,202 +127,44 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                                     },
                                   ),
                                   //font style
-                                  //font family
-                                  Column(
-                                    children: [
-                                      SizedBox(
-                                        height: 28,
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 13, right: 13),
-                                        child: Text(
-                                          "Font",
-                                          style: TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w500),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 30,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Container(
-                                            height: 37,
-                                            width: 59,
-                                            alignment: Alignment.center,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(3.2),
-                                                color: AppColors.themeDark),
-                                            child: Icon(
-                                              CupertinoIcons.textformat_size,
-                                              size: 18,
-                                              color: AppColors.white,
-                                            ),
-                                          ),
-                                          Text(
-                                            "4",
-                                            style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                          ),
-                                          Container(
-                                            height: 37,
-                                            width: 59,
-                                            alignment: Alignment.center,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(3.2),
-                                                color: AppColors.themeDark),
-                                            child: Icon(
-                                              CupertinoIcons.textformat_size,
-                                              size: 25,
-                                              color: AppColors.white,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 15,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Container(
-                                            height: 37,
-                                            width: 59,
-                                            alignment: Alignment.center,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(3.2),
-                                                color: AppColors.themeDark),
-                                            child: Icon(
-                                              Icons.space_bar,
-                                              size: 18,
-                                              color: AppColors.white,
-                                            ),
-                                          ),
-                                          Text(
-                                            "3",
-                                            style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                          ),
-                                          Container(
-                                            height: 37,
-                                            width: 59,
-                                            alignment: Alignment.center,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(3.2),
-                                                color: AppColors.themeDark),
-                                            child: Icon(
-                                              Icons.space_bar,
-                                              size: 25,
-                                              color: AppColors.white,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 15,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Container(
-                                            height: 37,
-                                            width: 59,
-                                            alignment: Alignment.center,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(3.2),
-                                                color: AppColors.themeDark),
-                                            child: Icon(
-                                              Icons.text_fields,
-                                              size: 18,
-                                              color: AppColors.white,
-                                            ),
-                                          ),
-                                          Text(
-                                            "3",
-                                            style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                          ),
-                                          Container(
-                                            height: 37,
-                                            width: 59,
-                                            alignment: Alignment.center,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(3.2),
-                                                color: AppColors.themeDark),
-                                            child: Icon(
-                                              Icons.text_fields,
-                                              size: 25,
-                                              color: AppColors.white,
-                                              weight: 3,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 15,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Container(
-                                            height: 37,
-                                            width: 59,
-                                            alignment: Alignment.center,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(3.2),
-                                                color: AppColors.themeDark),
-                                            child: Icon(
-                                              Icons.height,
-                                              size: 18,
-                                              color: AppColors.white,
-                                            ),
-                                          ),
-                                          Text(
-                                            "3",
-                                            style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                          ),
-                                          Container(
-                                            height: 37,
-                                            width: 59,
-                                            alignment: Alignment.center,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(3.2),
-                                                color: AppColors.themeDark),
-                                            child: Icon(
-                                              Icons.height,
-                                              size: 25,
-                                              color: AppColors.white,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
+                                  FontEditStyle(
+                                    decreaseFontSizeOntap: () {
+                                      controller.decreaseFontSize();
+                                    },
+                                    increaseFontSizeOntap: () {
+                                      controller.increaseFontSize();
+                                    },
+                                    textFontSize:
+                                        "F-Size",
+                                    decreaseLetterSpacingOntap: () {
+                                      controller.decreaseLetterSpacing();
+                                    },
+                                    increaseLetterSpacingOntap: () {
+                                      controller.increaseLetterSpacing();
+                                    },
+                                    textLetterSpacing:"L-Space",
+                                    decreaseWordSpacingOntap: () {
+                                      controller.decreaseWordSpacing();
+                                    },
+                                    increaseWordSpacingOntap: () {
+                                      controller.increaseWordSpacing();
+                                    },
+                                    textWordSpacing:"W-Space",
+                                    decreaseFontWeightOntap: () {
+                                      controller.decreaseWeight();
+                                    },
+                                    increaseFontWeightOntap: () {
+                                      controller.increaseWeight();
+                                    },
+                                    textFontWeight:"F-Weight",
+                                    decreaseHeightOntap: () {
+                                      controller.decreaseLetterHeight();
+                                    },
+                                    increaseHeightOntap: () {
+                                      controller.increaseHeight();
+                                    },
+                                    textHeight: "W-Height",
                                   ),
-
                                   //speed reading
                                   Column(
                                     children: [
@@ -330,8 +174,9 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                                       Text(
                                         "Speed Reading",
                                         style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w500),
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w500,
+                                        ),
                                       ),
                                       SizedBox(
                                         height: 28,
@@ -449,9 +294,6 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                                   // Add more pages as needed
                                 ];
 
-                                int currentPage =
-                                    0; // Track the current page index
-
                                 return Column(
                                   children: [
                                     Container(
@@ -459,17 +301,17 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                                       child: PageView(
                                         children: pages,
                                         onPageChanged: (int page) {
-                                          // Update the current page when the page changes
-
                                           setState(() {
-                                            controller.currentPage.value = page;
+                                            controller.currentPageDot.value =
+                                                page;
                                           });
                                         },
                                       ),
                                     ),
                                     DotsIndicator(
                                       dotsCount: pages.length,
-                                      position: currentPage.toDouble(),
+                                      position: controller.currentPageDot.value
+                                          .toDouble(),
                                       decorator: const DotsDecorator(
                                         color: Colors
                                             .grey, // Color of the inactive dots
@@ -550,9 +392,11 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                 : HtmlWidget(
                     page,
                     textStyle: TextStyle(
-                      fontSize: 18,
-                      letterSpacing: 0.5,
-                      height: 1.2,
+                      fontSize: controller.textFontSize.value,
+                      letterSpacing: controller.letterSpacing.value,
+                      wordSpacing: controller.wordSpacing.value,
+                      height: controller.letterHeight.value,
+                      fontWeight: controller.availableFontWeights[controller.fontWeightIndex.value],
                       color: controller.backgroundTheme.value ==
                               AppColors.themeDark
                           ? AppColors.white
