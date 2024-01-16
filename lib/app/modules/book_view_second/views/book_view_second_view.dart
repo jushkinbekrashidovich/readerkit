@@ -14,7 +14,7 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
   Widget build(BuildContext context) {
     return Obx(
       () => Scaffold(
-        backgroundColor: AppColors.themeCream,
+        backgroundColor: controller.backgroundTheme.value,
         appBar: controller.isAppBarVisible.value
             ? AppBar(
                 toolbarHeight: 39,
@@ -88,7 +88,42 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                               builder:
                                   (BuildContext context, StateSetter setState) {
                                 List<Widget> pages = [
-                                  ThemeEditStyle(),
+                                  ThemeEditStyle(
+                                    themeDarkOntap: () {
+                                      controller.backgroundTheme.value =
+                                          AppColors.themeDark;
+                                    },
+                                    themeCreamOntap: () {
+                                      controller.backgroundTheme.value =
+                                          AppColors.themeCream;
+                                    },
+                                    themeBeigeOntap: () {
+                                      controller.backgroundTheme.value =
+                                          AppColors.themeBeige;
+                                    },
+                                    themeOffWhite: () {
+                                      controller.backgroundTheme.value =
+                                          AppColors.themeOffWhite;
+                                    },
+                                    styleBookerlyOntap: () {
+                                      controller.fontFamily.value = "Bookerly";
+                                    },
+                                    styleCaecOntap: () {
+                                      controller.fontFamily.value = "Caec";
+                                    },
+                                    styleAmazaonOntap: () {
+                                      controller.fontFamily.value = "AmazonEmber";
+                                    },
+                                    styleNewsOntap: () {
+                                      controller.fontFamily.value = "News";
+                                    },
+                                    styleBaskervilleOntap: () {
+                                      controller.fontFamily.value = "Baskervi";
+                                    },
+                                    stylePalatinoOntap: () {
+                                      controller.fontFamily.value = "Palatino";
+                                    },
+                                  ),
                                   //font style
                                   //font family
                                   Column(
@@ -518,8 +553,11 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                       fontSize: 18,
                       letterSpacing: 0.5,
                       height: 1.2,
-                      color: AppColors.black,
-                      fontFamily: 'Futura',
+                      color: controller.backgroundTheme.value ==
+                              AppColors.themeDark
+                          ? AppColors.white
+                          : AppColors.black,
+                      fontFamily: controller.fontFamily.value,
                     ),
                   ),
           ),

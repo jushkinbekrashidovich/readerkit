@@ -6,7 +6,19 @@ import 'package:readerkit/app/const/custom_widgets/edit_font_view/small_classes/
 import 'package:readerkit/app/const/theme/app_colors.dart';
 
 class ThemeEditStyle extends StatelessWidget {
-  const ThemeEditStyle({super.key});
+  const ThemeEditStyle({super.key, required this.themeDarkOntap, required this.themeCreamOntap, required this.themeBeigeOntap, required this.themeOffWhite, required this.styleBookerlyOntap, required this.styleCaecOntap, required this.styleAmazaonOntap, required this.styleNewsOntap, required this.styleBaskervilleOntap, required this.stylePalatinoOntap});
+
+  final Function themeDarkOntap;
+  final Function themeCreamOntap;
+  final Function themeBeigeOntap;
+  final Function themeOffWhite;
+  final Function styleBookerlyOntap;
+  final Function styleCaecOntap;
+  final Function styleAmazaonOntap;
+  final Function styleNewsOntap;
+  final Function styleBaskervilleOntap;
+  final Function stylePalatinoOntap;
+
 
   @override
   Widget build(BuildContext context) {
@@ -30,19 +42,28 @@ class ThemeEditStyle extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             ThemeStyleContainer(
-              ontap: () {},
+              ontap: () {
+                themeDarkOntap();
+              },
               themeColor: AppColors.themeDark,
             ),
             ThemeStyleContainer(
-              ontap: () {},
+              ontap: () {
+                themeCreamOntap();
+
+              },
               themeColor: AppColors.themeCream,
             ),
             ThemeStyleContainer(
-              ontap: () {},
+              ontap: () {
+                themeBeigeOntap();
+              },
               themeColor: AppColors.themeBeige,
             ),
             ThemeStyleContainer(
-              ontap: () {},
+              ontap: () {
+                themeOffWhite();
+              },
               themeColor: AppColors.themeOffWhite,
             ),
           ],
@@ -75,19 +96,26 @@ class ThemeEditStyle extends StatelessWidget {
             FontStyleContainer(
               text: "Bookerly",
               textColor: Colors.black,
-              onTap: () {},
+              onTap: () {
+                styleBookerlyOntap();
+              },
               fontFamily: 'Bookerly',
             ),
             FontStyleContainer(
               text: "Caecilia",
               textColor: Colors.black,
-              onTap: () {},
+              onTap: () {
+                styleCaecOntap();
+
+              },
               fontFamily: 'Caec',
             ),
             FontStyleContainer(
               text: "Amazon Ember",
               textColor: Colors.black,
-              onTap: () {},
+              onTap: () {
+                styleAmazaonOntap();
+              },
               fontFamily: 'AmazonEmber',
             ),
           ],
@@ -98,19 +126,26 @@ class ThemeEditStyle extends StatelessWidget {
             FontStyleContainer(
               text: "News Reader",
               textColor: Colors.black,
-              onTap: () {},
+              onTap: () {
+                styleNewsOntap();
+              },
               fontFamily: 'News',
             ),
             FontStyleContainer(
               text: "Baskerville",
               textColor: Colors.black,
-              onTap: () {},
+              onTap: () {
+                styleBaskervilleOntap();
+
+              },
               fontFamily: 'Baskervi',
             ),
             FontStyleContainer(
               text: "Palatino",
               textColor: Colors.black,
-              onTap: () {},
+              onTap: () {
+                stylePalatinoOntap();
+              },
               fontFamily: 'Palatino',
             ),
           ],
