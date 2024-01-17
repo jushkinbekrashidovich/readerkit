@@ -14,7 +14,7 @@ dependencies:
   shared_preferences: ^2.2.2
   syncfusion_flutter_pdfviewer: ^24.1.43
   read_pdf_text: ^0.2.1
-  flutter_widget_from_html_core: ^0.14.10+1
+  flutter_html: ^2.2.1
   google_fonts: ^6.1.0
   bionify: ^0.0.1+6
   http: ^1.1.0

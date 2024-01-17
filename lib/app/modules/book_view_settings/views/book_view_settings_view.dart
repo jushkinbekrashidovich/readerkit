@@ -55,14 +55,12 @@ class BookViewSettingsView extends GetView<BookViewSettingsController> {
                   ),
                 ),
                 SizedBox(height: 15,),
-                Row(
+                const Row(
                   children: [
                     
                   ],
 
                 ),
-
-            
               ],
             ),
             Center(
