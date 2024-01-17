@@ -1,7 +1,7 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:readerkit/app/const/custom_widgets/edit_font_view/font_edit_style.dart';
@@ -37,17 +37,21 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                     SizedBox(
                       width: 15,
                     ),
-                    Container(
-                      height: 20,
-                      width: 50,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.blue),
-                          borderRadius: BorderRadius.circular(2)),
-                      child: Text(
-                        "Speed",
-                        style: GoogleFonts.urbanist(
-                            fontSize: 13, color: Colors.blue),
+                    GestureDetector(
+                      onTap: (){
+                      },
+                      child: Container(
+                        height: 20,
+                        width: 50,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.blue),
+                            borderRadius: BorderRadius.circular(2)),
+                        child: Text(
+                          "Speed",
+                          style: GoogleFonts.urbanist(
+                              fontSize: 13, color: Colors.blue),
+                        ),
                       ),
                     ),
                     SizedBox(
@@ -66,7 +70,7 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                             border: Border.all(color: Colors.blue),
                             borderRadius: BorderRadius.circular(2)),
                         child: Text(
-                          controller.isBionicMode.value ? "Standard" : "Bionic",
+                          controller.isBionicMode.value ? "Bionic" : "Standart",
                           style: GoogleFonts.urbanist(
                               fontSize: 13, color: Colors.blue),
                         ),
@@ -134,29 +138,28 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                                     increaseFontSizeOntap: () {
                                       controller.increaseFontSize();
                                     },
-                                    textFontSize:
-                                        "F-Size",
+                                    textFontSize: "F-Size",
                                     decreaseLetterSpacingOntap: () {
                                       controller.decreaseLetterSpacing();
                                     },
                                     increaseLetterSpacingOntap: () {
                                       controller.increaseLetterSpacing();
                                     },
-                                    textLetterSpacing:"L-Space",
+                                    textLetterSpacing: "L-Space",
                                     decreaseWordSpacingOntap: () {
                                       controller.decreaseWordSpacing();
                                     },
                                     increaseWordSpacingOntap: () {
                                       controller.increaseWordSpacing();
                                     },
-                                    textWordSpacing:"W-Space",
+                                    textWordSpacing: "W-Space",
                                     decreaseFontWeightOntap: () {
                                       controller.decreaseWeight();
                                     },
                                     increaseFontWeightOntap: () {
                                       controller.increaseWeight();
                                     },
-                                    textFontWeight:"F-Weight",
+                                    textFontWeight: "F-Weight",
                                     decreaseHeightOntap: () {
                                       controller.decreaseLetterHeight();
                                     },
@@ -387,28 +390,38 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
         child: Padding(
           padding: const EdgeInsets.only(top: 6, right: 8, left: 8, bottom: 8),
           child: Center(
-            child: controller.isLoading.value
-                ? CircularProgressIndicator()
-                : HtmlWidget(
-                    page,
-                    textStyle: TextStyle(
-                      fontSize: controller.textFontSize.value,
-                      letterSpacing: controller.letterSpacing.value,
-                      wordSpacing: controller.wordSpacing.value,
-                      height: controller.letterHeight.value,
-                      fontWeight: controller.availableFontWeights[controller.fontWeightIndex.value],
-                      color: controller.backgroundTheme.value ==
-                              AppColors.themeDark
-                          ? AppColors.white
-                          : AppColors.black,
-                      fontFamily: controller.fontFamily.value,
-                    ),
-                  ),
-          ),
+              child: controller.isLoading.value
+                  ? CircularProgressIndicator()
+                  : Html(
+                      data: controller.isBionicMode.value
+                          ? page
+                          : _applyBionicReadingMode(page),
+                      style: {
+                        "html": Style(
+                          fontSize: FontSize(controller.textFontSize.value),
+                          letterSpacing: controller.letterSpacing.value,
+                          wordSpacing: controller.wordSpacing.value,
+                          lineHeight: LineHeight(controller.letterHeight.value),
+                          fontWeight: controller.availableFontWeights[
+                              controller.fontWeightIndex.value],
+                          color: controller.backgroundTheme.value ==
+                                  AppColors.themeDark
+                              ? AppColors.white
+                              : AppColors.black,
+                          fontFamily: controller.fontFamily.value,
+                        ),
+                      },
+                    )),
         ),
       );
     }).toList();
 
     return pageWidgets;
+  }
+
+  String _applyBionicReadingMode(String text) {
+    return text.split(" ").map((w) {
+      return '<b>${w.substring(0, (w.length / 2).ceil())}</b>${w.substring((w.length / 2).ceil())} ';
+    }).join();
   }
 }

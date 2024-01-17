@@ -11,7 +11,8 @@ class BookViewSecondController extends GetxController {
   late PdfDocument document;
   late RxBool isLoading = true.obs;
   RxInt currentPage = 0.obs;
-  RxBool isBionicMode = false.obs; 
+  RxBool isBionicMode = true.obs; 
+  RxBool isSpeedReadingMode = false.obs;
   RxBool isAppBarVisible = true.obs;
 
   //page view
@@ -134,6 +135,8 @@ void decreaseLetterSpacing() {
   }
 }
 
+
+ 
 
 
   @override
