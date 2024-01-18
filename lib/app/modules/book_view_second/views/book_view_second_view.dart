@@ -20,6 +20,12 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
             ? AppBar(
                 toolbarHeight: 39,
                 leadingWidth: 8,
+                leading: IconButton(
+                  icon: Icon(CupertinoIcons.back),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
                 backgroundColor: AppColors.themeDark,
                 title: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -38,8 +44,7 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                       width: 15,
                     ),
                     GestureDetector(
-                      onTap: (){
-                      },
+                      onTap: () {},
                       child: Container(
                         height: 20,
                         width: 50,
@@ -369,12 +374,10 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
   }
 
   List<Widget> _buildPages() {
-    // Assuming each page should have a fixed number of characters
     const int charactersPerPage = 900;
 
     List<String> pages = [];
 
-    // Split the text into pages based on charactersPerPage
     for (int i = 0;
         i < controller.extractedText.value.length;
         i += charactersPerPage) {
