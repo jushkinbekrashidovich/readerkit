@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -14,13 +13,14 @@ class BookDetailsView extends GetView<BookDetailsController> {
   const BookDetailsView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-     final Book book = Get.arguments as Book;
-       final HomeController controller = Get.find<HomeController>();
+    final Book book = Get.arguments as Book;
+    final HomeController controller = Get.find<HomeController>();
 
     void deleteBook() async {
       await controller.deleteBook(book);
       Get.back(); // Navigate back after deletion
     }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.darkBackground,
@@ -28,7 +28,6 @@ class BookDetailsView extends GetView<BookDetailsController> {
         centerTitle: true,
         elevation: 0,
         actions: [
-          
           PopupMenuButton(itemBuilder: (BuildContext context) {
             return [
               PopupMenuItem(
@@ -182,8 +181,8 @@ class BookDetailsView extends GetView<BookDetailsController> {
             Expanded(child: SizedBox()),
             InkWell(
               onTap: () {
-                String pathToPdf = book.path;
-                Get.toNamed(Routes.BOOK_VIEW, arguments:pathToPdf );
+                var pathToPdf = book.path;
+                Get.toNamed(Routes.BOOK_VIEW, arguments: pathToPdf);
               },
               child: Container(
                 height: 41,
@@ -197,11 +196,32 @@ class BookDetailsView extends GetView<BookDetailsController> {
                 ),
               ),
             ),
-            SizedBox(height: 7,),
+            SizedBox(
+              height: 7,
+            ),
             InkWell(
-              onTap: () {
-                String pathToPdf = book.path;
-                Get.toNamed(Routes.BOOK_VIEW_SECOND, arguments:pathToPdf );
+              onTap: ()  async{
+                var pathToPdf = book.path;
+                showCupertinoDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return CupertinoAlertDialog(
+                      title: Text("Loading"),
+                      content: Column(
+                        children: [
+                          Text(
+                              "It may take up to 2 minutes depending on file size."),
+                          CupertinoActivityIndicator(),
+                        ],
+                      ),
+                    );
+                  },
+                );
+                if (book.format == "pdf") {
+                  Get.toNamed(Routes.BOOK_VIEW_SECOND, arguments: pathToPdf);
+                } else {
+                  Get.toNamed(Routes.BOOK_VIEW_THIRD, arguments: pathToPdf);
+                }
               },
               child: Container(
                 height: 41,
@@ -215,11 +235,14 @@ class BookDetailsView extends GetView<BookDetailsController> {
                 ),
               ),
             ),
-             SizedBox(height: 7,),
+            SizedBox(
+              height: 7,
+            ),
             InkWell(
               onTap: () {
-                String pathToPdf = book.path;
-                Get.toNamed(Routes.BOOK_VIEW_THIRD, arguments:pathToPdf );
+                var pathToPdf = book.path;
+
+                Get.toNamed(Routes.BOOK_VIEW_THIRD, arguments: pathToPdf);
               },
               child: Container(
                 height: 41,

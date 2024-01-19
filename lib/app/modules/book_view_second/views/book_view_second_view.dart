@@ -21,9 +21,9 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                 toolbarHeight: 39,
                 leadingWidth: 8,
                 leading: IconButton(
-                  icon: Icon(CupertinoIcons.back),
+                  icon:const Icon(CupertinoIcons.back),
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.pop(context) ;
                   },
                 ),
                 backgroundColor: AppColors.themeDark,
@@ -40,7 +40,7 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                         ),
                       ],
                     ),
-                    SizedBox(
+                   const SizedBox(
                       width: 15,
                     ),
                     GestureDetector(

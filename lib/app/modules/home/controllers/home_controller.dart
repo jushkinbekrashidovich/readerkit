@@ -38,12 +38,15 @@ class HomeController extends GetxController {
       String format = fileName.split('.').last.toLowerCase();
       File file = File(path);
       int pdfSize = await file.length();
+      int currentPage = await file.length();
       books.add(Book(
           title: fileName,
           path: path,
           pageNumber: 1,
           format: format,
-          pdfSize: pdfSize));
+          pdfSize: pdfSize,
+          currentPage: currentPage
+          ));
 
       SharedPreferences prefs = await SharedPreferences.getInstance();
       List<String> bookJsonList =

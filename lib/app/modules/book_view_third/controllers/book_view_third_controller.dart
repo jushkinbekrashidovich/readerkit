@@ -1,6 +1,4 @@
-import 'dart:io';
 
-import 'package:epub_view/epub_view.dart';
 import 'package:get/get.dart';
 
 class BookViewThirdController extends GetxController {
