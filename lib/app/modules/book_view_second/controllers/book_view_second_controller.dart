@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:readerkit/app/const/theme/app_colors.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
 
@@ -133,10 +132,6 @@ void decreaseLetterSpacing() {
     
   }
 }
-
-
- 
-
 
   @override
   void dispose() {

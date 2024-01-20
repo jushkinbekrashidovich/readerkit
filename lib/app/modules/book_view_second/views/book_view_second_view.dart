@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:readerkit/app/const/custom_widgets/edit_font_view/font_edit_style.dart';
 import 'package:readerkit/app/const/custom_widgets/edit_font_view/theme_edit_style.dart';
 import 'package:readerkit/app/const/theme/app_colors.dart';
@@ -54,7 +53,7 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                             borderRadius: BorderRadius.circular(2)),
                         child: Text(
                           "Speed",
-                          style: GoogleFonts.urbanist(
+                          style: TextStyle(
                               fontSize: 13, color: Colors.blue),
                         ),
                       ),
@@ -76,7 +75,7 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                             borderRadius: BorderRadius.circular(2)),
                         child: Text(
                           controller.isBionicMode.value ? "Bionic" : "Standart",
-                          style: GoogleFonts.urbanist(
+                          style: TextStyle(
                               fontSize: 13, color: Colors.blue),
                         ),
                       ),

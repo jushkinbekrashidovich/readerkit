@@ -16,7 +16,10 @@ class BookViewView extends GetView<BookViewController> {
     var path = Get.arguments;
     return Scaffold(
       backgroundColor: AppColors.themeDark,
-      body: SfPdfViewer.file(File(path)),
+      body: SfPdfViewer.file(
+        File(path),
+        
+        ),
     );
   }
 }

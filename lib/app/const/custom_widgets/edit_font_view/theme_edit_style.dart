@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:readerkit/app/const/custom_widgets/edit_font_view/small_classes/font_style_container.dart';
 import 'package:readerkit/app/const/custom_widgets/edit_font_view/small_classes/theme_style_container.dart';
 import 'package:readerkit/app/const/theme/app_colors.dart';

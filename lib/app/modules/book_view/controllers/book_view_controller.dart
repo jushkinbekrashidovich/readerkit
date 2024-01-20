@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:read_pdf_text/read_pdf_text.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:readerkit/app/const/theme/app_colors.dart';
@@ -11,7 +10,6 @@ class BookViewController extends GetxController {
   late RxString wordDefinition = ''.obs;
   @override
   void onInit() {
-    extractTextFromPDF();
     super.onInit();
   }
    
@@ -59,18 +57,7 @@ void showTranslationBottomSheet() {
     );
   }
 
-  Future<void> extractTextFromPDF() async {
-    final path = Get.arguments;
-
-    try {
-      pdfText.value = await ReadPdfText.getPDFtext(path);
-      
-      update(); 
-    } catch (e) {
-      print('Failed to extract text from PDF: $e');
-    }
-  }
-  
+ 
   
   
 

@@ -202,25 +202,11 @@ class BookDetailsView extends GetView<BookDetailsController> {
             InkWell(
               onTap: ()  async{
                 var pathToPdf = book.path;
-                showCupertinoDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return CupertinoAlertDialog(
-                      title: Text("Loading"),
-                      content: Column(
-                        children: [
-                          Text(
-                              "It may take up to 2 minutes depending on file size."),
-                          CupertinoActivityIndicator(),
-                        ],
-                      ),
-                    );
-                  },
-                );
+                
                 if (book.format == "pdf") {
-                  Get.toNamed(Routes.BOOK_VIEW_SECOND, arguments: pathToPdf);
+                 await Get.toNamed(Routes.BOOK_VIEW_SECOND, arguments: pathToPdf);
                 } else {
-                  Get.toNamed(Routes.BOOK_VIEW_THIRD, arguments: pathToPdf);
+                await  Get.toNamed(Routes.BOOK_VIEW_THIRD, arguments: pathToPdf);
                 }
               },
               child: Container(

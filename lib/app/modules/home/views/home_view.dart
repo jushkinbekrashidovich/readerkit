@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
 import 'package:readerkit/app/const/theme/app_colors.dart';
@@ -25,14 +26,14 @@ class HomeView extends GetView<HomeController> {
               children: [
                 Row(
                   children: [
-                    IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          CupertinoIcons.star_fill,
-                          size: 19,
-                        )),
+                    Container(
+                      child: SvgPicture.asset('assets/svg/fire.svg'),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
                     Text(
-                      "102",
+                      "10",
                       style: TextStyle(fontSize: 14),
                     ),
                   ],
@@ -115,7 +116,7 @@ class HomeView extends GetView<HomeController> {
                   itemBuilder: (BuildContext context, int index) {
                     Book book = controller.books.reversed.toList()[index];
                     return InkWell(
-                      onTap: (){
+                      onTap: () {
                         Get.toNamed(Routes.BOOK_DETAILS, arguments: book);
                       },
                       child: Container(
@@ -175,7 +176,8 @@ class HomeView extends GetView<HomeController> {
                                     child: Text(
                                       '90%',
                                       style: TextStyle(
-                                          fontSize: 10, color: Color(0xFFCCCCCC)),
+                                          fontSize: 10,
+                                          color: Color(0xFFCCCCCC)),
                                       overflow: TextOverflow.ellipsis,
                                       maxLines: 1,
                                       textAlign: TextAlign.center,
