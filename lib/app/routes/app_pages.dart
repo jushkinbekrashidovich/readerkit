@@ -2,8 +2,6 @@ import 'package:get/get.dart';
 
 import '../modules/book_details/bindings/book_details_binding.dart';
 import '../modules/book_details/views/book_details_view.dart';
-import '../modules/book_view/bindings/book_view_binding.dart';
-import '../modules/book_view/views/book_view_view.dart';
 import '../modules/book_view_second/bindings/book_view_second_binding.dart';
 import '../modules/book_view_second/views/book_view_second_view.dart';
 import '../modules/book_view_third/bindings/book_view_third_binding.dart';
@@ -43,11 +41,7 @@ class AppPages {
       page: () => const BookDetailsView(),
       binding: BookDetailsBinding(),
     ),
-    GetPage(
-      name: _Paths.BOOK_VIEW,
-      page: () => const BookViewView(),
-      binding: BookViewBinding(),
-    ),
+    
     GetPage(
       name: _Paths.BOOK_VIEW_SECOND,
       page: () => const BookViewSecondView(),

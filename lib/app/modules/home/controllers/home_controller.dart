@@ -45,7 +45,7 @@ class HomeController extends GetxController {
           pageNumber: 1,
           format: format,
           pdfSize: pdfSize,
-          currentPage: currentPage
+          
           ));
 
       SharedPreferences prefs = await SharedPreferences.getInstance();
