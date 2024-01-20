@@ -38,7 +38,6 @@ class HomeController extends GetxController {
       String format = fileName.split('.').last.toLowerCase();
       File file = File(path);
       int pdfSize = await file.length();
-      int currentPage = await file.length();
       books.add(Book(
           title: fileName,
           path: path,

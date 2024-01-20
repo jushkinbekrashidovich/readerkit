@@ -180,33 +180,15 @@ class BookDetailsView extends GetView<BookDetailsController> {
             ),
             Expanded(child: SizedBox()),
             InkWell(
-              onTap: () {
+              onTap: () async {
                 var pathToPdf = book.path;
-                Get.toNamed(Routes.BOOK_VIEW, arguments: pathToPdf);
-              },
-              child: Container(
-                height: 41,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: AppColors.mainColor),
-                child: Text(
-                  "Read",
-                  style: TextStyle(color: AppColors.white),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 7,
-            ),
-            InkWell(
-              onTap: ()  async{
-                var pathToPdf = book.path;
-                
+
                 if (book.format == "pdf") {
-                 await Get.toNamed(Routes.BOOK_VIEW_SECOND, arguments: pathToPdf);
+                  await Get.toNamed(Routes.BOOK_VIEW_SECOND,
+                      arguments: pathToPdf);
                 } else {
-                await  Get.toNamed(Routes.BOOK_VIEW_THIRD, arguments: pathToPdf);
+                  await Get.toNamed(Routes.BOOK_VIEW_THIRD,
+                      arguments: pathToPdf);
                 }
               },
               child: Container(
@@ -223,24 +205,6 @@ class BookDetailsView extends GetView<BookDetailsController> {
             ),
             SizedBox(
               height: 7,
-            ),
-            InkWell(
-              onTap: () {
-                var pathToPdf = book.path;
-
-                Get.toNamed(Routes.BOOK_VIEW_THIRD, arguments: pathToPdf);
-              },
-              child: Container(
-                height: 41,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: AppColors.mainColor),
-                child: Text(
-                  "Read 3",
-                  style: TextStyle(color: AppColors.white),
-                ),
-              ),
             ),
             SizedBox(
               height: 15,

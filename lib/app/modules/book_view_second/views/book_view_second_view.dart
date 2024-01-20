@@ -18,7 +18,6 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
         appBar: controller.isAppBarVisible.value
             ? AppBar(
                 toolbarHeight: 39,
-                leadingWidth: 8,
                 leading: IconButton(
                   icon:const Icon(CupertinoIcons.back),
                   onPressed: () {
