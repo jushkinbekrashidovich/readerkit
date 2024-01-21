@@ -49,7 +49,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.BOOK_VIEW_THIRD,
-      page: () => const BookViewThirdView(),
+      page: () =>  BookViewThirdView(),
       binding: BookViewThirdBinding(),
     ),
     

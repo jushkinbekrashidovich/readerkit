@@ -13,69 +13,52 @@ class BookViewThirdView extends GetView<BookViewThirdController> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () => Scaffold(
-        backgroundColor: controller.backgroundTheme.value,
-        appBar: AppBar(
-          toolbarHeight: 39,
-          elevation: 0,
-          leading: IconButton(
-            icon: Icon(
-              CupertinoIcons.back,
-              color: AppColors.black,
-            ),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              GestureDetector(
-                onTap: () {
-                  controller.backgroundTheme.value == AppColors.themeLightGray;
+    return Scaffold(
+          backgroundColor: AppColors.themeCream,
+          appBar: AppBar(
+            iconTheme: IconThemeData(color: Colors.black),
+            toolbarHeight: 39,
+            elevation: 0,
+            actions: [
+              IconButton(
+                onPressed: () {
+                  print(controller.epubController!.generateEpubCfi().toString());
                 },
-                child: Container(
-                  height: 26,
-                  width: 26,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: AppColors.darkSearch,
-                  ),
-                  child: Icon(
-                    CupertinoIcons.doc_plaintext,
-                    size: 16,
-                  ),
-                ),
-              ),
-              SizedBox(width: 10,),
-              GestureDetector(
-                onTap: () {
-                  controller.backgroundTheme.value == AppColors.themeCream;
-                },
-                child: Container(
-                  height: 26,
-                  width: 26,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: AppColors.darkSearch,
-                  ),
-                  child: Icon(
-                    CupertinoIcons.doc_plaintext,
-                    size: 16,
-                  ),
-                ),
+                icon: Icon(Icons.add),
               ),
             ],
+            leading: IconButton(
+              icon: const Icon(
+                CupertinoIcons.back,
+                color: AppColors.black,
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            backgroundColor: AppColors.themeCream,
           ),
-          backgroundColor: AppColors.themeCream,
-        ),
-        body: EpubView(
-          controller: EpubController(
-            document: EpubDocument.openFile(File(controller.path)),
+          body: EpubView(
+            controller: controller.epubController!,
+            onExternalLinkPressed: (href) {},
+            builders: EpubViewBuilders<DefaultBuilderOptions>(
+              options: const DefaultBuilderOptions(),
+              chapterDividerBuilder: (_) => const Divider(),
+            ),
           ),
-        ),
-      ),
-    );
+          endDrawer: Drawer(
+            child: EpubViewTableOfContents(
+              controller: controller.epubController!,
+              itemBuilder: (context, index, chapter, itemCount) {
+                return ListTile(
+                  title: Text(chapter.title.toString()),
+                  onTap: () {
+                    print(controller.epubController!.generateEpubCfi());
+                  },
+                );
+              },
+            ),
+          ),
+        );
   }
 }
