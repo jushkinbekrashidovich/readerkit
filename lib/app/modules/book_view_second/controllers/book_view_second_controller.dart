@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:readerkit/app/const/theme/app_colors.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
 
 class BookViewSecondController extends GetxController {
@@ -15,7 +16,7 @@ class BookViewSecondController extends GetxController {
   RxBool isAppBarVisible = true.obs;
 
   //page view
-  final PageController pageController = PageController();
+  PageController pageController = PageController();
   RxInt currentPageDot = 0.obs;
 
   //themeediting
@@ -109,13 +110,26 @@ void decreaseLetterSpacing() {
 
 
   @override
-  void onInit() {
-    print("onInit called");
+  void onInit() async{
+
     initializePdfDocument();
-    
+    await initializeSharedPreferences();
     
     super.onInit();
   }
+  
+
+  Future<void> initializeSharedPreferences() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  int lastViewedPage = prefs.getInt('lastViewedPage') ?? 0;
+  print("Last Viewed Page: $lastViewedPage");
+
+  // Use the constructor to set the initialPage
+  pageController = PageController(initialPage: lastViewedPage);
+  currentPage.value = lastViewedPage;
+}
+
+
   Future<void> initializePdfDocument() async {
   pdfPath = Get.arguments;
   try {
@@ -132,10 +146,23 @@ void decreaseLetterSpacing() {
     
   }
 }
+Future<void> saveLastViewedPage() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.setInt('lastViewedPage', currentPage.value);
+  print("Saved Last Viewed Page: ${currentPage.value}");
+}
+
+@override
+  void onClose() async{
+    await saveLastViewedPage();
+    super.onClose();
+  }
 
   @override
-  void dispose() {
-    document.dispose();
+  void dispose()async {
+     
+  pageController.dispose(); // Dispose of the controller
+  document.dispose();
     super.dispose();
   }
 }

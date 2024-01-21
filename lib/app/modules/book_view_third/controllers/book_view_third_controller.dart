@@ -32,7 +32,7 @@ String? lastCfi;
  
   @override
   void onReady() {
-    
+     
     
     super.onReady();
   }
@@ -48,23 +48,21 @@ String? lastCfi;
   void onClose() async{
    SharedPreferences prefs = await SharedPreferences.getInstance();
   lastCfi = prefs.getString('lastCfi');
-  
+  var lastCFI = epubController!.generateEpubCfi() ?? '';
+    prefs.setString('lastCfi', lastCFI);
   print('Retrieved lastCfi from SharedPreferences: $lastCfi');
 
-  if (epubController != null) {
-    var lastCFI = epubController!.generateEpubCfi() ?? '';
-    prefs.setString('lastCfi', lastCFI);
-    print(lastCFI + " last page");
-  } else {
-    print("EpubController is null!");
-  }
-
-  print(epubController!.generateEpubCfi().toString()+"hahahah");
+  
+  //print(epubController!.generateEpubCfi().toString()+"hahahah");
 
     super.onClose();
   }
   
-  
+  @override
+  void dispose() {
+    print(epubController!.generateEpubCfi().toString()+"hahahah");
+    super.dispose();
+  }
   
    
    

@@ -19,9 +19,9 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
             ? AppBar(
                 toolbarHeight: 39,
                 leading: IconButton(
-                  icon:const Icon(CupertinoIcons.back),
+                  icon: const Icon(CupertinoIcons.back),
                   onPressed: () {
-                    Navigator.pop(context) ;
+                    Navigator.pop(context);
                   },
                 ),
                 backgroundColor: AppColors.themeDark,
@@ -34,15 +34,19 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                       children: [
                         Text(
                           'Page:${controller.currentPage.value + 1}',
-                          style: TextStyle(fontSize: 14, color: Colors.blue),
+                          style: TextStyle(fontSize: 12, color: Colors.blue),
                         ),
                       ],
                     ),
-                   const SizedBox(
+                    const SizedBox(
                       width: 15,
                     ),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        controller.pageController.jumpToPage(controller.currentPage.value);
+                        print(controller.pageController.initialPage.toString() +
+                            "initial page");
+                      },
                       child: Container(
                         height: 20,
                         width: 50,
@@ -51,9 +55,8 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                             border: Border.all(color: Colors.blue),
                             borderRadius: BorderRadius.circular(2)),
                         child: Text(
-                          "Speed",
-                          style: TextStyle(
-                              fontSize: 13, color: Colors.blue),
+                          "Go to last",
+                          style: TextStyle(fontSize: 13, color: Colors.blue),
                         ),
                       ),
                     ),
@@ -74,8 +77,7 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                             borderRadius: BorderRadius.circular(2)),
                         child: Text(
                           controller.isBionicMode.value ? "Bionic" : "Standart",
-                          style: TextStyle(
-                              fontSize: 13, color: Colors.blue),
+                          style: TextStyle(fontSize: 13, color: Colors.blue),
                         ),
                       ),
                     ),
@@ -358,13 +360,20 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
             controller.isAppBarVisible.value =
                 !controller.isAppBarVisible.value;
           },
-          child: PageView(
+          child: PageView.builder(
+            physics: BouncingScrollPhysics(),
+           
             scrollDirection: Axis.horizontal,
             controller: controller.pageController,
             onPageChanged: (int page) {
+              print("Page changed to: $page");
               controller.currentPage.value = page;
+              print("_buildPages().length: ${_buildPages().length}");
             },
-            children: _buildPages(),
+            // itemCount: _buildPages().length,
+            itemBuilder: (context, index) {
+              return _buildPages()[index];
+            },
           ),
         ),
       ),
@@ -392,7 +401,7 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
           padding: const EdgeInsets.only(top: 6, right: 8, left: 8, bottom: 8),
           child: Center(
               child: controller.isLoading.value
-                  ? CircularProgressIndicator()
+                  ? const CircularProgressIndicator()
                   : Html(
                       data: controller.isBionicMode.value
                           ? page
