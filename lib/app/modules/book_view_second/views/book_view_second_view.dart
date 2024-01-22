@@ -33,33 +33,33 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Page:${controller.currentPage.value + 1}',
-                          style: TextStyle(fontSize: 12, color: Colors.blue),
+                          '${controller.currentPage.value + 1}/${_buildPages().length}',
+                          style: TextStyle(fontSize: 15, color: Colors.blue),
                         ),
                       ],
                     ),
                     const SizedBox(
                       width: 15,
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        controller.pageController.jumpToPage(controller.currentPage.value);
-                        print(controller.pageController.initialPage.toString() +
-                            "initial page");
-                      },
-                      child: Container(
-                        height: 20,
-                        width: 50,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.blue),
-                            borderRadius: BorderRadius.circular(2)),
-                        child: Text(
-                          "Go to last",
-                          style: TextStyle(fontSize: 13, color: Colors.blue),
-                        ),
-                      ),
-                    ),
+                    // GestureDetector(
+                    //   onTap: () {
+                    //     controller.pageController.jumpToPage(controller.currentPage.value);
+                    //     print(controller.pageController.initialPage.toString() +
+                    //         "initial page");
+                    //   },
+                    //   child: Container(
+                    //     height: 20,
+                    //     width: 50,
+                    //     alignment: Alignment.center,
+                    //     decoration: BoxDecoration(
+                    //         border: Border.all(color: Colors.blue),
+                    //         borderRadius: BorderRadius.circular(2)),
+                    //     child: Text(
+                    //       "Go to last",
+                    //       style: TextStyle(fontSize: 13, color: Colors.blue),
+                    //     ),
+                    //   ),
+                    // ),
                     SizedBox(
                       width: 15,
                     ),
@@ -365,6 +365,7 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
            
             scrollDirection: Axis.horizontal,
             controller: controller.pageController,
+            itemCount: _buildPages().length,
             onPageChanged: (int page) {
               print("Page changed to: $page");
               controller.currentPage.value = page;

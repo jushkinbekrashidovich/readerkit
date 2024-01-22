@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:readerkit/app/const/theme/app_colors.dart';
@@ -11,7 +12,7 @@ class BookViewSecondController extends GetxController {
   late PdfDocument document;
   late RxBool isLoading = true.obs;
   RxInt currentPage = 0.obs;
-  RxBool isBionicMode = true.obs; 
+  RxBool isBionicMode = true.obs;
   RxBool isSpeedReadingMode = false.obs;
   RxBool isAppBarVisible = true.obs;
 
@@ -41,128 +42,128 @@ class BookViewSecondController extends GetxController {
     FontWeight.w900,
   ];
   RxInt fontWeightIndex = 4.obs;
-  
+
   void increaseFontSize() {
-  if (textFontSize.value < 75) {
-    textFontSize.value += 0.4;
+    if (textFontSize.value < 75) {
+      textFontSize.value += 0.4;
+    }
   }
-}
 
-void decreaseFontSize() {
-  if (textFontSize.value > 6) {
-    textFontSize.value -= 0.4;
+  void decreaseFontSize() {
+    if (textFontSize.value > 6) {
+      textFontSize.value -= 0.4;
+    }
   }
-}
 
-
- void increaseLetterSpacing() {
-  if (letterSpacing.value < 27) {
-    letterSpacing.value += 0.3;
+  void increaseLetterSpacing() {
+    if (letterSpacing.value < 27) {
+      letterSpacing.value += 0.3;
+    }
   }
-}
 
-void decreaseLetterSpacing() {
-  if (letterSpacing.value > 0) {
-    letterSpacing.value -= 0.3;
+  void decreaseLetterSpacing() {
+    if (letterSpacing.value > 0) {
+      letterSpacing.value -= 0.3;
+    }
   }
-}
 
-
-  void increaseWordSpacing(){
+  void increaseWordSpacing() {
     if (wordSpacing.value < 54) {
-    wordSpacing.value += 0.3;
-  }
-
-  }
-  void decreaseWordSpacing(){
-    if(wordSpacing.value>0){
-    wordSpacing.value -=0.3;
+      wordSpacing.value += 0.3;
     }
   }
 
-
-  void increaseWeight(){
-    if(fontWeightIndex.value<8){
-    fontWeightIndex.value +=1;
-    }
-
-  }
-  void decreaseWeight(){
-    if(fontWeightIndex.value>0){
-    fontWeightIndex.value -=1;
+  void decreaseWordSpacing() {
+    if (wordSpacing.value > 0) {
+      wordSpacing.value -= 0.3;
     }
   }
-  
-  void increaseHeight(){
-    if(letterHeight.value<10){
-    letterHeight.value +=0.2;
-    }
-    print(letterHeight.value);
 
+  void increaseWeight() {
+    if (fontWeightIndex.value < 8) {
+      fontWeightIndex.value += 1;
+    }
   }
-  void decreaseLetterHeight(){
-    if(letterHeight.value>0.7){
-    letterHeight.value -=0.2;
+
+  void decreaseWeight() {
+    if (fontWeightIndex.value > 0) {
+      fontWeightIndex.value -= 1;
+    }
+  }
+
+  void increaseHeight() {
+    if (letterHeight.value < 10) {
+      letterHeight.value += 0.2;
     }
     print(letterHeight.value);
   }
-  
 
+  void decreaseLetterHeight() {
+    if (letterHeight.value > 0.7) {
+      letterHeight.value -= 0.2;
+    }
+    print(letterHeight.value);
+  }
 
   @override
-  void onInit() async{
-
+  void onInit() async {
     initializePdfDocument();
     await initializeSharedPreferences();
-    
+
     super.onInit();
   }
-  
 
   Future<void> initializeSharedPreferences() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  int lastViewedPage = prefs.getInt('lastViewedPage') ?? 0;
-  print("Last Viewed Page: $lastViewedPage");
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    int lastViewedPage = prefs.getInt('lastViewedPage_$pdfPath') ?? 0;
+    print("Last Viewed Page: $lastViewedPage");
 
-  // Use the constructor to set the initialPage
-  pageController = PageController(initialPage: lastViewedPage);
-  currentPage.value = lastViewedPage;
-}
-
+    // Use the constructor to set the initialPage
+    pageController = PageController(initialPage: lastViewedPage);
+    currentPage.value = lastViewedPage;
+  }
 
   Future<void> initializePdfDocument() async {
-  pdfPath = Get.arguments;
-  try {
-    document = PdfDocument(inputBytes: File(pdfPath).readAsBytesSync());
+    pdfPath = Get.arguments;
+    try {
+      document = PdfDocument(inputBytes: File(pdfPath).readAsBytesSync());
 
-    String text = PdfTextExtractor(document).extractText();
+      String text = PdfTextExtractor(document).extractText();
 
-    extractedText.value = text;
-    update();
-  } catch (e) {
-    print("Error initializing PDF document: $e");
-  } finally {
-    isLoading.value = false; // Set loading state to false regardless of success or failure
-    
+      extractedText.value = text;
+      update();
+    } catch (e) {
+      print("Error initializing PDF document: $e");
+    } finally {
+      isLoading.value =
+          false; // Set loading state to false regardless of success or failure
+    }
   }
-}
-Future<void> saveLastViewedPage() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  prefs.setInt('lastViewedPage', currentPage.value);
-  print("Saved Last Viewed Page: ${currentPage.value}");
-}
 
-@override
-  void onClose() async{
+  Future<void> saveLastViewedPage() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setInt('lastViewedPage_$pdfPath', currentPage.value);
+    print("Saved Last Viewed Page: ${currentPage.value}");
+  }
+
+  @override
+  void onReady() {
+  
+
+    pageController.jumpToPage(currentPage.value);
+    super.onReady();
+  }
+
+  @override
+  void onClose() async {
     await saveLastViewedPage();
     super.onClose();
   }
 
   @override
-  void dispose()async {
-     
-  pageController.dispose(); // Dispose of the controller
-  document.dispose();
+  void dispose() async {
+    pageController.dispose(); // Dispose of the controller
+    document.dispose();
     super.dispose();
   }
 }
