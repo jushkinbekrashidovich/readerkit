@@ -174,130 +174,130 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                                     textHeight: "W-Height",
                                   ),
                                   //speed reading
-                                  Column(
-                                    children: [
-                                      SizedBox(
-                                        height: 18,
-                                      ),
-                                      Text(
-                                        "Speed Reading",
-                                        style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 28,
-                                      ),
-                                      Container(
-                                        height: 80,
-                                        width: 80,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          border: Border.all(
-                                            color: Colors.blue, // Border color
-                                            width: 1.2, // Border width
-                                          ),
-                                        ),
-                                        child: Center(
-                                          child: Text(
-                                            "Start".toUpperCase(),
-                                            style: TextStyle(
-                                              color: Colors.black, // Text color
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 35,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Container(
-                                            height: 37,
-                                            width: 59,
-                                            alignment: Alignment.center,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(3.2),
-                                                color: AppColors.themeDark),
-                                            child: Icon(
-                                              CupertinoIcons.textbox,
-                                              size: 18,
-                                              color: AppColors.white,
-                                            ),
-                                          ),
-                                          Text(
-                                            "4",
-                                            style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                          ),
-                                          Container(
-                                            height: 37,
-                                            width: 59,
-                                            alignment: Alignment.center,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(3.2),
-                                                color: AppColors.themeDark),
-                                            child: Icon(
-                                              CupertinoIcons.textbox,
-                                              size: 25,
-                                              color: AppColors.white,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 15,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        children: [
-                                          Container(
-                                            height: 37,
-                                            width: 59,
-                                            alignment: Alignment.center,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(3.2),
-                                                color: AppColors.themeDark),
-                                            child: Icon(
-                                              CupertinoIcons.speedometer,
-                                              size: 18,
-                                              color: AppColors.white,
-                                            ),
-                                          ),
-                                          Text(
-                                            "3",
-                                            style: TextStyle(
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                          ),
-                                          Container(
-                                            height: 37,
-                                            width: 59,
-                                            alignment: Alignment.center,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(3.2),
-                                                color: AppColors.themeDark),
-                                            child: Icon(
-                                              CupertinoIcons.speedometer,
-                                              size: 25,
-                                              color: AppColors.white,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
+                                  // Column(
+                                  //   children: [
+                                  //     SizedBox(
+                                  //       height: 18,
+                                  //     ),
+                                  //     Text(
+                                  //       "Speed Reading",
+                                  //       style: TextStyle(
+                                  //         fontSize: 20,
+                                  //         fontWeight: FontWeight.w500,
+                                  //       ),
+                                  //     ),
+                                  //     SizedBox(
+                                  //       height: 28,
+                                  //     ),
+                                  //     Container(
+                                  //       height: 80,
+                                  //       width: 80,
+                                  //       decoration: BoxDecoration(
+                                  //         shape: BoxShape.circle,
+                                  //         border: Border.all(
+                                  //           color: Colors.blue, // Border color
+                                  //           width: 1.2, // Border width
+                                  //         ),
+                                  //       ),
+                                  //       child: Center(
+                                  //         child: Text(
+                                  //           "Start".toUpperCase(),
+                                  //           style: TextStyle(
+                                  //             color: Colors.black, // Text color
+                                  //           ),
+                                  //         ),
+                                  //       ),
+                                  //     ),
+                                  //     SizedBox(
+                                  //       height: 35,
+                                  //     ),
+                                  //     Row(
+                                  //       mainAxisAlignment:
+                                  //           MainAxisAlignment.spaceAround,
+                                  //       children: [
+                                  //         Container(
+                                  //           height: 37,
+                                  //           width: 59,
+                                  //           alignment: Alignment.center,
+                                  //           decoration: BoxDecoration(
+                                  //               borderRadius:
+                                  //                   BorderRadius.circular(3.2),
+                                  //               color: AppColors.themeDark),
+                                  //           child: Icon(
+                                  //             CupertinoIcons.textbox,
+                                  //             size: 18,
+                                  //             color: AppColors.white,
+                                  //           ),
+                                  //         ),
+                                  //         Text(
+                                  //           "4",
+                                  //           style: TextStyle(
+                                  //             fontSize: 18,
+                                  //             fontWeight: FontWeight.w600,
+                                  //           ),
+                                  //         ),
+                                  //         Container(
+                                  //           height: 37,
+                                  //           width: 59,
+                                  //           alignment: Alignment.center,
+                                  //           decoration: BoxDecoration(
+                                  //               borderRadius:
+                                  //                   BorderRadius.circular(3.2),
+                                  //               color: AppColors.themeDark),
+                                  //           child: Icon(
+                                  //             CupertinoIcons.textbox,
+                                  //             size: 25,
+                                  //             color: AppColors.white,
+                                  //           ),
+                                  //         ),
+                                  //       ],
+                                  //     ),
+                                  //     SizedBox(
+                                  //       height: 15,
+                                  //     ),
+                                  //     Row(
+                                  //       mainAxisAlignment:
+                                  //           MainAxisAlignment.spaceAround,
+                                  //       children: [
+                                  //         Container(
+                                  //           height: 37,
+                                  //           width: 59,
+                                  //           alignment: Alignment.center,
+                                  //           decoration: BoxDecoration(
+                                  //               borderRadius:
+                                  //                   BorderRadius.circular(3.2),
+                                  //               color: AppColors.themeDark),
+                                  //           child: Icon(
+                                  //             CupertinoIcons.speedometer,
+                                  //             size: 18,
+                                  //             color: AppColors.white,
+                                  //           ),
+                                  //         ),
+                                  //         Text(
+                                  //           "3",
+                                  //           style: TextStyle(
+                                  //             fontSize: 18,
+                                  //             fontWeight: FontWeight.w600,
+                                  //           ),
+                                  //         ),
+                                  //         Container(
+                                  //           height: 37,
+                                  //           width: 59,
+                                  //           alignment: Alignment.center,
+                                  //           decoration: BoxDecoration(
+                                  //               borderRadius:
+                                  //                   BorderRadius.circular(3.2),
+                                  //               color: AppColors.themeDark),
+                                  //           child: Icon(
+                                  //             CupertinoIcons.speedometer,
+                                  //             size: 25,
+                                  //             color: AppColors.white,
+                                  //           ),
+                                  //         ),
+                                  //       ],
+                                  //     ),
+                                  //   ],
+                                  // ),
 
                                   // Add more pages as needed
                                 ];
