@@ -355,14 +355,16 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                 preferredSize: Size(0.0, 0.0),
                 child: Container(),
               ),
-        body: GestureDetector(
+        body:   GestureDetector(
           onTap: () {
             controller.isAppBarVisible.value =
                 !controller.isAppBarVisible.value;
           },
-          child: PageView.builder(
+          child: controller.isLoading.value
+                    ? Center(child: const CupertinoActivityIndicator(radius: 13,color: Colors.blue,))
+                    : PageView.builder(
             physics: BouncingScrollPhysics(),
-           
+
             scrollDirection: Axis.horizontal,
             controller: controller.pageController,
             itemCount: _buildPages().length,
@@ -400,30 +402,30 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
         scrollDirection: Axis.vertical,
         child: Padding(
           padding: const EdgeInsets.only(top: 6, right: 8, left: 8, bottom: 8),
-          child: Center(
-              child: controller.isLoading.value
-                  ? const CircularProgressIndicator()
-                  : Html(
-                      data: controller.isBionicMode.value
-                          ? page
-                          : _applyBionicReadingMode(page),
-                      style: {
-                        "html": Style(
-                          fontSize: FontSize(controller.textFontSize.value),
-                          letterSpacing: controller.letterSpacing.value,
-                          wordSpacing: controller.wordSpacing.value,
-                          lineHeight: LineHeight(controller.letterHeight.value),
-                          fontWeight: controller.availableFontWeights[
-                              controller.fontWeightIndex.value],
-                          color: controller.backgroundTheme.value ==
-                                  AppColors.themeDark
-                              ? AppColors.white
-                              : AppColors.black,
-                          fontFamily: controller.fontFamily.value,
-                        ),
-                      },
-                    )),
-        ),
+          child:  Center(
+                child:  Html(
+                        data: controller.isBionicMode.value
+                            ? page
+                            : _applyBionicReadingMode(page),
+                        style: {
+                          "html": Style(
+                            fontSize: FontSize(controller.textFontSize.value),
+                            letterSpacing: controller.letterSpacing.value,
+                            wordSpacing: controller.wordSpacing.value,
+                            lineHeight:
+                                LineHeight(controller.letterHeight.value),
+                            fontWeight: controller.availableFontWeights[
+                                controller.fontWeightIndex.value],
+                            color: controller.backgroundTheme.value ==
+                                    AppColors.themeDark
+                                ? AppColors.white
+                                : AppColors.black,
+                            fontFamily: controller.fontFamily.value,
+                          ),
+                        },
+                      )),
+          ),
+
       );
     }).toList();
 

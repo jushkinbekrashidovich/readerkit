@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:readerkit/app/const/theme/app_colors.dart';
@@ -20,7 +21,7 @@ class BookViewSecondController extends GetxController {
   PageController pageController = PageController();
   RxInt currentPageDot = 0.obs;
 
-  //themeediting
+  //theme editing
   RxString fontFamily = "Bookerly".obs;
   Rx<Color> backgroundTheme = AppColors.themeWhite.obs;
 
@@ -107,7 +108,7 @@ class BookViewSecondController extends GetxController {
 
   @override
   void onInit() async {
-    initializePdfDocument();
+    await initializePdfDocument();
     await initializeSharedPreferences();
 
     super.onInit();
@@ -126,17 +127,23 @@ class BookViewSecondController extends GetxController {
   Future<void> initializePdfDocument() async {
     pdfPath = Get.arguments;
     try {
-      document = PdfDocument(inputBytes: File(pdfPath).readAsBytesSync());
+      document = await compute(extractPdfDocument, pdfPath);
 
-      String text = PdfTextExtractor(document).extractText();
-
-      extractedText.value = text;
-      update();
+      // Check if the text is already cached
+      String? cachedText = await getCachedText(pdfPath);
+      if (cachedText != null) {
+        extractedText.value = cachedText;
+      } else {
+        // Extract text and update cache
+        String text = await compute(extractTextInBackground, document);
+        extractedText.value = text;
+        update();
+        await cacheText(pdfPath, text);
+      }
     } catch (e) {
       print("Error initializing PDF document: $e");
     } finally {
-      isLoading.value =
-          false; // Set loading state to false regardless of success or failure
+      isLoading.value = false;
     }
   }
 
@@ -148,8 +155,6 @@ class BookViewSecondController extends GetxController {
 
   @override
   void onReady() {
-  
-
     pageController.jumpToPage(currentPage.value);
     super.onReady();
   }
@@ -165,5 +170,23 @@ class BookViewSecondController extends GetxController {
     pageController.dispose(); // Dispose of the controller
     document.dispose();
     super.dispose();
+  }
+
+  static Future<PdfDocument> extractPdfDocument(String pdfPath) async {
+    return PdfDocument(inputBytes: File(pdfPath).readAsBytesSync());
+  }
+
+  static Future<String> extractTextInBackground(PdfDocument document) async {
+    return PdfTextExtractor(document).extractText();
+  }
+
+  Future<String?> getCachedText(String pdfPath) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString('pdfText_$pdfPath');
+  }
+
+  Future<void> cacheText(String pdfPath, String text) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('pdfText_$pdfPath', text);
   }
 }
