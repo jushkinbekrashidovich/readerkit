@@ -103,7 +103,6 @@ class BookViewSecondController extends GetxController {
     if (letterHeight.value > 0.7) {
       letterHeight.value -= 0.2;
     }
-    print(letterHeight.value);
   }
 
   @override

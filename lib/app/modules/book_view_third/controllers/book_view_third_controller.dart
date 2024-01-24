@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:epub_view/epub_view.dart';
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class BookViewThirdController extends GetxController {
   var path;

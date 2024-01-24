@@ -26,7 +26,7 @@ class HomeView extends GetView<HomeController> {
               children: [
                 Row(
                   children: [
-                    Container(
+                    SizedBox(
                       child: SvgPicture.asset('assets/svg/fire.svg'),
                     ),
                     SizedBox(
@@ -49,7 +49,7 @@ class HomeView extends GetView<HomeController> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(4),
                         color: AppColors.white),
-                    child: Center(
+                    child: const Center(
                       child: Icon(
                         Icons.add,
                         color: AppColors.black,
@@ -66,39 +66,40 @@ class HomeView extends GetView<HomeController> {
           ),
           body: Column(
             children: [
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 12),
-                height: 41,
-                alignment: Alignment.center,
-                child: TextFormField(
-                  cursorColor: AppColors.mainColor,
-                  focusNode: controller.myfocusNode,
-                  decoration: InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5.0),
-                      borderSide: BorderSide(
-                        color: AppColors.mainColor,
-                      ),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5.0),
-                      borderSide: BorderSide(
-                        color: AppColors.mainColor,
-                      ),
-                    ),
-                    prefixIcon: Icon(
-                      CupertinoIcons.search,
-                      color: AppColors.mainColor,
-                      size: 16,
-                    ),
-                    fillColor: Color(0xFF313036),
-                    filled: true,
-                    contentPadding: EdgeInsets.symmetric(
-                        vertical: 12), // Adjust the vertical padding
-                  ),
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
+              // Container(
+              //   margin: const EdgeInsets.symmetric(horizontal: 12),
+              //   height: 41,
+              //   alignment: Alignment.center,
+              //   child: TextFormField(
+              //     cursorColor: AppColors.mainColor,
+              //     focusNode: controller.myfocusNode,
+              //     decoration: InputDecoration(
+              //       focusedBorder: OutlineInputBorder(
+              //         borderRadius: BorderRadius.circular(5.0),
+              //         borderSide: BorderSide(
+              //           color: AppColors.mainColor,
+              //         ),
+              //       ),
+              //       border: OutlineInputBorder(
+              //         borderRadius: BorderRadius.circular(5.0),
+              //         borderSide: BorderSide(
+              //           color: AppColors.mainColor,
+              //         ),
+              //       ),
+              //       prefixIcon: Icon(
+              //         CupertinoIcons.search,
+              //         color: AppColors.mainColor,
+              //         size: 16,
+              //       ),
+              //       fillColor: Color(0xFF313036),
+              //       filled: true,
+              //       contentPadding: EdgeInsets.symmetric(
+              //           vertical: 12), // Adjust the vertical padding
+              //     ),
+              //     style: TextStyle(color: Colors.white),
+              //   ),
+              // ),
+             
               SizedBox(
                 height: 10,
               ),
