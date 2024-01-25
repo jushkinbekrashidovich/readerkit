@@ -24,19 +24,9 @@ class HomeView extends GetView<HomeController> {
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    SizedBox(
-                      child: SvgPicture.asset('assets/svg/fire.svg'),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Text(
-                      "10",
-                      style: TextStyle(fontSize: 14),
-                    ),
-                  ],
+                Text(
+                  "ReaderKit",
+                  style: TextStyle(fontSize: 18),
                 ),
                 GestureDetector(
                   onTap: () {
@@ -60,7 +50,6 @@ class HomeView extends GetView<HomeController> {
                 ),
               ],
             ),
-            actions: [],
             centerTitle: true,
             elevation: 0,
           ),
@@ -99,20 +88,21 @@ class HomeView extends GetView<HomeController> {
               //     style: TextStyle(color: Colors.white),
               //   ),
               // ),
-             
-              SizedBox(
+
+              const SizedBox(
                 height: 10,
               ),
+              
               Expanded(
                 child: GridView.builder(
                   shrinkWrap: true,
-                  padding: EdgeInsets.only(left: 13, right: 13),
-                  physics: BouncingScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  padding: const EdgeInsets.only(left: 13, right: 13),
+                  physics: const BouncingScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       crossAxisSpacing: 12.0,
                       mainAxisSpacing: 12.0,
-                      childAspectRatio: 0.88),
+                      childAspectRatio: 0.65),
                   itemCount: controller.books.length,
                   itemBuilder: (BuildContext context, int index) {
                     Book book = controller.books.reversed.toList()[index];
@@ -120,75 +110,43 @@ class HomeView extends GetView<HomeController> {
                       onTap: () {
                         Get.toNamed(Routes.BOOK_DETAILS, arguments: book);
                       },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5.0),
-                          color: Color(0xFF3E3D43),
-                        ),
-                        padding: EdgeInsets.all(10.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: 170,
+                            width: 120,
+                            child: Stack(
                               children: [
-                                const Icon(
-                                  Icons.book,
-                                  color: AppColors.white,
-                                  size: 53,
-                                ),
-                                const SizedBox(height: 2),
-                                Text(
-                                  book.title,
-                                  style: const TextStyle(
-                                      fontSize: 15, color: Colors.white),
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 2,
-                                  textAlign: TextAlign.center,
-                                ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                SizedBox(
-                                  height: 13,
-                                  width: 47,
-                                  child: Text(
-                                    "23h left",
-                                    style: TextStyle(
-                                        fontSize: 11, color: Color(0xFFCCCCCC)),
-                                    overflow: TextOverflow.ellipsis,
-                                    maxLines: 1,
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                                SizedBox(height: 10),
-                                Container(
-                                  height: 17,
-                                  width: 35,
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 5, vertical: 2.4),
-                                  alignment: Alignment.center,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(2),
-                                    color: Color(0xFF313036),
-                                  ),
+                                SvgPicture.asset("assets/svg/book_cover.svg"),
+                                Positioned(
                                   child: Center(
-                                    child: Text(
-                                      '90%',
-                                      style: TextStyle(
-                                          fontSize: 10,
-                                          color: Color(0xFFCCCCCC)),
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 1,
-                                      textAlign: TextAlign.center,
+                                    child: SizedBox(
+                                      height: 115,
+                                      width: 70,
+                                      child: Text(
+                                        book.title.toString(),
+                                        style: TextStyle(
+                                            color: Colors.black, fontSize: 15),
+                                        textAlign: TextAlign.center,
+                                      ),
                                     ),
                                   ),
                                 ),
                               ],
                             ),
-                          ],
-                        ),
+                          ),
+                          SizedBox(
+                            height: 40,
+                            width: 110,
+                            child: Text(
+                              book.title.toString(),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                               style:
+                                  TextStyle(color: AppColors.darkSecondSecondTextColor, fontSize: 12),
+                            ),
+                          ),
+                        ],
                       ),
                     );
                   },
@@ -196,6 +154,7 @@ class HomeView extends GetView<HomeController> {
               )
             ],
           ),
+          
         ),
       ),
     );

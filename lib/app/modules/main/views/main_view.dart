@@ -39,14 +39,14 @@ class MainView extends GetView<MainController> {
           elevation: 7,
           items: [
             _bottomNavigationBarItem(
-              icon: 'home',
+              icon: 'home_dark',
               label: "Home",
-              activeIcon: 'home_active',
+              activeIcon: 'home_active_dark',
             ),
             _bottomNavigationBarItem(
-              icon: 'settings',
+              icon: 'settings_dark',
               label: "Settings".tr,
-              activeIcon: 'settings_active',
+              activeIcon: 'settings_active_dark',
             ),
           ],
         ),

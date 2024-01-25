@@ -11,6 +11,7 @@ class AppColors {
   static const darkChaptersColor = Color(0xff0094FF);
   static const darkSettingsContainer = Color(0xff0094FF);
   static const darkBadgeStroke = Color(0xff655F5F);
+  static const darkSecondSecondTextColor = Color(0xff83899F);
   //Theme
   static const themeWhite = Color(0xffFFFFFF);
   static const themeOffWhite = Color(0xffF5F5F5);
@@ -19,7 +20,7 @@ class AppColors {
   static const themeBeige = Color(0xffF5F5DC);
   static const themeDark = Color(0xff14161B);
 
-  static const mainColor = Color(0xff8C31FF); 
+  static const mainColor = Color(0xff2196F3); 
   static const secondaryColor = Color(0xff7365E0); 
   static const background = Color(0xffF4F6F9);
   static const backgroundButton = Color(0xffEFEDFB);

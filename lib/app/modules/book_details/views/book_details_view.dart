@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
 import 'package:readerkit/app/const/theme/app_colors.dart';
@@ -89,13 +90,26 @@ class BookDetailsView extends GetView<BookDetailsController> {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: 100,
-                  height: 150,
-                  decoration: BoxDecoration(
-                    // Replace this with your book cover image or icon
-                    color: Colors.grey,
-                    borderRadius: BorderRadius.circular(10.0),
+                SizedBox(
+                  height: 170,
+                  width: 120,
+                  child: Stack(
+                    children: [
+                      SvgPicture.asset("assets/svg/book_cover.svg"),
+                      Positioned(
+                        child: Center(
+                          child: SizedBox(
+                            height: 115,
+                            width: 70,
+                            child: Text(
+                              book.title.toString(),
+                             
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 SizedBox(width: 16),

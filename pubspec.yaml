@@ -57,7 +57,5 @@ flutter:
   assets:
     - assets/
     - assets/svg/
-    - assets/sample.epub
-    - assets/sample.pdf
   
   
