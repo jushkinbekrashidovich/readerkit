@@ -173,7 +173,6 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                                     },
                                     textHeight: "W-Height",
                                   ),
-                                 
                                 ];
 
                                 return Column(
@@ -229,28 +228,37 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                 preferredSize: Size(0.0, 0.0),
                 child: Container(),
               ),
-        body:   GestureDetector(
+        body: GestureDetector(
           onTap: () {
             controller.isAppBarVisible.value =
                 !controller.isAppBarVisible.value;
           },
           child: controller.isLoading.value
-                    ? const Center(child:  CupertinoActivityIndicator(radius: 13,color: Colors.blue,))
-                    : PageView.builder(
-            physics: const BouncingScrollPhysics(),
+              ? const Center(
+                  child: CupertinoActivityIndicator(
+                  radius: 13,
+                  color: Colors.blue,
+                ))
+              : PageView.builder(
+                  physics: const BouncingScrollPhysics(),
 
-            scrollDirection: Axis.horizontal,
-            controller: controller.pageController,
-            itemCount: _buildPages().length,
-            onPageChanged: (int page) {
-              controller.currentPage.value = page;
-            },
-            // itemCount: _buildPages().length,
-            itemBuilder: (context, index) {
-              return _buildPages()[index];
-            },
-          ),
+                  scrollDirection: Axis.horizontal,
+                  controller: controller.pageController,
+                  itemCount: _buildPages().length,
+                  onPageChanged: (int page) {
+                    controller.currentPage.value = page;
+                  },
+                  // itemCount: _buildPages().length,
+                  itemBuilder: (context, index) {
+                    return _buildPages()[index];
+                  },
+                ),
         ),
+        // bottomSheet: BottomAppBar(
+        //   child: Row(
+        //     children: [Text("5 from 100")],
+        //   ),
+        // ),
       ),
     );
   }
@@ -274,30 +282,27 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
         scrollDirection: Axis.vertical,
         child: Padding(
           padding: const EdgeInsets.only(top: 6, right: 8, left: 8, bottom: 8),
-          child:  Center(
-                child:  Html(
-                        data: controller.isBionicMode.value
-                            ? page
-                            : _applyBionicReadingMode(page),
-                        style: {
-                          "html": Style(
-                            fontSize: FontSize(controller.textFontSize.value),
-                            letterSpacing: controller.letterSpacing.value,
-                            wordSpacing: controller.wordSpacing.value,
-                            lineHeight:
-                                LineHeight(controller.letterHeight.value),
-                            fontWeight: controller.availableFontWeights[
-                                controller.fontWeightIndex.value],
-                            color: controller.backgroundTheme.value ==
-                                    AppColors.themeDark
-                                ? AppColors.white
-                                : AppColors.black,
-                            fontFamily: controller.fontFamily.value,
-                          ),
-                        },
-                      )),
-          ),
-
+          child: Center(
+              child: Html(
+            data: controller.isBionicMode.value
+                ? page
+                : _applyBionicReadingMode(page),
+            style: {
+              "html": Style(
+                fontSize: FontSize(controller.textFontSize.value),
+                letterSpacing: controller.letterSpacing.value,
+                wordSpacing: controller.wordSpacing.value,
+                lineHeight: LineHeight(controller.letterHeight.value),
+                fontWeight: controller
+                    .availableFontWeights[controller.fontWeightIndex.value],
+                color: controller.backgroundTheme.value == AppColors.themeDark
+                    ? AppColors.white
+                    : AppColors.black,
+                fontFamily: controller.fontFamily.value,
+              ),
+            },
+          )),
+        ),
       );
     }).toList();
 
