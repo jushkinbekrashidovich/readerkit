@@ -262,7 +262,6 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
       ),
     );
   }
-
   List<Widget> _buildPages() {
     const int charactersPerPage = 900;
 

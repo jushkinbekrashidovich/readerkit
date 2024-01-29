@@ -21,42 +21,107 @@ class SettingsView extends GetView<SettingsController> {
         padding: EdgeInsets.only(top: 10, left: 12, right: 12, bottom: 10),
         child: Column(
           children: [
+            // ListTile(
+            //   shape: RoundedRectangleBorder(
+            //     borderRadius: BorderRadius.circular(8),
+            //   ),
+            //   visualDensity: VisualDensity(vertical: -2),
+            //   tileColor: Color(0xff313036),
+            //   leading: Icon(
+            //     Icons.workspace_premium,
+            //     color: Colors.white,
+            //   ),
+            //   title: Text(
+            //     "Subscribe to ReaderKit Pro",
+            //     style: TextStyle(fontSize: 14, color: Colors.white),
+            //   ),
+            //   subtitle: Text(
+            //     "Unlimited books, no ads",
+            //     style: TextStyle(fontSize: 10, color: Colors.white),
+            //   ),
+            //   trailing: Icon(
+            //     Icons.chevron_right,
+            //     color: Colors.white,
+            //   ),
+            // ),
+            SizedBox(
+              height: 15,
+            ),
+            
             ListTile(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              visualDensity: VisualDensity(vertical: -2),
+             shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(8),
+                      topRight: Radius.circular(8))),
               tileColor: Color(0xff313036),
               leading: Icon(
                 Icons.workspace_premium,
                 color: Colors.white,
               ),
               title: Text(
-                "Subscribe to ReaderKit Pro",
+                "Theme",
                 style: TextStyle(fontSize: 14, color: Colors.white),
-              ),
-              subtitle: Text(
-                "Unlimited books, no ads",
-                style: TextStyle(fontSize: 10, color: Colors.white),
               ),
               trailing: Icon(
                 Icons.chevron_right,
                 color: Colors.white,
               ),
             ),
-            SizedBox(
-              height: 15,
-            ),
-            
             ListTile(
-              shape: RoundedRectangleBorder(side: BorderSide()),
+           
               tileColor: Color(0xff313036),
               leading: Icon(
                 Icons.workspace_premium,
                 color: Colors.white,
               ),
               title: Text(
-                "Subscribe",
+                "Rate the app",
+                style: TextStyle(fontSize: 14, color: Colors.white),
+              ),
+              trailing: Icon(
+                Icons.chevron_right,
+                color: Colors.white,
+              ),
+            ),
+            ListTile(
+                
+              tileColor: Color(0xff313036),
+              leading: Icon(
+                Icons.workspace_premium,
+                color: Colors.white,
+              ),
+              title: Text(
+                "Follow us on social media",
+                style: TextStyle(fontSize: 14, color: Colors.white),
+              ),
+              trailing: Icon(
+                Icons.chevron_right,
+                color: Colors.white,
+              ),
+            ),
+            ListTile(
+              tileColor: Color(0xff313036),
+              leading: Icon(
+                Icons.workspace_premium,
+                color: Colors.white,
+              ),
+              title: Text(
+                "Privacy policy",
+                style: TextStyle(fontSize: 14, color: Colors.white),
+              ),
+              trailing: Icon(
+                Icons.chevron_right,
+                color: Colors.white,
+              ),
+            ),
+            ListTile(
+              tileColor: Color(0xff313036),
+              leading: Icon(
+                Icons.workspace_premium,
+                color: Colors.white,
+              ),
+              title: Text(
+                "Terms and use",
                 style: TextStyle(fontSize: 14, color: Colors.white),
               ),
               trailing: Icon(
@@ -75,7 +140,7 @@ class SettingsView extends GetView<SettingsController> {
                 color: Colors.white,
               ),
               title: Text(
-                "Subscribe to ReaderKit Pro",
+                "Send feedback",
                 style: TextStyle(fontSize: 14, color: Colors.white),
               ),
               trailing: Icon(

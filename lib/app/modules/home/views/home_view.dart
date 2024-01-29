@@ -54,6 +54,7 @@ class HomeView extends GetView<HomeController> {
             elevation: 0,
           ),
           body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // Container(
               //   margin: const EdgeInsets.symmetric(horizontal: 12),
@@ -92,69 +93,104 @@ class HomeView extends GetView<HomeController> {
               const SizedBox(
                 height: 10,
               ),
-              
-              Expanded(
-                child: GridView.builder(
-                  shrinkWrap: true,
-                  padding: const EdgeInsets.only(left: 13, right: 13),
-                  physics: const BouncingScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 12.0,
-                      mainAxisSpacing: 12.0,
-                      childAspectRatio: 0.65),
-                  itemCount: controller.books.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    Book book = controller.books.reversed.toList()[index];
-                    return InkWell(
-                      onTap: () {
-                        Get.toNamed(Routes.BOOK_DETAILS, arguments: book);
-                      },
+
+              controller.books.length == 0
+                  ? Center(
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           SizedBox(
-                            height: 170,
-                            width: 120,
-                            child: Stack(
-                              children: [
-                                SvgPicture.asset("assets/svg/book_cover.svg"),
-                                Positioned(
-                                  child: Center(
-                                    child: SizedBox(
-                                      height: 115,
-                                      width: 70,
-                                      child: Text(
-                                        book.title.toString(),
-                                        style: TextStyle(
-                                            color: Colors.black, fontSize: 15),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
+                              height: 120,
+                              child: SvgPicture.asset(
+                                  "assets/svg/book_cover.svg")),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          Text(
+                            "Upload your favorite book and start your journey!",
+                            style:
+                                TextStyle(color: AppColors.white, fontSize: 18),
+                            textAlign: TextAlign.center,
                           ),
                           SizedBox(
-                            height: 40,
-                            width: 110,
-                            child: Text(
-                              book.title.toString(),
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 2,
-                               style:
-                                  TextStyle(color: AppColors.darkSecondSecondTextColor, fontSize: 12),
+                            height: 10,
+                          ),
+                          Text(
+                            "You can upload book in .pdf or .epub format",
+                            style: TextStyle(
+                              color: AppColors.darkSecondSecondTextColor,
+                              fontSize: 11,
                             ),
                           ),
                         ],
                       ),
-                    );
-                  },
-                ),
-              )
+                    )
+                  : Expanded(
+                      child: GridView.builder(
+                        shrinkWrap: true,
+                        padding: const EdgeInsets.only(left: 13, right: 13),
+                        physics: const BouncingScrollPhysics(),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                crossAxisSpacing: 12.0,
+                                mainAxisSpacing: 12.0,
+                                childAspectRatio: 0.65),
+                        itemCount: controller.books.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          Book book = controller.books.reversed.toList()[index];
+                          return InkWell(
+                            onTap: () {
+                              Get.toNamed(Routes.BOOK_DETAILS, arguments: book);
+                            },
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height: 170,
+                                  width: 120,
+                                  child: Stack(
+                                    children: [
+                                      SvgPicture.asset(
+                                          "assets/svg/book_cover.svg"),
+                                      Positioned(
+                                        child: Center(
+                                          child: SizedBox(
+                                            height: 115,
+                                            width: 70,
+                                            child: Text(
+                                              book.title.toString(),
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 15),
+                                              textAlign: TextAlign.center,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 40,
+                                  width: 110,
+                                  child: Text(
+                                    book.title.toString(),
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 2,
+                                    style: TextStyle(
+                                        color:
+                                            AppColors.darkSecondSecondTextColor,
+                                        fontSize: 12),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    )
             ],
           ),
-          
         ),
       ),
     );
