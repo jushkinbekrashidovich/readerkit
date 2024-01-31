@@ -10,6 +10,10 @@ abstract class Routes {
   static const BOOK_VIEW = _Paths.BOOK_VIEW;
   static const BOOK_VIEW_SECOND = _Paths.BOOK_VIEW_SECOND;
   static const BOOK_VIEW_THIRD = _Paths.BOOK_VIEW_THIRD;
+  static const APP_THEME_EDIT = _Paths.APP_THEME_EDIT;
+  static const SOCIAL_MEDIA_PAGES = _Paths.SOCIAL_MEDIA_PAGES;
+  static const PRIVACY_POLICY = _Paths.PRIVACY_POLICY;
+  static const TERMS_AND_USE = _Paths.TERMS_AND_USE;
 }
 
 abstract class _Paths {
@@ -21,4 +25,8 @@ abstract class _Paths {
   static const BOOK_VIEW = '/book-view';
   static const BOOK_VIEW_SECOND = '/book-view-second';
   static const BOOK_VIEW_THIRD = '/book-view-third';
+  static const APP_THEME_EDIT = '/app-theme-edit';
+  static const SOCIAL_MEDIA_PAGES = '/social-media-pages';
+  static const PRIVACY_POLICY = '/privacy-policy';
+  static const TERMS_AND_USE = '/terms-and-use';
 }
