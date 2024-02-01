@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:readerkit/app/const/theme/app_colors.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:readerkit/app/routes/app_pages.dart';
 import '../controllers/settings_controller.dart';
 
 class SettingsView extends GetView<SettingsController> {
@@ -47,16 +48,22 @@ class SettingsView extends GetView<SettingsController> {
             SizedBox(
               height: 15,
             ),
-            
+
             ListTile(
-             shape: RoundedRectangleBorder(
+              shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(8),
                       topRight: Radius.circular(8))),
               tileColor: Color(0xff313036),
-              leading: Icon(
-                Icons.workspace_premium,
-                color: Colors.white,
+              leading: Container(
+                padding: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(7),
+                    color: AppColors.mainColor),
+                child: SvgPicture.asset(
+                  "assets/icons/bulb.svg",
+                  height: 19,
+                ),
               ),
               title: Text(
                 "Theme",
@@ -66,13 +73,21 @@ class SettingsView extends GetView<SettingsController> {
                 Icons.chevron_right,
                 color: Colors.white,
               ),
+              onTap: (){
+                Get.toNamed(Routes.APP_THEME_EDIT);
+              },
             ),
             ListTile(
-           
               tileColor: Color(0xff313036),
-              leading: Icon(
-                Icons.workspace_premium,
-                color: Colors.white,
+              leading: Container(
+                padding: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(7),
+                    color: AppColors.mainColor),
+                child: SvgPicture.asset(
+                  "assets/icons/rate.svg",
+                  height: 19,
+                ),
               ),
               title: Text(
                 "Rate the app",
@@ -82,13 +97,21 @@ class SettingsView extends GetView<SettingsController> {
                 Icons.chevron_right,
                 color: Colors.white,
               ),
+              onTap: (){
+
+              },
             ),
             ListTile(
-                
               tileColor: Color(0xff313036),
-              leading: Icon(
-                Icons.workspace_premium,
-                color: Colors.white,
+              leading: Container(
+                padding: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(7),
+                    color: AppColors.mainColor),
+                child: SvgPicture.asset(
+                  "assets/icons/twitter.svg",
+                  height: 19,
+                ),
               ),
               title: Text(
                 "Follow us on social media",
@@ -98,12 +121,21 @@ class SettingsView extends GetView<SettingsController> {
                 Icons.chevron_right,
                 color: Colors.white,
               ),
+              onTap: (){
+                Get.toNamed(Routes.SOCIAL_MEDIA_PAGES);
+              },
             ),
             ListTile(
               tileColor: Color(0xff313036),
-              leading: Icon(
-                Icons.workspace_premium,
-                color: Colors.white,
+              leading: Container(
+                padding: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(7),
+                    color: AppColors.mainColor),
+                child: SvgPicture.asset(
+                  "assets/icons/privacy_policy.svg",
+                  height: 19,
+                ),
               ),
               title: Text(
                 "Privacy policy",
@@ -113,12 +145,21 @@ class SettingsView extends GetView<SettingsController> {
                 Icons.chevron_right,
                 color: Colors.white,
               ),
+              onTap: (){
+                Get.toNamed(Routes.PRIVACY_POLICY);
+              },
             ),
             ListTile(
               tileColor: Color(0xff313036),
-              leading: Icon(
-                Icons.workspace_premium,
-                color: Colors.white,
+              leading: Container(
+                padding: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(7),
+                    color: AppColors.mainColor),
+                child: SvgPicture.asset(
+                  "assets/icons/terms.svg",
+                  height: 19,
+                ),
               ),
               title: Text(
                 "Terms and use",
@@ -128,6 +169,9 @@ class SettingsView extends GetView<SettingsController> {
                 Icons.chevron_right,
                 color: Colors.white,
               ),
+              onTap: (){
+                Get.toNamed(Routes.TERMS_AND_USE);
+              },
             ),
             ListTile(
               shape: RoundedRectangleBorder(
@@ -135,9 +179,15 @@ class SettingsView extends GetView<SettingsController> {
                       bottomLeft: Radius.circular(8),
                       bottomRight: Radius.circular(8))),
               tileColor: Color(0xff313036),
-              leading: Icon(
-                Icons.workspace_premium,
-                color: Colors.white,
+              leading: Container(
+                padding: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(7),
+                    color: AppColors.mainColor),
+                child: SvgPicture.asset(
+                  "assets/icons/feedback.svg",
+                  height: 19,
+                ),
               ),
               title: Text(
                 "Send feedback",
@@ -147,6 +197,9 @@ class SettingsView extends GetView<SettingsController> {
                 Icons.chevron_right,
                 color: Colors.white,
               ),
+              onTap: (){
+                
+              },
             ),
           ],
         ),
