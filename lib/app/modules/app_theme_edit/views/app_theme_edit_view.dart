@@ -9,6 +9,7 @@ class AppThemeEditView extends GetView<AppThemeEditController> {
 
   @override
   Widget build(BuildContext context) {
+     final ThemeData theme = Theme.of(context);
     return Obx(
       () => Scaffold(
         appBar: AppBar(
@@ -23,9 +24,9 @@ class AppThemeEditView extends GetView<AppThemeEditController> {
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            // color: ThemeData.
-            //     ? AppColors.darkContainerColor
-            //     : Color(0xFFE0E0E0)
+            color: theme.brightness==Brightness.dark
+                ? AppColors.darkContainerColor
+                : Color(0xFFE0E0E0)
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,6 +42,7 @@ class AppThemeEditView extends GetView<AppThemeEditController> {
                     groupValue: controller.selectedTheme.value,
                     onChanged: (value) {
                       controller.changeTheme(value!);
+                      print(context.isDarkMode);
                     },
                   )
                 ],
@@ -59,6 +61,7 @@ class AppThemeEditView extends GetView<AppThemeEditController> {
                     groupValue: controller.selectedTheme.value,
                     onChanged: (value) {
                       controller.changeTheme(value!);
+                      print(context.isDarkMode);
                     },
                   )
                 ],

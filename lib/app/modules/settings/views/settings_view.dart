@@ -53,7 +53,7 @@ class SettingsView extends GetView<SettingsController> {
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(8),
                       topRight: Radius.circular(8))),
-              tileColor: Get.isDarkMode?AppColors.darkContainerColor:AppColors.lightContainerColor,
+            
               leading: Container(
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
@@ -76,7 +76,7 @@ class SettingsView extends GetView<SettingsController> {
               },
             ),
             ListTile(
-              tileColor: Get.isDarkMode?AppColors.darkContainerColor:AppColors.lightContainerColor,
+             
               leading: Container(
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
@@ -99,7 +99,7 @@ class SettingsView extends GetView<SettingsController> {
               },
             ),
             ListTile(
-              tileColor: Get.isDarkMode?AppColors.darkContainerColor:AppColors.lightContainerColor,
+             
               leading: Container(
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
@@ -122,7 +122,7 @@ class SettingsView extends GetView<SettingsController> {
               },
             ),
             ListTile(
-              tileColor: Get.isDarkMode?AppColors.darkContainerColor:AppColors.lightContainerColor,
+             
               leading: Container(
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
@@ -145,7 +145,7 @@ class SettingsView extends GetView<SettingsController> {
               },
             ),
             ListTile(
-              tileColor: Get.isDarkMode?AppColors.darkContainerColor:AppColors.lightContainerColor,
+             
               leading: Container(
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
@@ -172,7 +172,7 @@ class SettingsView extends GetView<SettingsController> {
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(8),
                       bottomRight: Radius.circular(8))),
-              tileColor: Get.isDarkMode?AppColors.darkContainerColor:AppColors.lightContainerColor,
+             
               leading: Container(
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(

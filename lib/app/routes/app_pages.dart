@@ -79,5 +79,6 @@ class AppPages {
       page: () => const TermsAndUseView(),
       binding: TermsAndUseBinding(),
     ),
+   
   ];
 }

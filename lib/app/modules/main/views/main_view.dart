@@ -37,7 +37,7 @@ class MainView extends GetView<MainController> {
           elevation: 7,
           items: [
             _bottomNavigationBarItem(
-              icon: Get.isDarkMode? 'home_dark':'home_light',
+              icon: context.isDarkMode? 'home_dark':'home_light',
               label: "Home",
               activeIcon: 'home_active_dark',
             ),

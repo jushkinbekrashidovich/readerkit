@@ -24,6 +24,7 @@ import 'package:shared_preferences/shared_preferences.dart';
           : ThemeMode.dark);
     }
   }
+  
 
   void changeTheme(ThemeType newTheme) {
     selectedTheme.value = newTheme;
@@ -36,7 +37,8 @@ import 'package:shared_preferences/shared_preferences.dart';
         Get.changeThemeMode(ThemeMode.light);
         break;
       case ThemeType.dark:
-        Get.changeThemeMode(ThemeMode.dark);
+        Get.changeThemeMode(ThemeMode.dark, );
+        
         break;
     }
   }
