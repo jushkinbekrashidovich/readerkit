@@ -23,14 +23,12 @@ class MainView extends GetView<MainController> {
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
-          unselectedItemColor: AppColors.white,
-          selectedItemColor: AppColors.mainColor,
+         
           onTap: (pos) {
             return controller.setMenu(BottomMenu.values[pos]);
           },
           currentIndex: controller.bottomMenu.value.index,
           type: BottomNavigationBarType.fixed,
-          backgroundColor: AppColors.darkBottomNavigation,
           selectedLabelStyle: TextStyle(
             fontSize: 10, fontWeight: FontWeight.w500
           ),
@@ -39,12 +37,12 @@ class MainView extends GetView<MainController> {
           elevation: 7,
           items: [
             _bottomNavigationBarItem(
-              icon: 'home_dark',
+              icon: Get.isDarkMode? 'home_dark':'home_light',
               label: "Home",
               activeIcon: 'home_active_dark',
             ),
             _bottomNavigationBarItem(
-              icon: 'settings_dark',
+              icon: Get.isDarkMode? 'settings_dark':'settings_light',
               label: "Settings".tr,
               activeIcon: 'settings_active_dark',
             ),
@@ -60,8 +58,6 @@ class MainView extends GetView<MainController> {
     required String label,
   }) {
     return BottomNavigationBarItem(
-      backgroundColor: AppColors.darkBackground,
-      //backgroundColor: AppColors.white,
       icon: Padding(
         padding: const EdgeInsets.only(bottom: 4),
         child: SizedBox(

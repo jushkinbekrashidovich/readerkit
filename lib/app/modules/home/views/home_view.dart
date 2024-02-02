@@ -20,7 +20,6 @@ class HomeView extends GetView<HomeController> {
         },
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: AppColors.darkBackground,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -108,8 +107,7 @@ class HomeView extends GetView<HomeController> {
                           ),
                           Text(
                             "Upload your favorite book and start your journey!",
-                            style:
-                                TextStyle(color: AppColors.white, fontSize: 18),
+                            style: TextStyle(fontSize: 18),
                             textAlign: TextAlign.center,
                           ),
                           SizedBox(
@@ -118,7 +116,6 @@ class HomeView extends GetView<HomeController> {
                           Text(
                             "You can upload book in .pdf or .epub format",
                             style: TextStyle(
-                              color: AppColors.darkSecondSecondTextColor,
                               fontSize: 11,
                             ),
                           ),

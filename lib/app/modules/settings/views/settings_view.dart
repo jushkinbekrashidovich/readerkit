@@ -15,7 +15,6 @@ class SettingsView extends GetView<SettingsController> {
       appBar: AppBar(
         title: const Text("Settings"),
         centerTitle: true,
-        backgroundColor: AppColors.darkBackground,
         elevation: 0,
       ),
       body: Container(
@@ -54,7 +53,7 @@ class SettingsView extends GetView<SettingsController> {
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(8),
                       topRight: Radius.circular(8))),
-              tileColor: Color(0xff313036),
+              tileColor: Get.isDarkMode?AppColors.darkContainerColor:AppColors.lightContainerColor,
               leading: Container(
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
@@ -67,18 +66,17 @@ class SettingsView extends GetView<SettingsController> {
               ),
               title: Text(
                 "Theme",
-                style: TextStyle(fontSize: 14, color: Colors.white),
+                style: TextStyle(fontSize: 14, ),
               ),
               trailing: Icon(
                 Icons.chevron_right,
-                color: Colors.white,
               ),
               onTap: (){
                 Get.toNamed(Routes.APP_THEME_EDIT);
               },
             ),
             ListTile(
-              tileColor: Color(0xff313036),
+              tileColor: Get.isDarkMode?AppColors.darkContainerColor:AppColors.lightContainerColor,
               leading: Container(
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
@@ -91,18 +89,17 @@ class SettingsView extends GetView<SettingsController> {
               ),
               title: Text(
                 "Rate the app",
-                style: TextStyle(fontSize: 14, color: Colors.white),
+                style: TextStyle(fontSize: 14,),
               ),
               trailing: Icon(
                 Icons.chevron_right,
-                color: Colors.white,
               ),
               onTap: (){
 
               },
             ),
             ListTile(
-              tileColor: Color(0xff313036),
+              tileColor: Get.isDarkMode?AppColors.darkContainerColor:AppColors.lightContainerColor,
               leading: Container(
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
@@ -115,18 +112,17 @@ class SettingsView extends GetView<SettingsController> {
               ),
               title: Text(
                 "Follow us on social media",
-                style: TextStyle(fontSize: 14, color: Colors.white),
+                style: TextStyle(fontSize: 14, ),
               ),
               trailing: Icon(
                 Icons.chevron_right,
-                color: Colors.white,
               ),
               onTap: (){
                 Get.toNamed(Routes.SOCIAL_MEDIA_PAGES);
               },
             ),
             ListTile(
-              tileColor: Color(0xff313036),
+              tileColor: Get.isDarkMode?AppColors.darkContainerColor:AppColors.lightContainerColor,
               leading: Container(
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
@@ -139,18 +135,17 @@ class SettingsView extends GetView<SettingsController> {
               ),
               title: Text(
                 "Privacy policy",
-                style: TextStyle(fontSize: 14, color: Colors.white),
+                style: TextStyle(fontSize: 14, ),
               ),
               trailing: Icon(
                 Icons.chevron_right,
-                color: Colors.white,
               ),
               onTap: (){
                 Get.toNamed(Routes.PRIVACY_POLICY);
               },
             ),
             ListTile(
-              tileColor: Color(0xff313036),
+              tileColor: Get.isDarkMode?AppColors.darkContainerColor:AppColors.lightContainerColor,
               leading: Container(
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
@@ -163,11 +158,10 @@ class SettingsView extends GetView<SettingsController> {
               ),
               title: Text(
                 "Terms and use",
-                style: TextStyle(fontSize: 14, color: Colors.white),
+                style: TextStyle(fontSize: 14, ),
               ),
               trailing: Icon(
                 Icons.chevron_right,
-                color: Colors.white,
               ),
               onTap: (){
                 Get.toNamed(Routes.TERMS_AND_USE);
@@ -178,7 +172,7 @@ class SettingsView extends GetView<SettingsController> {
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(8),
                       bottomRight: Radius.circular(8))),
-              tileColor: Color(0xff313036),
+              tileColor: Get.isDarkMode?AppColors.darkContainerColor:AppColors.lightContainerColor,
               leading: Container(
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
@@ -191,11 +185,10 @@ class SettingsView extends GetView<SettingsController> {
               ),
               title: Text(
                 "Send feedback",
-                style: TextStyle(fontSize: 14, color: Colors.white),
+                style: TextStyle(fontSize: 14, ),
               ),
               trailing: Icon(
                 Icons.chevron_right,
-                color: Colors.white,
               ),
               onTap: (){
                 

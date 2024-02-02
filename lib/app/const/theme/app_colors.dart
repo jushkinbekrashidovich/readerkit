@@ -6,6 +6,7 @@ class AppColors {
   static const darkBackground = Color(0xff14161B);
   static const darkBottomNavigation = Color(0xff0F1116);
   static const darkSearch = Color(0xff3E3D43);
+  static const darkContainerColor = Color(0xff313036);
   static const darkContainer = Color(0xff3E3D43);
   static const darkSecondTextColor = Color(0xffCCCCCC);
   static const darkChaptersColor = Color(0xff0094FF);
@@ -19,6 +20,16 @@ class AppColors {
   static const themeLightGray = Color(0xffD3D3D3);
   static const themeBeige = Color(0xffF5F5DC);
   static const themeDark = Color(0xff14161B);
+
+  
+
+  //light mode
+  static const lightBackground = Color(0xFFF5F5F5); // Off-White
+  static const lightText1 = Color(0xFF333333); // Dark Text for Light Mode
+  static const lightText2 = Color(0xFF666666); // Slightly Darker Text for Light Mode
+  static const lightAppBarBackground = Color(0xFFEFEFEF); // Light Gray for App Bar in Light Mode
+  static const lightIconColor = Color(0xFF333333); // Icon Color in Light Mode
+  static const lightContainerColor = Color(0xFFE0E0E0);
 
   static const mainColor = Color(0xff2196F3); 
   static const secondaryColor = Color(0xff7365E0); 
