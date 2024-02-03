@@ -9,13 +9,10 @@ class AppThemeEditView extends GetView<AppThemeEditController> {
 
   @override
   Widget build(BuildContext context) {
-     final ThemeData theme = Theme.of(context);
     return Obx(
       () => Scaffold(
         appBar: AppBar(
           title: const Text('Theme'),
-          centerTitle: true,
-          elevation: 0,
         ),
         body: Container(
           padding: EdgeInsets.all(10),
@@ -24,7 +21,7 @@ class AppThemeEditView extends GetView<AppThemeEditController> {
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: theme.brightness==Brightness.dark
+            color: Get.isDarkMode
                 ? AppColors.darkContainerColor
                 : Color(0xFFE0E0E0)
           ),

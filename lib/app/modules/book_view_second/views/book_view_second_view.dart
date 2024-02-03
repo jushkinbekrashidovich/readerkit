@@ -24,7 +24,7 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                     Navigator.pop(context);
                   },
                 ),
-                backgroundColor: AppColors.themeDark,
+                backgroundColor: Get.isDarkMode?AppColors.darkBackground: AppColors.lightBackground,
                 title: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -217,6 +217,7 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                         child: Icon(
                           CupertinoIcons.doc_plaintext,
                           size: 16,
+                          color: Get.isDarkMode?AppColors.darkBackground:AppColors.lightAppBarBackground,
                         ),
                       ),
                     ),

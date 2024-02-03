@@ -24,10 +24,7 @@ class BookDetailsView extends GetView<BookDetailsController> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppColors.darkBackground,
         title: const Text('Book Details'),
-        centerTitle: true,
-        elevation: 0,
         actions: [
           PopupMenuButton(itemBuilder: (BuildContext context) {
             return [
@@ -39,8 +36,6 @@ class BookDetailsView extends GetView<BookDetailsController> {
                     builder: (context) {
                       return CupertinoTheme(
                         data: const CupertinoThemeData(
-                          brightness: Brightness.light,
-                          scaffoldBackgroundColor: Colors.white,
                         ),
                         child: CupertinoAlertDialog(
                           content: Column(
@@ -103,7 +98,7 @@ class BookDetailsView extends GetView<BookDetailsController> {
                             width: 70,
                             child: Text(
                               book.title.toString(),
-                             
+                              style: TextStyle(color: AppColors.black),
                               textAlign: TextAlign.center,
                             ),
                           ),
@@ -120,13 +115,16 @@ class BookDetailsView extends GetView<BookDetailsController> {
                       SizedBox(
                         height: 20,
                       ),
-                      Text(
-                        book.title,
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: AppColors.white,
-                        ),
-                      ),
+                      Text(book.title,
+                          style: Get.isDarkMode
+                              ? TextStyle(
+                                  fontSize: 15,
+                                  color: AppColors.white,
+                                )
+                              : TextStyle(
+                                  fontSize: 15,
+                                  color: AppColors.black,
+                                )),
                       SizedBox(height: 8),
                       // Other book details...
                     ],
@@ -143,15 +141,18 @@ class BookDetailsView extends GetView<BookDetailsController> {
                   children: [
                     Text(
                       'Language',
-                      style: TextStyle(
-                          fontSize: 14, color: AppColors.darkSecondTextColor),
+                      style: Get.isDarkMode? TextStyle(
+                          fontSize: 14, color: AppColors.darkSecondTextColor):TextStyle(
+                          fontSize: 14, color: AppColors.lightText1),
                     ),
                     SizedBox(
                       height: 5,
                     ),
                     Text(
                       'English',
-                      style: TextStyle(fontSize: 11, color: AppColors.white),
+                      style: Get.isDarkMode? TextStyle(
+                          fontSize: 14, color: AppColors.white):TextStyle(
+                          fontSize: 14, color: AppColors.lightText2),
                     ),
                   ],
                 ),
@@ -161,15 +162,18 @@ class BookDetailsView extends GetView<BookDetailsController> {
                   children: [
                     Text(
                       'Pages',
-                      style: TextStyle(
-                          fontSize: 14, color: AppColors.darkSecondTextColor),
+                      style: Get.isDarkMode? TextStyle(
+                          fontSize: 14, color: AppColors.darkSecondTextColor):TextStyle(
+                          fontSize: 14, color: AppColors.lightText1),
                     ),
                     SizedBox(
                       height: 5,
                     ),
                     Text(
                       "11",
-                      style: TextStyle(fontSize: 11, color: AppColors.white),
+                      style: Get.isDarkMode? TextStyle(
+                          fontSize: 14, color: AppColors.white):TextStyle(
+                          fontSize: 14, color: AppColors.lightText2),
                     ),
                   ],
                 ),
@@ -178,15 +182,18 @@ class BookDetailsView extends GetView<BookDetailsController> {
                   children: [
                     Text(
                       'Format',
-                      style: TextStyle(
-                          fontSize: 14, color: AppColors.darkSecondTextColor),
+                      style: Get.isDarkMode? TextStyle(
+                          fontSize: 14, color: AppColors.darkSecondTextColor):TextStyle(
+                          fontSize: 14, color: AppColors.lightText1),
                     ),
                     SizedBox(
                       height: 5,
                     ),
                     Text(
                       book.format.toUpperCase(),
-                      style: TextStyle(fontSize: 11, color: AppColors.white),
+                      style: Get.isDarkMode? TextStyle(
+                          fontSize: 14, color: AppColors.white):TextStyle(
+                          fontSize: 14, color: AppColors.lightText2),
                     ),
                   ],
                 ),

@@ -31,26 +31,26 @@ class HomeView extends GetView<HomeController> {
                   onTap: () {
                     controller.addBook();
                   },
-                  child: Container(
+                  child: 
+                  
+                   Container(
                     height: 21,
                     width: 21,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(4),
-                        color: AppColors.white),
-                    child: const Center(
-                      child: Icon(
+                        color: Get.isDarkMode? AppColors.white:AppColors.black16),
+                    child:  Center(
+                      child:  Icon(
                         Icons.add,
-                        color: AppColors.black,
-                        size: 19,
+                        color: Get.isDarkMode? AppColors.black:AppColors.white,
+                        size: 20,
                       ),
                     ),
                   ),
                 ),
               ],
             ),
-            centerTitle: true,
-            elevation: 0,
           ),
           body: Column(
             mainAxisAlignment: MainAxisAlignment.center,

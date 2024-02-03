@@ -11,7 +11,6 @@ class TermsAndUseView extends GetView<TermsAndUseController> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('TermsAndUseView'),
-        centerTitle: true,
       ),
       body: const Center(
         child: Text(

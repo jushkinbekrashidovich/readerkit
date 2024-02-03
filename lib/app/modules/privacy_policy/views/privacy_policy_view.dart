@@ -11,7 +11,6 @@ class PrivacyPolicyView extends GetView<PrivacyPolicyController> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('PrivacyPolicyView'),
-        centerTitle: true,
       ),
       body: const Center(
         child: Text(

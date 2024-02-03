@@ -18,7 +18,7 @@ void main() async{
       getPages: AppPages.routes,
       theme: AppThemes.light,
       darkTheme: AppThemes.dark,
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.system,
     ),
   );
 }

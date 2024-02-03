@@ -11,10 +11,11 @@ class AppThemes {
   static final  light = ThemeData.light().copyWith(
     scaffoldBackgroundColor: AppColors.lightBackground,
     appBarTheme: const AppBarTheme(
+      centerTitle: true,
       elevation: 0,
       backgroundColor: AppColors.lightAppBarBackground,
       iconTheme: IconThemeData(color: AppColors.lightIconColor),
-      titleTextStyle: TextStyle(color: AppColors.lightText1, fontSize: 17),
+      titleTextStyle: TextStyle(color: AppColors.lightText1),
     ),
     listTileTheme: ListTileThemeData(
         tileColor: AppColors.lightContainerColor,
@@ -40,6 +41,7 @@ class AppThemes {
         titleTextStyle: TextStyle(color: AppColors.white),
         iconColor: AppColors.white),
     appBarTheme: const AppBarTheme(
+      centerTitle: true,
       elevation: 0,
       backgroundColor: AppColors.darkBackground,
       iconTheme: IconThemeData(color: AppColors.white),

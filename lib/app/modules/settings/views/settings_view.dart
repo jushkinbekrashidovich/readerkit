@@ -14,8 +14,6 @@ class SettingsView extends GetView<SettingsController> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Settings"),
-        centerTitle: true,
-        elevation: 0,
       ),
       body: Container(
         padding: EdgeInsets.only(top: 10, left: 12, right: 12, bottom: 10),

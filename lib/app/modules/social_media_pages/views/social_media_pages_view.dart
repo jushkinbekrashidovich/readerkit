@@ -13,9 +13,6 @@ class SocialMediaPagesView extends GetView<SocialMediaPagesController> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Follow us'),
-        centerTitle: true,
-        backgroundColor: AppColors.darkBackground,
-        elevation: 0,
       ),
       body: Container(
         padding: EdgeInsets.all(10),
@@ -27,7 +24,7 @@ class SocialMediaPagesView extends GetView<SocialMediaPagesController> {
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(8),
                       topRight: Radius.circular(8))),
-              tileColor: Color(0xff313036),
+            
               leading: Container(
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
@@ -40,17 +37,15 @@ class SocialMediaPagesView extends GetView<SocialMediaPagesController> {
               ),
               title: Text(
                 "Twitter",
-                style: TextStyle(fontSize: 14, color: Colors.white),
+                style: TextStyle(fontSize: 14,),
               ),
               trailing: Icon(
                 Icons.chevron_right,
-                color: Colors.white,
               ),
               onTap: () {},
             ),
             ListTile(
               
-              tileColor: Color(0xff313036),
               leading: Container(
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
@@ -63,11 +58,10 @@ class SocialMediaPagesView extends GetView<SocialMediaPagesController> {
               ),
               title: Text(
                 "Instagram",
-                style: TextStyle(fontSize: 14, color: Colors.white),
+                style: TextStyle(fontSize: 14,),
               ),
               trailing: Icon(
                 Icons.chevron_right,
-                color: Colors.white,
               ),
               onTap: () {},
             ),
@@ -76,7 +70,6 @@ class SocialMediaPagesView extends GetView<SocialMediaPagesController> {
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(8),
                       bottomRight: Radius.circular(8))),
-              tileColor: Color(0xff313036),
               leading: Container(
                 padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
@@ -89,11 +82,10 @@ class SocialMediaPagesView extends GetView<SocialMediaPagesController> {
               ),
               title: Text(
                 "Telegram",
-                style: TextStyle(fontSize: 14, color: Colors.white),
+                style: TextStyle(fontSize: 14,),
               ),
               trailing: Icon(
                 Icons.chevron_right,
-                color: Colors.white,
               ),
               onTap: () {},
             ),
