@@ -94,7 +94,6 @@ class ThemeEditStyle extends StatelessWidget {
           children: [
             FontStyleContainer(
               text: "Bookerly",
-              textColor: Colors.black,
               onTap: () {
                 styleBookerlyOntap();
               },
@@ -102,7 +101,6 @@ class ThemeEditStyle extends StatelessWidget {
             ),
             FontStyleContainer(
               text: "Caecilia",
-              textColor: Colors.black,
               onTap: () {
                 styleCaecOntap();
 
@@ -111,7 +109,6 @@ class ThemeEditStyle extends StatelessWidget {
             ),
             FontStyleContainer(
               text: "Amazon Ember",
-              textColor: Colors.black,
               onTap: () {
                 styleAmazaonOntap();
               },
@@ -124,7 +121,6 @@ class ThemeEditStyle extends StatelessWidget {
           children: [
             FontStyleContainer(
               text: "News Reader",
-              textColor: Colors.black,
               onTap: () {
                 styleNewsOntap();
               },
@@ -132,7 +128,6 @@ class ThemeEditStyle extends StatelessWidget {
             ),
             FontStyleContainer(
               text: "Baskerville",
-              textColor: Colors.black,
               onTap: () {
                 styleBaskervilleOntap();
 
@@ -141,7 +136,6 @@ class ThemeEditStyle extends StatelessWidget {
             ),
             FontStyleContainer(
               text: "Palatino",
-              textColor: Colors.black,
               onTap: () {
                 stylePalatinoOntap();
               },

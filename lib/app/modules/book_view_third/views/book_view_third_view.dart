@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -63,9 +62,12 @@ class BookViewThirdView extends GetView<BookViewThirdController> {
         controller: controller.epubController!,
         onExternalLinkPressed: (href) {},
         builders: EpubViewBuilders<DefaultBuilderOptions>(
+          
           options: const DefaultBuilderOptions(),
           chapterDividerBuilder: (_) => const Divider(),
+          
         ),
+        
       ),
       endDrawer: Drawer(
         child: EpubViewTableOfContents(

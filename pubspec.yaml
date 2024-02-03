@@ -12,20 +12,28 @@ dependencies:
   flutter_svg: ^2.0.9
   file_picker: ^6.1.1
   shared_preferences: ^2.2.2
-  syncfusion_flutter_pdfviewer: ^24.1.43
   flutter_html: ^3.0.0-beta.2
   http: ^1.1.0
   epub_view: ^3.2.0
-  vocsy_epub_viewer: ^2.0.0
   syncfusion_flutter_pdf: ^24.1.45
   dots_indicator: ^2.1.1
+  flutter_native_splash: ^2.2.16
   flutter: 
     sdk: flutter
+    
 
 dev_dependencies: 
   flutter_lints: ^2.0.0
   flutter_test: 
     sdk: flutter
+
+flutter_native_splash:
+    android: true
+    ios: true
+    web: true
+
+    color: "#FFFFFF"
+    image: "assets/logo.png"
 
 flutter: 
   uses-material-design: true

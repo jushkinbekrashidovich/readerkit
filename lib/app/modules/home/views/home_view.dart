@@ -158,8 +158,10 @@ class HomeView extends GetView<HomeController> {
                                               book.title.toString(),
                                               style: TextStyle(
                                                   color: Colors.black,
-                                                  fontSize: 15),
+                                                  fontSize: 14.3),
                                               textAlign: TextAlign.center,
+                                              overflow: TextOverflow.ellipsis,
+                                              maxLines: 5,
                                             ),
                                           ),
                                         ),

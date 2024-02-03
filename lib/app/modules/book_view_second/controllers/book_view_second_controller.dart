@@ -155,7 +155,6 @@ class BookViewSecondController extends GetxController {
   @override
   void onReady() {
     pageController.jumpToPage(currentPage.value);
-    
     super.onReady();
   }
 

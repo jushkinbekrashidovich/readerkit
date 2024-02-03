@@ -12,7 +12,7 @@ void main() async{
  
   runApp(
     GetMaterialApp(
-      title: "Readerkit",
+      title: "ReaderKit",
       debugShowCheckedModeBanner: false,
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,

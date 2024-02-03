@@ -5,12 +5,10 @@ class FontStyleContainer extends StatelessWidget {
   const FontStyleContainer(
       {super.key,
       required this.text,
-      required this.textColor,
       required this.onTap,
       required this.fontFamily});
 
   final String text;
-  final Color textColor;
   final Function onTap;
   final String fontFamily;
 
@@ -36,7 +34,6 @@ class FontStyleContainer extends StatelessWidget {
           text,
           style: TextStyle(
             fontSize: 14,
-            color: textColor,
             fontFamily: fontFamily,
             fontWeight: FontWeight.w500,
           ),

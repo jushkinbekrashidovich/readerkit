@@ -314,4 +314,5 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
       return '<b>${w.substring(0, (w.length / 2).ceil())}</b>${w.substring((w.length / 2).ceil())} ';
     }).join();
   }
+
 }

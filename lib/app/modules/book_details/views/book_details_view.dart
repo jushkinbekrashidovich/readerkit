@@ -35,8 +35,7 @@ class BookDetailsView extends GetView<BookDetailsController> {
                     context: context,
                     builder: (context) {
                       return CupertinoTheme(
-                        data: const CupertinoThemeData(
-                        ),
+                        data: const CupertinoThemeData(),
                         child: CupertinoAlertDialog(
                           content: Column(
                             children: [
@@ -71,7 +70,12 @@ class BookDetailsView extends GetView<BookDetailsController> {
                     },
                   );
                 },
-                child: Text("Delete"),
+                child: Text(
+                  "Delete",
+                  style: Get.isDarkMode
+                      ? TextStyle(color: AppColors.white)
+                      : TextStyle(color: AppColors.black),
+                ),
               ),
             ];
           }),
@@ -133,72 +137,84 @@ class BookDetailsView extends GetView<BookDetailsController> {
               ],
             ),
             SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Language',
-                      style: Get.isDarkMode? TextStyle(
-                          fontSize: 14, color: AppColors.darkSecondTextColor):TextStyle(
-                          fontSize: 14, color: AppColors.lightText1),
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      'English',
-                      style: Get.isDarkMode? TextStyle(
-                          fontSize: 14, color: AppColors.white):TextStyle(
-                          fontSize: 14, color: AppColors.lightText2),
-                    ),
-                  ],
-                ),
-                // Pages
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Pages',
-                      style: Get.isDarkMode? TextStyle(
-                          fontSize: 14, color: AppColors.darkSecondTextColor):TextStyle(
-                          fontSize: 14, color: AppColors.lightText1),
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      "11",
-                      style: Get.isDarkMode? TextStyle(
-                          fontSize: 14, color: AppColors.white):TextStyle(
-                          fontSize: 14, color: AppColors.lightText2),
-                    ),
-                  ],
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Format',
-                      style: Get.isDarkMode? TextStyle(
-                          fontSize: 14, color: AppColors.darkSecondTextColor):TextStyle(
-                          fontSize: 14, color: AppColors.lightText1),
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      book.format.toUpperCase(),
-                      style: Get.isDarkMode? TextStyle(
-                          fontSize: 14, color: AppColors.white):TextStyle(
-                          fontSize: 14, color: AppColors.lightText2),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //   children: [
+            //     Column(
+            //       crossAxisAlignment: CrossAxisAlignment.start,
+            //       children: [
+            //         Text(
+            //           'Language',
+            //           style: Get.isDarkMode
+            //               ? TextStyle(
+            //                   fontSize: 14,
+            //                   color: AppColors.darkSecondTextColor)
+            //               : TextStyle(
+            //                   fontSize: 14, color: AppColors.lightText1),
+            //         ),
+            //         SizedBox(
+            //           height: 5,
+            //         ),
+            //         Text(
+            //           'English',
+            //           style: Get.isDarkMode
+            //               ? TextStyle(fontSize: 14, color: AppColors.white)
+            //               : TextStyle(
+            //                   fontSize: 14, color: AppColors.lightText2),
+            //         ),
+            //       ],
+            //     ),
+            //     // Pages
+            //     Column(
+            //       crossAxisAlignment: CrossAxisAlignment.start,
+            //       children: [
+            //         Text(
+            //           'Pages',
+            //           style: Get.isDarkMode
+            //               ? TextStyle(
+            //                   fontSize: 14,
+            //                   color: AppColors.darkSecondTextColor)
+            //               : TextStyle(
+            //                   fontSize: 14, color: AppColors.lightText1),
+            //         ),
+            //         SizedBox(
+            //           height: 5,
+            //         ),
+            //         Text(
+            //           "11",
+            //           style: Get.isDarkMode
+            //               ? TextStyle(fontSize: 14, color: AppColors.white)
+            //               : TextStyle(
+            //                   fontSize: 14, color: AppColors.lightText2),
+            //         ),
+            //       ],
+            //     ),
+            //     Column(
+            //       crossAxisAlignment: CrossAxisAlignment.start,
+            //       children: [
+            //         Text(
+            //           'Format',
+            //           style: Get.isDarkMode
+            //               ? TextStyle(
+            //                   fontSize: 14,
+            //                   color: AppColors.darkSecondTextColor)
+            //               : TextStyle(
+            //                   fontSize: 14, color: AppColors.lightText1),
+            //         ),
+            //         SizedBox(
+            //           height: 5,
+            //         ),
+            //         Text(
+            //           book.format.toUpperCase(),
+            //           style: Get.isDarkMode
+            //               ? TextStyle(fontSize: 14, color: AppColors.white)
+            //               : TextStyle(
+            //                   fontSize: 14, color: AppColors.lightText2),
+            //         ),
+            //       ],
+            //     ),
+            //   ],
+            // ),
             Expanded(child: SizedBox()),
             InkWell(
               onTap: () async {
@@ -219,7 +235,7 @@ class BookDetailsView extends GetView<BookDetailsController> {
                     borderRadius: BorderRadius.circular(5),
                     color: AppColors.mainColor),
                 child: Text(
-                  "Read 2",
+                  "Read",
                   style: TextStyle(color: AppColors.white),
                 ),
               ),
