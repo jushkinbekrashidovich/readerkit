@@ -171,6 +171,8 @@ class SettingsView extends GetView<SettingsController> {
                   
                 },
               ),
+
+              Text("Version 1.0.0"),
             ],
           ),
         ),
