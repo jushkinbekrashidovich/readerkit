@@ -42,7 +42,12 @@ class SocialMediaPagesView extends GetView<SocialMediaPagesController> {
               trailing: Icon(
                 Icons.chevron_right,
               ),
-              onTap: () {},
+              onTap: () {
+
+
+
+                Url.launch()
+              },
             ),
             ListTile(
               
