@@ -118,7 +118,6 @@ class SettingsView extends GetView<SettingsController> {
                   Icons.chevron_right,
                 ),
                 onTap: (){
-                  Get.toNamed(Routes.PRIVACY_POLICY);
                 },
               ),
               ListTile(
@@ -141,7 +140,6 @@ class SettingsView extends GetView<SettingsController> {
                   Icons.chevron_right,
                 ),
                 onTap: (){
-                  Get.toNamed(Routes.TERMS_AND_USE);
                 },
               ),
               ListTile(

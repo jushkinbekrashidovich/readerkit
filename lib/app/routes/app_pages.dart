@@ -12,15 +12,10 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/main/bindings/main_binding.dart';
 import '../modules/main/views/main_view.dart';
-import '../modules/privacy_policy/bindings/privacy_policy_binding.dart';
-import '../modules/privacy_policy/views/privacy_policy_view.dart';
 import '../modules/settings/bindings/settings_binding.dart';
 import '../modules/settings/views/settings_view.dart';
 import '../modules/social_media_pages/bindings/social_media_pages_binding.dart';
 import '../modules/social_media_pages/views/social_media_pages_view.dart';
-import '../modules/terms_and_use/bindings/terms_and_use_binding.dart';
-import '../modules/terms_and_use/views/terms_and_use_view.dart';
-
 part 'app_routes.dart';
 
 class AppPages {
@@ -69,16 +64,7 @@ class AppPages {
       page: () => const SocialMediaPagesView(),
       binding: SocialMediaPagesBinding(),
     ),
-    GetPage(
-      name: _Paths.PRIVACY_POLICY,
-      page: () => const PrivacyPolicyView(),
-      binding: PrivacyPolicyBinding(),
-    ),
-    GetPage(
-      name: _Paths.TERMS_AND_USE,
-      page: () => const TermsAndUseView(),
-      binding: TermsAndUseBinding(),
-    ),
+    
    
   ];
 }
