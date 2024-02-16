@@ -1,17 +1,32 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:readerkit/app/const/rating_service.dart';
 import 'package:readerkit/app/data/book_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeController extends GetxController {
   RxList<Book> books = <Book>[].obs;
   late final FocusNode myfocusNode;
+   
+  final RatingService _ratingService = RatingService();
+
+
   @override
   void onInit() {
+    
+    Timer(const Duration(seconds: 2), () {
+      _ratingService.isSecondTimeOpen().then((secondOpen) {
+        if(secondOpen){
+          _ratingService.showRating();
+        }
+      });
+     });
+
     myfocusNode = FocusNode();
     super.onInit();
     loadBooks();

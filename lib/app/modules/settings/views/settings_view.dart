@@ -1,12 +1,14 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:readerkit/app/const/theme/app_colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:readerkit/app/routes/app_pages.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../controllers/settings_controller.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 class SettingsView extends GetView<SettingsController> {
   const SettingsView({Key? key}) : super(key: key);
@@ -72,7 +74,19 @@ class SettingsView extends GetView<SettingsController> {
                 trailing: Icon(
                   Icons.chevron_right,
                 ),
-                onTap: () {},
+                onTap: () async {
+                  final Uri playStoreUrl = Uri.parse(
+                      'https://play.google.com/store/apps/details?id=readerkit.readerkit');
+                  if (Platform.isAndroid) {
+                    if (!await launchUrl(playStoreUrl)) {
+                      throw Exception('Could not launch url');
+                    }
+                  } else if (Platform.isIOS) {
+                    if (!await launchUrl(playStoreUrl)) {
+                      throw Exception('Could not launch url');
+                    } 
+                  }
+                },
               ),
               ListTile(
                 leading: Container(
@@ -127,28 +141,6 @@ class SettingsView extends GetView<SettingsController> {
                 },
               ),
               ListTile(
-                leading: Container(
-                  padding: EdgeInsets.all(5),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(7),
-                      color: AppColors.mainColor),
-                  child: SvgPicture.asset(
-                    "assets/icons/terms.svg",
-                    height: 19,
-                  ),
-                ),
-                title: Text(
-                  "Terms and use",
-                  style: TextStyle(
-                    fontSize: 14,
-                  ),
-                ),
-                trailing: Icon(
-                  Icons.chevron_right,
-                ),
-                onTap: () {},
-              ),
-              ListTile(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(8),
@@ -172,7 +164,20 @@ class SettingsView extends GetView<SettingsController> {
                 trailing: Icon(
                   Icons.chevron_right,
                 ),
-                onTap: () {},
+                onTap: () async {
+                  final Uri _emailLaunchUri = Uri(
+                    scheme: 'mailto',
+                    path: "jushkinbek.co@gmail.com",
+                    queryParameters: {
+                      'subject': 'ReaderKit feedback',
+                      'body': 'Hi there!',
+                    },
+                  );
+
+                  if (!await launchUrl(_emailLaunchUri)) {
+                    throw Exception('Could not launch url');
+                  }
+                },
               ),
             ],
           ),

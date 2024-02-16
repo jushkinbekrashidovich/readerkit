@@ -20,32 +20,6 @@ class SocialMediaPagesView extends GetView<SocialMediaPagesController> {
         child: Column(
           children: [
             ListTile(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(8),
-                      topRight: Radius.circular(8))),
-              leading: Container(
-                padding: EdgeInsets.all(5),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(7),
-                    color: AppColors.mainColor),
-                child: SvgPicture.asset(
-                  "assets/icons/twitter.svg",
-                  height: 19,
-                ),
-              ),
-              title: Text(
-                "Twitter",
-                style: TextStyle(
-                  fontSize: 14,
-                ),
-              ),
-              trailing: Icon(
-                Icons.chevron_right,
-              ),
-              onTap: () {},
-            ),
-            ListTile(
                 leading: Container(
                   padding: EdgeInsets.all(5),
                   decoration: BoxDecoration(
