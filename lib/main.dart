@@ -8,7 +8,6 @@ import 'app/routes/app_pages.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  initAppMetrica();
   runApp(
     GetMaterialApp(
       title: "ReaderKit",
@@ -22,7 +21,4 @@ void main() async {
   );
 }
 
-Future<void> initAppMetrica() async {
-  await AppMetrica.activate(
-      AppMetricaConfig("23234592-792f-4b26-8a0b-aa3d1b4d9cc0"));
-}
+
