@@ -8,7 +8,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:readerkit/app/routes/app_pages.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../controllers/settings_controller.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 
 class SettingsView extends GetView<SettingsController> {
   const SettingsView({Key? key}) : super(key: key);

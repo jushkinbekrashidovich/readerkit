@@ -1,5 +1,5 @@
 name: readerkit
-version: 1.0.0+1
+version: 1.0.0+2
 publish_to: none
 description: A new Flutter project.
 environment: 
@@ -18,8 +18,8 @@ dependencies:
   dots_indicator: ^2.1.1
   flutter_native_splash: ^2.2.16
   url_launcher: ^6.2.4
-  package_info_plus: ^4.2.0
   in_app_review: ^2.0.8
+  appmetrica_plugin: ^1.4.0
   flutter: 
     sdk: flutter
     
