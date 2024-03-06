@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:readerkit/app/const/custom_widgets/edit_font_view/small_classes/font_details_row.dart';
-import 'package:readerkit/app/const/theme/app_colors.dart';
+
 
 class FontEditStyle extends StatelessWidget {
   const FontEditStyle({super.key, required this.decreaseFontSizeOntap, required this.increaseFontSizeOntap, required this.textFontSize, required this.decreaseLetterSpacingOntap, required this.increaseLetterSpacingOntap, required this.textLetterSpacing, required this.decreaseFontWeightOntap, required this.increaseFontWeightOntap, required this.textFontWeight, required this.decreaseHeightOntap, required this.increaseHeightOntap, required this.textHeight, required this.decreaseWordSpacingOntap, required this.increaseWordSpacingOntap, required this.textWordSpacing,});
@@ -32,17 +32,18 @@ class FontEditStyle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
+       const SizedBox(
           height: 20,
         ),
-        Padding(
-          padding: const EdgeInsets.only(left: 13, right: 13),
+        const Padding(
+          padding:  EdgeInsets.only(left: 13, right: 13),
           child: Text(
             "Font",
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
           ),
         ),
-        SizedBox(
+        
+       const SizedBox(
           height: 18,
         ),
         FontDetailsRow(
@@ -55,7 +56,7 @@ class FontEditStyle extends StatelessWidget {
           text: textFontSize,
           icon: CupertinoIcons.textformat_size,
         ),
-        SizedBox(
+       const SizedBox(
           height: 12,
         ),
         FontDetailsRow(

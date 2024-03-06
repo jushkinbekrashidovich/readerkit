@@ -1,6 +1,9 @@
+import 'dart:ui';
+
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
 import 'package:readerkit/app/const/custom_widgets/edit_font_view/font_edit_style.dart';
@@ -17,6 +20,7 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
         backgroundColor: controller.backgroundTheme.value,
         appBar: controller.isAppBarVisible.value
             ? AppBar(
+              
                 toolbarHeight: 39,
                 leading: IconButton(
                   icon: const Icon(CupertinoIcons.back),
@@ -24,7 +28,7 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                     Navigator.pop(context);
                   },
                 ),
-                backgroundColor: Get.isDarkMode?AppColors.darkBackground: AppColors.lightBackground,
+                backgroundColor: Get.isDarkMode?AppColors.darkBackground: controller.backgroundTheme.value,
                 title: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -63,6 +67,7 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                     SizedBox(
                       width: 15,
                     ),
+                    
                     GestureDetector(
                       onTap: () {
                         controller.isBionicMode.value =
@@ -102,37 +107,47 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                                     themeDarkOntap: () {
                                       controller.backgroundTheme.value =
                                           AppColors.themeDark;
+                                          controller.saveCustomizationSettings();
                                     },
                                     themeCreamOntap: () {
                                       controller.backgroundTheme.value =
                                           AppColors.themeCream;
+                                          controller.saveCustomizationSettings();
                                     },
                                     themeBeigeOntap: () {
                                       controller.backgroundTheme.value =
                                           AppColors.themeBeige;
+                                          controller.saveCustomizationSettings();
                                     },
                                     themeOffWhite: () {
                                       controller.backgroundTheme.value =
                                           AppColors.themeOffWhite;
+                                          controller.saveCustomizationSettings();
                                     },
                                     styleBookerlyOntap: () {
                                       controller.fontFamily.value = "Bookerly";
+                                      controller.saveCustomizationSettings();
                                     },
                                     styleCaecOntap: () {
                                       controller.fontFamily.value = "Caec";
+                                      controller.saveCustomizationSettings();
                                     },
                                     styleAmazaonOntap: () {
                                       controller.fontFamily.value =
                                           "AmazonEmber";
+                                          controller.saveCustomizationSettings();
                                     },
                                     styleNewsOntap: () {
                                       controller.fontFamily.value = "News";
+                                      controller.saveCustomizationSettings();
                                     },
                                     styleBaskervilleOntap: () {
                                       controller.fontFamily.value = "Baskervi";
+                                      controller.saveCustomizationSettings();
                                     },
                                     stylePalatinoOntap: () {
                                       controller.fontFamily.value = "Palatino";
+                                      controller.saveCustomizationSettings();
                                     },
                                   ),
                                   //font style
@@ -221,6 +236,7 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                         ),
                       ),
                     ),
+
                   ],
                 ),
                 elevation: 0,
@@ -233,6 +249,7 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
           onTap: () {
             controller.isAppBarVisible.value =
                 !controller.isAppBarVisible.value;
+                SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
           },
           child: controller.isLoading.value
               ? const Center(

@@ -1,9 +1,7 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'app_colors.dart';
-import 'app_text_style.dart';
 
 class AppThemes {
   AppThemes._();
@@ -17,7 +15,7 @@ class AppThemes {
       iconTheme: IconThemeData(color: AppColors.lightIconColor),
       titleTextStyle: TextStyle(color: AppColors.lightText1),
     ),
-    listTileTheme: ListTileThemeData(
+    listTileTheme: const ListTileThemeData(
         tileColor: AppColors.lightContainerColor,
         titleTextStyle: TextStyle(color: AppColors.lightText1),
         iconColor: AppColors.black),
@@ -26,9 +24,9 @@ class AppThemes {
       unselectedItemColor: AppColors.darkBackground,
       selectedItemColor: AppColors.mainColor,
     ),
-    textTheme: TextTheme(
-      bodyText1: TextStyle(color: AppColors.lightText1),
-      bodyText2: TextStyle(color: AppColors.lightText2),
+    textTheme: const TextTheme(
+      bodyLarge: TextStyle(color: AppColors.lightText1),
+      bodyMedium: TextStyle(color: AppColors.lightText2),
     ),
     
     
@@ -36,7 +34,7 @@ class AppThemes {
 
   static final  dark = ThemeData.dark().copyWith(
     scaffoldBackgroundColor: AppColors.darkBackground,
-    listTileTheme: ListTileThemeData(
+    listTileTheme: const ListTileThemeData(
         tileColor: AppColors.darkContainerColor,
         titleTextStyle: TextStyle(color: AppColors.white),
         iconColor: AppColors.white),
@@ -45,16 +43,16 @@ class AppThemes {
       elevation: 0,
       backgroundColor: AppColors.darkBackground,
       iconTheme: IconThemeData(color: AppColors.white),
-      titleTextStyle: TextStyle(color: AppColors.white),
+      titleTextStyle: TextStyle(color: Color.fromARGB(255, 188, 140, 140)),
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: AppColors.darkBackground,
       unselectedItemColor: AppColors.white,
       selectedItemColor: AppColors.mainColor,
     ),
-    textTheme: TextTheme(
-      bodyText1: TextStyle(color: AppColors.white),
-      bodyText2: TextStyle(color: AppColors.darkSecondTextColor),
+    textTheme: const TextTheme(
+      bodyLarge: TextStyle(color: AppColors.white),
+      bodyMedium: TextStyle(color: AppColors.darkSecondTextColor),
     ),
   );
 }

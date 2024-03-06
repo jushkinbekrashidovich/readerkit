@@ -47,54 +47,67 @@ class BookViewSecondController extends GetxController {
   void increaseFontSize() {
     if (textFontSize.value < 75) {
       textFontSize.value += 0.4;
+      saveCustomizationSettings();
     }
+
   }
 
   void decreaseFontSize() {
     if (textFontSize.value > 6) {
       textFontSize.value -= 0.4;
+      saveCustomizationSettings();
     }
   }
 
   void increaseLetterSpacing() {
     if (letterSpacing.value < 27) {
       letterSpacing.value += 0.3;
+      saveCustomizationSettings();
     }
   }
 
   void decreaseLetterSpacing() {
     if (letterSpacing.value > 0) {
       letterSpacing.value -= 0.3;
+      saveCustomizationSettings();
+
     }
   }
 
   void increaseWordSpacing() {
     if (wordSpacing.value < 54) {
       wordSpacing.value += 0.3;
+      saveCustomizationSettings();
     }
   }
 
   void decreaseWordSpacing() {
     if (wordSpacing.value > 0) {
       wordSpacing.value -= 0.3;
+      saveCustomizationSettings();
     }
   }
 
   void increaseWeight() {
     if (fontWeightIndex.value < 8) {
       fontWeightIndex.value += 1;
+      saveCustomizationSettings();
+
     }
   }
 
   void decreaseWeight() {
     if (fontWeightIndex.value > 0) {
       fontWeightIndex.value -= 1;
+      saveCustomizationSettings();
     }
   }
 
   void increaseHeight() {
     if (letterHeight.value < 10) {
       letterHeight.value += 0.2;
+      saveCustomizationSettings();
+
     }
     print(letterHeight.value);
   }
@@ -102,6 +115,7 @@ class BookViewSecondController extends GetxController {
   void decreaseLetterHeight() {
     if (letterHeight.value > 0.7) {
       letterHeight.value -= 0.2;
+      saveCustomizationSettings();
     }
   }
 
@@ -109,8 +123,37 @@ class BookViewSecondController extends GetxController {
   void onInit() async {
     await initializePdfDocument();
     await initializeSharedPreferences();
-
+    await loadCustomizationSettings();
     super.onInit();
+  }
+
+  Future<void> loadCustomizationSettings() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? storedFontFamily = prefs.getString('fontFamily');
+    double? storedFontSize = prefs.getDouble('fontSize');
+    double? storedLetterSpacing = prefs.getDouble('letterSpacing');
+    double? storedWordSpacing = prefs.getDouble('wordSpacing');
+    double? storedLetterHeight = prefs.getDouble('letterHeight');
+    int? storedFontWeightIndex = prefs.getInt('fontWeightIndex');
+    String? storedBackgroundTheme = prefs.getString('backgroundTheme');
+
+    if (storedFontFamily != null) fontFamily.value = storedFontFamily;
+    if (storedFontSize != null) textFontSize.value = storedFontSize;
+    if (storedLetterSpacing != null) letterSpacing.value = storedLetterSpacing;
+    if (storedWordSpacing != null) wordSpacing.value = storedWordSpacing;
+    if (storedLetterHeight != null) letterHeight.value = storedLetterHeight;
+    if (storedFontWeightIndex != null) fontWeightIndex.value = storedFontWeightIndex;
+    if (storedBackgroundTheme != null) backgroundTheme.value = Color(int.parse(storedBackgroundTheme));
+  }
+    void saveCustomizationSettings() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('fontFamily', fontFamily.value);
+    prefs.setDouble('fontSize', textFontSize.value);
+    prefs.setDouble('letterSpacing', letterSpacing.value);
+    prefs.setDouble('wordSpacing', wordSpacing.value);
+    prefs.setDouble('letterHeight', letterHeight.value);
+    prefs.setInt('fontWeightIndex', fontWeightIndex.value);
+    prefs.setString('backgroundTheme', backgroundTheme.value.value.toString());
   }
 
   Future<void> initializeSharedPreferences() async {
