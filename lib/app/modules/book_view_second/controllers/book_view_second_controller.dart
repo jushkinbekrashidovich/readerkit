@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -16,6 +17,32 @@ class BookViewSecondController extends GetxController {
   RxBool isBionicMode = true.obs;
   RxBool isSpeedReadingMode = false.obs;
   RxBool isAppBarVisible = true.obs;
+
+
+  //immersive reader
+   RxBool isImmersiveMode = false.obs;
+  RxInt currentWordIndex = 0.obs; // To keep track of which word to highlight
+  Timer? readingTimer;
+
+
+  //reading time tracking
+  
+  
+   void startImmersiveReading() {
+    currentWordIndex.value = 0; // Start from the first word
+    readingTimer = Timer.periodic(Duration(milliseconds: 300), (timer) { // Change milliseconds value to control speed
+      if (currentWordIndex.value < extractedText.value.split(' ').length - 1) {
+        currentWordIndex.value++;
+      } else {
+        currentWordIndex.value = 0; // Loop back to the start or stop
+        stopImmersiveReading(); // Remove this line if you want to loop continuously
+      }
+    });
+  }
+  void stopImmersiveReading() {
+    readingTimer?.cancel();
+    isImmersiveMode.value = false;
+  }
 
   //page view
   PageController pageController = PageController();

@@ -43,6 +43,7 @@ class AppPages {
       name: _Paths.BOOK_DETAILS,
       page: () => const BookDetailsView(),
       binding: BookDetailsBinding(),
+      transition: Transition.noTransition
     ),
     GetPage(
       name: _Paths.BOOK_VIEW_SECOND,
@@ -58,11 +59,13 @@ class AppPages {
       name: _Paths.APP_THEME_EDIT,
       page: () => const AppThemeEditView(),
       binding: AppThemeEditBinding(),
+      transition: Transition.noTransition
     ),
     GetPage(
       name: _Paths.SOCIAL_MEDIA_PAGES,
       page: () => const SocialMediaPagesView(),
       binding: SocialMediaPagesBinding(),
+      transition: Transition.noTransition
     ),
     
    
