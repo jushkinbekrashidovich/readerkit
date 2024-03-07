@@ -27,27 +27,41 @@ class HomeView extends GetView<HomeController> {
                   "ReaderKit",
                   style: TextStyle(fontSize: 18),
                 ),
-                GestureDetector(
-                  onTap: () {
-                    controller.addBook();
-                  },
-                  child: 
-                  
-                   Container(
-                    height: 21,
-                    width: 21,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4),
-                        color: Get.isDarkMode? AppColors.white:AppColors.black16),
-                    child:  Center(
-                      child:  Icon(
-                        Icons.add,
-                        color: Get.isDarkMode? AppColors.black:AppColors.white,
-                        size: 20,
+                Row(
+                  children: [
+                    GestureDetector(
+                        onTap: () {
+                          Get.toNamed(Routes.STREAK);
+                        },
+                        child: SvgPicture.asset("assets/svg/fire.svg")),
+                    const SizedBox(
+                      width: 19,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        controller.addBook();
+                      },
+                      child: Container(
+                        height: 21,
+                        width: 21,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(4),
+                            color: Get.isDarkMode
+                                ? AppColors.white
+                                : AppColors.black16),
+                        child: Center(
+                          child: Icon(
+                            Icons.add,
+                            color: Get.isDarkMode
+                                ? AppColors.black
+                                : AppColors.white,
+                            size: 20,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
               ],
             ),

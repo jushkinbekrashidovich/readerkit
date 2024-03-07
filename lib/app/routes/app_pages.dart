@@ -16,6 +16,9 @@ import '../modules/settings/bindings/settings_binding.dart';
 import '../modules/settings/views/settings_view.dart';
 import '../modules/social_media_pages/bindings/social_media_pages_binding.dart';
 import '../modules/social_media_pages/views/social_media_pages_view.dart';
+import '../modules/streak/bindings/streak_binding.dart';
+import '../modules/streak/views/streak_view.dart';
+
 part 'app_routes.dart';
 
 class AppPages {
@@ -40,11 +43,10 @@ class AppPages {
       binding: SettingsBinding(),
     ),
     GetPage(
-      name: _Paths.BOOK_DETAILS,
-      page: () => const BookDetailsView(),
-      binding: BookDetailsBinding(),
-      transition: Transition.noTransition
-    ),
+        name: _Paths.BOOK_DETAILS,
+        page: () => const BookDetailsView(),
+        binding: BookDetailsBinding(),
+        transition: Transition.noTransition),
     GetPage(
       name: _Paths.BOOK_VIEW_SECOND,
       page: () => const BookViewSecondView(),
@@ -56,18 +58,20 @@ class AppPages {
       binding: BookViewThirdBinding(),
     ),
     GetPage(
-      name: _Paths.APP_THEME_EDIT,
-      page: () => const AppThemeEditView(),
-      binding: AppThemeEditBinding(),
-      transition: Transition.noTransition
-    ),
+        name: _Paths.APP_THEME_EDIT,
+        page: () => const AppThemeEditView(),
+        binding: AppThemeEditBinding(),
+        transition: Transition.noTransition),
     GetPage(
-      name: _Paths.SOCIAL_MEDIA_PAGES,
-      page: () => const SocialMediaPagesView(),
-      binding: SocialMediaPagesBinding(),
+        name: _Paths.SOCIAL_MEDIA_PAGES,
+        page: () => const SocialMediaPagesView(),
+        binding: SocialMediaPagesBinding(),
+        transition: Transition.noTransition),
+    GetPage(
+      name: _Paths.STREAK,
+      page: () => const StreakView(),
+      binding: StreakBinding(),
       transition: Transition.noTransition
     ),
-    
-   
   ];
 }

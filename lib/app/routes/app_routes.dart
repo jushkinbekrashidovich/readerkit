@@ -12,6 +12,7 @@ abstract class Routes {
   static const BOOK_VIEW_THIRD = _Paths.BOOK_VIEW_THIRD;
   static const APP_THEME_EDIT = _Paths.APP_THEME_EDIT;
   static const SOCIAL_MEDIA_PAGES = _Paths.SOCIAL_MEDIA_PAGES;
+  static const STREAK = _Paths.STREAK;
 }
 
 abstract class _Paths {
@@ -25,4 +26,5 @@ abstract class _Paths {
   static const BOOK_VIEW_THIRD = '/book-view-third';
   static const APP_THEME_EDIT = '/app-theme-edit';
   static const SOCIAL_MEDIA_PAGES = '/social-media-pages';
+  static const STREAK = '/streak';
 }

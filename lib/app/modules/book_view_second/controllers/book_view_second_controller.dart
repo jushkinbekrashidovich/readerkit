@@ -26,7 +26,9 @@ class BookViewSecondController extends GetxController {
 
 
   //reading time tracking
-  
+   Timer? _readingTimer;
+  RxInt totalReadingTimeSeconds = 0.obs; 
+
   
    void startImmersiveReading() {
     currentWordIndex.value = 0; // Start from the first word
@@ -42,6 +44,33 @@ class BookViewSecondController extends GetxController {
   void stopImmersiveReading() {
     readingTimer?.cancel();
     isImmersiveMode.value = false;
+  }
+
+  //methods for time tracking
+   void startReadingSession() {
+    _readingTimer = Timer.periodic(Duration(seconds: 1), (timer) {
+      totalReadingTimeSeconds.value++;
+    });
+  }
+
+  void endReadingSession() {
+    _readingTimer?.cancel();
+    // Here, you can also handle storing the total reading time
+    // to shared preferences or a database for persistence.
+    saveReadingTime();
+  }
+
+  Future<void> saveReadingTime() async {
+    // Assuming you're using shared preferences:
+    final prefs = await SharedPreferences.getInstance();
+    final currentReadingTime = prefs.getInt('totalReadingTime') ?? 0;
+    await prefs.setInt('totalReadingTime', currentReadingTime + totalReadingTimeSeconds.value);
+    print(prefs.get('totalReadingTime'));
+  }
+
+  Future<void> loadReadingTime() async {
+    final prefs = await SharedPreferences.getInstance();
+    totalReadingTimeSeconds.value = prefs.getInt('totalReadingTime') ?? 0;
   }
 
   //page view
@@ -225,12 +254,15 @@ class BookViewSecondController extends GetxController {
   @override
   void onReady() {
     pageController.jumpToPage(currentPage.value);
+    startReadingSession();
     super.onReady();
   }
 
   @override
   void onClose() async {
     await saveLastViewedPage();
+    endReadingSession();
+
     super.onClose();
   }
 
