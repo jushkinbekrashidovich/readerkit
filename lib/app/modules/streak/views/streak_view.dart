@@ -21,7 +21,10 @@ class StreakView extends GetView<StreakController> {
         title: const Text('Streak'),
         centerTitle: true,
         actions: [
-          IconButton(onPressed: () {}, icon: Icon(CupertinoIcons.share)),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(CupertinoIcons.share),
+          ),
         ],
       ),
       body: Padding(
@@ -41,11 +44,11 @@ class StreakView extends GetView<StreakController> {
                   borderRadius: BorderRadius.circular(4),
                   color: AppColors.darkContainerColor,
                 ),
-                child: Column(
+                child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Row(
+                    Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -54,18 +57,18 @@ class StreakView extends GetView<StreakController> {
                           subtitle: "12h",
                           iconName: "fire",
                         ),
-                         OptionsRowWidget(
+                        OptionsRowWidget(
                           title: "Finished books",
                           subtitle: "12",
                           iconName: "fire",
                         ),
                       ],
                     ),
-                    Row(
+                    Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                         OptionsRowWidget(
+                        OptionsRowWidget(
                           title: "Avg. pages",
                           subtitle: "122",
                           iconName: "fire",
@@ -91,16 +94,10 @@ class StreakView extends GetView<StreakController> {
                     "Badges",
                     style: TextStyle(fontSize: 19),
                   ),
-                  Container(
-                    child: Row(
-                      children: [
-                        Icon(CupertinoIcons.lock),
-                        Column(
-                          children: [Text("Good Reader"), Text("ssmmsm")],
-                        ),
-                      ],
-                    ),
+                  SizedBox(
+                    height: 10,
                   ),
+                  
                 ],
               ),
             ],
