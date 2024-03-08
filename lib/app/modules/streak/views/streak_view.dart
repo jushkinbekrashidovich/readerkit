@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:readerkit/app/const/custom_widgets/streak/badge_container.dart';
 import 'package:readerkit/app/const/custom_widgets/streak/options_row.dart';
 import 'package:readerkit/app/const/theme/app_colors.dart';
 import '../controllers/streak_controller.dart';
@@ -42,7 +43,9 @@ class StreakView extends GetView<StreakController> {
                 height: 100,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(4),
-                  color: AppColors.darkContainerColor,
+                  color: context.isDarkMode
+                      ? AppColors.darkContainerColor
+                      : AppColors.lightContainerColor,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -97,7 +100,64 @@ class StreakView extends GetView<StreakController> {
                   SizedBox(
                     height: 10,
                   ),
-                  
+                  BadgeContainer(
+                    function: () {
+
+                    },
+                    iconName: "good_reader",
+                    title: "Good Reader",
+                    subtitle: "Read for 1 hour to unlock",
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  BadgeContainer(
+                    function: () {
+                      
+                    },
+                    iconName: "strong_reader",
+                    title: "Strong Reader",
+                    subtitle: "Read for 5 hours to unlock",
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  BadgeContainer(
+                    function: () {},
+                    iconName: "incredible_reader",
+                    title: "Incredible Reader",
+                    subtitle: "Read for 10 hours to unlock",
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  BadgeContainer(
+                    function: () {},
+                    iconName: "unstoppable_reader",
+                    title: "Unstoppable Reader",
+                    subtitle: "Read for 20 hours to unlock",
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  BadgeContainer(
+                    function: () {},
+                    iconName: "bookworm",
+                    title: "Bookworm",
+                    subtitle: "Read for 50 hours to unlock",
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  BadgeContainer(
+                    function: () {},
+                    iconName: "extraordinary_reader",
+                    title: "Extreaordinary Reader",
+                    subtitle: "Read for 100 hours to unlock",
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
                 ],
               ),
             ],
