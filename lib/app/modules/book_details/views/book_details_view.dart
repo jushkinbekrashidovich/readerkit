@@ -16,7 +16,7 @@ class BookDetailsView extends GetView<BookDetailsController> {
   Widget build(BuildContext context) {
     final Book book = Get.arguments as Book;
     final HomeController controller = Get.find<HomeController>();
-
+   final BookDetailsController controllerBookDetails = Get.find<BookDetailsController>();
     void deleteBook() async {
       await controller.deleteBook(book);
       Get.back(); // Navigate back after deletion
@@ -76,6 +76,17 @@ class BookDetailsView extends GetView<BookDetailsController> {
                       ? TextStyle(color: AppColors.white)
                       : TextStyle(color: AppColors.black),
                 ),
+              ),
+              PopupMenuItem(
+                onTap: () {
+                  controllerBookDetails.toggleBookFinished(book);
+                },
+                child: Text(
+                book.isFinished ?   "Finished":"Finish",
+                style: Get.isDarkMode
+                      ? TextStyle(color: AppColors.white)
+                      : TextStyle(color: AppColors.black),
+              ),
               ),
             ];
           }),

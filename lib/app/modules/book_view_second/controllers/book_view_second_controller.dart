@@ -32,7 +32,7 @@ class BookViewSecondController extends GetxController {
   
    void startImmersiveReading() {
     currentWordIndex.value = 0; // Start from the first word
-    readingTimer = Timer.periodic(Duration(milliseconds: 300), (timer) { // Change milliseconds value to control speed
+    readingTimer = Timer.periodic(Duration(milliseconds: 280), (timer) { // Change milliseconds value to control speed
       if (currentWordIndex.value < extractedText.value.split(' ').length - 1) {
         currentWordIndex.value++;
       } else {

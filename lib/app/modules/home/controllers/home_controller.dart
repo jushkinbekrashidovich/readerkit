@@ -12,20 +12,18 @@ import 'package:shared_preferences/shared_preferences.dart';
 class HomeController extends GetxController {
   RxList<Book> books = <Book>[].obs;
   late final FocusNode myfocusNode;
-   
-  final RatingService _ratingService = RatingService();
 
+  final RatingService _ratingService = RatingService();
 
   @override
   void onInit() {
-    
     Timer(const Duration(seconds: 2), () {
       _ratingService.isSecondTimeOpen().then((secondOpen) {
-        if(secondOpen){
+        if (secondOpen) {
           _ratingService.showRating();
         }
       });
-     });
+    });
 
     myfocusNode = FocusNode();
     super.onInit();
@@ -59,8 +57,7 @@ class HomeController extends GetxController {
           pageNumber: 1,
           format: format,
           pdfSize: pdfSize,
-          
-          ));
+          isFinished: false));
 
       SharedPreferences prefs = await SharedPreferences.getInstance();
       List<String> bookJsonList =

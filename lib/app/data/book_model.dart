@@ -4,6 +4,7 @@ class Book {
   final int pageNumber;
   final String format;
   final int pdfSize; 
+  bool isFinished;
 
   Book({
     required this.title,
@@ -11,6 +12,7 @@ class Book {
     required this.pageNumber,
     required this.format,
     required this.pdfSize, 
+    required this.isFinished,
   });
 
   // Method to convert Book object to JSON
@@ -21,6 +23,7 @@ class Book {
       'pageNumber': pageNumber,
       'format': format,
       'pdfSize': pdfSize, // Include pdfSize i
+      'isFinished':isFinished,
     };
   }
 
@@ -32,6 +35,7 @@ class Book {
       pageNumber: json['pageNumber'],
       format: json['format'],
       pdfSize: json['pdfSize'], // Initialize pdfSize
+      isFinished: json['isFinished'],
     );
   }
 }

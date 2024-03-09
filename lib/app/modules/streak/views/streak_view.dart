@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:readerkit/app/const/custom_widgets/streak/badge_container.dart';
 import 'package:readerkit/app/const/custom_widgets/streak/options_row.dart';
@@ -61,12 +60,12 @@ class StreakView extends GetView<StreakController> {
                             subtitle: controller.totalReadingTimeMinutes <= 59
                                 ? "${controller.totalReadingTimeMinutes} min"
                                 : "${controller.totalReadingTimeHours} h",
-                            iconName: "fire",
+                            iconName: "reading_time",
                           ),
                           OptionsRowWidget(
                             title: "Finished books",
-                            subtitle: "12",
-                            iconName: "fire",
+                            subtitle: controller.totalFinishedBooks.value.toString(),
+                            iconName: "finished_books",
                           ),
                         ],
                       ),
@@ -76,13 +75,13 @@ class StreakView extends GetView<StreakController> {
                         children: [
                           OptionsRowWidget(
                             title: "Avg. pages",
-                            subtitle: "122",
-                            iconName: "fire",
+                            subtitle: controller.totalReadingTimeMinutes.toString(),
+                            iconName: "num_pages",
                           ),
                           OptionsRowWidget(
                             title: "Num. Badges",
-                            subtitle: "12",
-                            iconName: "fire",
+                            subtitle: controller.badgeNumbers(),
+                            iconName: "num_badges",
                           ),
                         ],
                       ),
