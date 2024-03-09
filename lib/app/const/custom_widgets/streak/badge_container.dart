@@ -16,14 +16,14 @@ class BadgeContainer extends StatelessWidget {
   final String iconName;
   final String title;
   final String subtitle;
-  final Function function;
+  final Function? function;
   final Color? colors; // Update Color to Color?
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        function();
+        function!();
       },
       child: Container(
         margin: EdgeInsets.only(left: 10, right: 10, top: 5),
