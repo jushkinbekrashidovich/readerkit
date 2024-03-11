@@ -1,10 +1,13 @@
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:screenshot/screenshot.dart';
 
 class StreakController extends GetxController {
    RxInt totalReadingTimeHours = 0.obs;
    RxInt totalReadingTimeMinutes = 0.obs;
    RxInt totalFinishedBooks = 0.obs;
+
+   ScreenshotController screenshotController = ScreenshotController();
    
   @override
   void onInit() {

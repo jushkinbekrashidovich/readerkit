@@ -23,7 +23,18 @@ class StreakView extends GetView<StreakController> {
           centerTitle: true,
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                controller.screenshotController.captureFromWidget(
+                  Container(
+                    padding: const EdgeInsets.all(30),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.blueAccent, width:5),
+                      color: Colors.redAccent
+                    ),
+                    child: Text("This is an invisible widget"),
+                  )
+                );
+              }, 
               icon: Icon(CupertinoIcons.share),
             ),
           ],
