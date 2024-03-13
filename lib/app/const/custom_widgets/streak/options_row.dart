@@ -2,13 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';
 
 class OptionsRowWidget extends StatelessWidget {
-  const OptionsRowWidget({super.key, required this.iconName, required this.title, required this.subtitle});
+  const OptionsRowWidget({super.key, required this.iconName, required this.title, required this.subtitle, required this.iconSize, required this.textSize});
  
  final String iconName;
  final String title;
  final String subtitle;
- 
-
+ final double iconSize;
+ final double textSize;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +25,7 @@ class OptionsRowWidget extends StatelessWidget {
                     color: Color.fromARGB(255, 254, 235, 186)),
                 child: SvgPicture.asset(
                   "assets/svg/$iconName.svg",
+                  height: iconSize,
                 ),
               ),
               SizedBox(
@@ -35,7 +36,7 @@ class OptionsRowWidget extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: TextStyle(fontSize: 12),
+                    style: TextStyle(fontSize: textSize),
                   ),
                   Text(
                     subtitle,

@@ -20,6 +20,8 @@ dependencies:
   url_launcher: ^6.2.4
   in_app_review: ^2.0.8
   screenshot: ^2.1.0
+  share_plus: ^7.2.2
+  path_provider: ^2.1.2
   flutter: 
     sdk: flutter
     

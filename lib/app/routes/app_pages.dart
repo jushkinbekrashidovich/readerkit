@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/app_theme_edit/bindings/app_theme_edit_binding.dart';
 import '../modules/app_theme_edit/views/app_theme_edit_view.dart';
+import '../modules/badge_details/bindings/badge_details_binding.dart';
+import '../modules/badge_details/views/badge_details_view.dart';
 import '../modules/book_details/bindings/book_details_binding.dart';
 import '../modules/book_details/views/book_details_view.dart';
 import '../modules/book_view_second/bindings/book_view_second_binding.dart';
@@ -68,10 +70,14 @@ class AppPages {
         binding: SocialMediaPagesBinding(),
         transition: Transition.noTransition),
     GetPage(
-      name: _Paths.STREAK,
-      page: () => const StreakView(),
-      binding: StreakBinding(),
-      transition: Transition.noTransition
+        name: _Paths.STREAK,
+        page: () => const StreakView(),
+        binding: StreakBinding(),
+        transition: Transition.noTransition),
+    GetPage(
+      name: _Paths.BADGE_DETAILS,
+      page: () => const BadgeDetailsView(),
+      binding: BadgeDetailsBinding(),
     ),
   ];
 }

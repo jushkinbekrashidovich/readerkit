@@ -13,6 +13,7 @@ abstract class Routes {
   static const APP_THEME_EDIT = _Paths.APP_THEME_EDIT;
   static const SOCIAL_MEDIA_PAGES = _Paths.SOCIAL_MEDIA_PAGES;
   static const STREAK = _Paths.STREAK;
+  static const BADGE_DETAILS = _Paths.BADGE_DETAILS;
 }
 
 abstract class _Paths {
@@ -27,4 +28,5 @@ abstract class _Paths {
   static const APP_THEME_EDIT = '/app-theme-edit';
   static const SOCIAL_MEDIA_PAGES = '/social-media-pages';
   static const STREAK = '/streak';
+  static const BADGE_DETAILS = '/badge-details';
 }
