@@ -10,18 +10,7 @@ class StreakController extends GetxController {
    RxInt totalFinishedBooks = 0.obs;
 
    ScreenshotController screenshotController = ScreenshotController();
-   
-  Future<File> createTemporaryFile() async {
-  // Get the temporary directory.
-  final Directory tempDir = await getTemporaryDirectory();
-
-  // Create a new temporary file in the temporary directory.
-  final File tempFile = File('${tempDir.path}/tempFile.png');
-
-  // Return the temporary file.
-  return tempFile;
-}
-
+ 
   @override
   void onInit() {
     super.onInit();
