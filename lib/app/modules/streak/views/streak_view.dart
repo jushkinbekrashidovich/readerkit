@@ -10,6 +10,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:readerkit/app/const/custom_widgets/streak/badge_container.dart';
 import 'package:readerkit/app/const/custom_widgets/streak/options_row.dart';
 import 'package:readerkit/app/const/theme/app_colors.dart';
+import 'package:readerkit/app/routes/app_pages.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 import '../controllers/streak_controller.dart';
@@ -66,75 +67,10 @@ class StreakView extends GetView<StreakController> {
                 SizedBox(
                   height: 15,
                 ),
-                Container(
-                  alignment: Alignment.center,
-                  height: 100,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(4),
-                    color: context.isDarkMode
-                        ? AppColors.darkContainerColor
-                        : AppColors.lightContainerColor,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          OptionsRowWidget(
-                            title: "Reading time",
-                            subtitle: controller.totalReadingTimeMinutes <= 59
-                                ? "${controller.totalReadingTimeMinutes} min"
-                                : "${controller.totalReadingTimeHours} h",
-                            iconName: "reading_time",
-                            iconSize: 13,
-                            textSize: 12,
-                          ),
-                          OptionsRowWidget(
-                            title: "Finished books",
-                            subtitle:
-                                controller.totalFinishedBooks.value.toString(),
-                            iconName: "finished_books",
-                            iconSize: 13,
-                            textSize: 12,
-                          ),
-                        ],
-                      ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          OptionsRowWidget(
-                            title: "Avg. pages",
-                            subtitle:
-                                controller.totalReadingTimeMinutes.toString(),
-                            iconName: "num_pages",
-                            iconSize: 13,
-                            textSize: 12,
-                          ),
-                          OptionsRowWidget(
-                            title: "Num. Badges",
-                            subtitle: controller.badgeNumbers(),
-                            iconName: "num_badges",
-                            iconSize: 13,
-                            textSize: 12,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Visibility(
-                  visible: false,
-                  child: Screenshot(
+                Screenshot(
                     controller: controller.screenshotController,
                     child: Container(
-                      height: 180,
+                      height: 170,
                       padding: EdgeInsets.all(3),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(4),
@@ -142,96 +78,108 @@ class StreakView extends GetView<StreakController> {
                             ? AppColors.darkContainerColor
                             : AppColors.lightContainerColor,
                       ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      child: Stack(
                         children: [
-                          Container(
-                            padding: EdgeInsets.only(left: 10, top: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SvgPicture.asset(
-                                  "assets/logo_svg.svg",
-                                  height: 20,
-                                ),
-                                SizedBox(
-                                  width: 4,
-                                ),
-                                Text(
-                                  "ReaderKit",
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      color: AppColors.white,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: 19,),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.center,
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Column(
+                              const SizedBox(
+                                  height:
+                                      20), // Adjust the height based on your content
+                              Row(
                                 mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                                    MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  OptionsRowWidget(
-                                    title: "Reading time",
-                                    subtitle: controller
-                                                .totalReadingTimeMinutes <=
-                                            59
-                                        ? "${controller.totalReadingTimeMinutes} min"
-                                        : "${controller.totalReadingTimeHours} h",
-                                    iconName: "reading_time",
-                                    iconSize: 15,
-                                    textSize: 15,
+                                  Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      OptionsRowWidget(
+                                        title: "Reading time",
+                                        subtitle: controller
+                                                    .totalReadingTimeMinutes
+                                                    .value <=
+                                                59
+                                            ? "${controller.totalReadingTimeMinutes.value} min"
+                                            : "${controller.totalReadingTimeHours.value} h",
+                                        iconName: "reading_time",
+                                        iconSize: 18,
+                                        textSize: 15,
+                                      ),
+                                      SizedBox(height: 18),
+                                      OptionsRowWidget(
+                                        title: "Finished books",
+                                        subtitle: controller
+                                            .totalFinishedBooks.value
+                                            .toString(),
+                                        iconName: "finished_books",
+                                        iconSize: 15,
+                                        textSize: 15,
+                                      ),
+                                    ],
                                   ),
-                                  SizedBox(height: 18,),
-                                  OptionsRowWidget(
-                                    title: "Finished books",
-                                    subtitle: controller
-                                        .totalFinishedBooks.value
-                                        .toString(),
-                                    iconName: "finished_books",
-                                    iconSize: 15,
-                                    textSize: 15,
-                                  ),
-                                ],
-                              ),
-                              Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  OptionsRowWidget(
-                                    title: "Avg. pages",
-                                    subtitle: controller.totalReadingTimeMinutes
-                                        .toString(),
-                                    iconName: "num_pages",
-                                    iconSize: 15,
-                                    textSize: 15,
-                                  ),
-                                  SizedBox(height: 18,),
-                                  OptionsRowWidget(
-                                    title: "Num. Badges",
-                                    subtitle: controller.badgeNumbers(),
-                                    iconName: "num_badges",
-                                    iconSize: 15,
-                                    textSize: 15,
+                                  Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      OptionsRowWidget(
+                                        title: "Avg. pages",
+                                        subtitle: controller
+                                            .totalReadingTimeMinutes.value
+                                            .toString(),
+                                        iconName: "num_pages",
+                                        iconSize: 15,
+                                        textSize: 15,
+                                      ),
+                                      SizedBox(height: 18),
+                                      OptionsRowWidget(
+                                        title: "Num. Badges",
+                                        subtitle: controller.badgeNumbers(),
+                                        iconName: "num_badges",
+                                        iconSize: 15,
+                                        textSize: 15,
+                                      ),
+                                    ],
                                   ),
                                 ],
                               ),
                             ],
                           ),
+                          Align(
+                            alignment: Alignment.bottomRight,
+                            child: Container(
+                              padding: EdgeInsets.only(right: 12, bottom: 12),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  SvgPicture.asset(
+                                    "assets/logo_svg.svg",
+                                    height: 20,
+                                  ),
+                                  SizedBox(
+                                    width: 4,
+                                  ),
+                                  Text(
+                                    "ReaderKit",
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        color: AppColors.mainColor,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
                         ],
                       ),
-                    ),
-                  ),
-                ),
+                    )),
                 SizedBox(
                   height: 10,
                 ),
@@ -248,7 +196,13 @@ class StreakView extends GetView<StreakController> {
                     ),
                     BadgeContainer(
                       function: controller.totalReadingTimeHours.value >= 1
-                          ? () {}
+                          ? () {
+                              Get.toNamed(Routes.BADGE_DETAILS, arguments: {
+                                "title": "Good Reader",
+                                "time": "1",
+                                "Icon": "good_reader"
+                              });
+                            }
                           : null,
                       colors: controller.totalReadingTimeHours.value >= 1
                           ? null
@@ -262,13 +216,19 @@ class StreakView extends GetView<StreakController> {
                     ),
                     BadgeContainer(
                       function: controller.totalReadingTimeHours.value >= 5
-                          ? () {}
+                          ? () {
+                            Get.toNamed(Routes.BADGE_DETAILS, arguments: {
+                                "title": "Book Voyager",
+                                "time": "5",
+                                "Icon": "strong_reader"
+                              });
+                          }
                           : null,
                       colors: controller.totalReadingTimeHours.value >= 5
                           ? null
                           : Colors.grey,
                       iconName: "strong_reader",
-                      title: "Strong Reader",
+                      title: "Book Voyager",
                       subtitle: "Read for 5 hours to unlock",
                     ),
                     SizedBox(
@@ -276,7 +236,13 @@ class StreakView extends GetView<StreakController> {
                     ),
                     BadgeContainer(
                       function: controller.totalReadingTimeHours.value >= 10
-                          ? () {}
+                          ? () {
+                            Get.toNamed(Routes.BADGE_DETAILS, arguments: {
+                                "title": "Incredible Reader",
+                                "time": "10",
+                                "Icon": "incredible_reader"
+                              });
+                          }
                           : null,
                       colors: controller.totalReadingTimeHours.value >= 10
                           ? null
@@ -290,7 +256,13 @@ class StreakView extends GetView<StreakController> {
                     ),
                     BadgeContainer(
                       function: controller.totalReadingTimeHours.value >= 20
-                          ? () {}
+                          ? () {
+                             Get.toNamed(Routes.BADGE_DETAILS, arguments: {
+                                "title": "Unstoppable Reader",
+                                "time": "20",
+                                "Icon": "unstoppable_reader"
+                              });
+                          }
                           : null,
                       colors: controller.totalReadingTimeHours.value >= 20
                           ? null
@@ -304,7 +276,13 @@ class StreakView extends GetView<StreakController> {
                     ),
                     BadgeContainer(
                       function: controller.totalReadingTimeHours.value >= 50
-                          ? () {}
+                          ? () {
+                            Get.toNamed(Routes.BADGE_DETAILS, arguments: {
+                                "title": "Bookworm",
+                                "time": "50",
+                                "Icon": "bookworm"
+                              });
+                          }
                           : null,
                       colors: controller.totalReadingTimeHours.value >= 50
                           ? null
@@ -318,7 +296,13 @@ class StreakView extends GetView<StreakController> {
                     ),
                     BadgeContainer(
                       function: controller.totalReadingTimeHours.value >= 100
-                          ? () {}
+                          ? () {
+                            Get.toNamed(Routes.BADGE_DETAILS, arguments: {
+                                "title": "Extreaordinary Reader",
+                                "time": "100",
+                                "Icon": "extraordinary_reader"
+                              });
+                          }
                           : null,
                       colors: controller.totalReadingTimeHours.value >= 100
                           ? null

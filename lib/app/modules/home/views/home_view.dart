@@ -139,14 +139,13 @@ class HomeView extends GetView<HomeController> {
                   : Expanded(
                       child: GridView.builder(
                         shrinkWrap: true,
-                        padding: const EdgeInsets.only(left: 13, right: 13),
+                        padding: const EdgeInsets.only(left: 12, right: 12),
                         physics: const BouncingScrollPhysics(),
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                crossAxisSpacing: 12.0,
-                                mainAxisSpacing: 12.0,
-                                childAspectRatio: 0.65),
+                                crossAxisCount: 3,
+                                
+                                childAspectRatio: 0.58),
                         itemCount: controller.books.length,
                         itemBuilder: (BuildContext context, int index) {
                           Book book = controller.books.reversed.toList()[index];
@@ -157,8 +156,8 @@ class HomeView extends GetView<HomeController> {
                             child: Column(
                               children: [
                                 SizedBox(
-                                  height: 170,
-                                  width: 120,
+                                  height: Get.height*0.2,
+                                  width: Get.width*0.3,
                                   child: Stack(
                                     children: [
                                       SvgPicture.asset(
@@ -193,7 +192,7 @@ class HomeView extends GetView<HomeController> {
                                     style: TextStyle(
                                         color:
                                             AppColors.darkSecondSecondTextColor,
-                                        fontSize: 12),
+                                        fontSize: 11),
                                   ),
                                 ),
                               ],

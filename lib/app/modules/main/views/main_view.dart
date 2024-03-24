@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
-import 'package:readerkit/app/const/theme/app_colors.dart';
 import 'package:readerkit/app/modules/home/views/home_view.dart';
 import 'package:readerkit/app/modules/settings/views/settings_view.dart';
 
@@ -29,11 +28,11 @@ class MainView extends GetView<MainController> {
           },
           currentIndex: controller.bottomMenu.value.index,
           type: BottomNavigationBarType.fixed,
-          selectedLabelStyle: TextStyle(
+          selectedLabelStyle:const TextStyle(
             fontSize: 10, fontWeight: FontWeight.w500
           ),
           unselectedLabelStyle:
-              TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+             const TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
           elevation: 7,
           items: [
             _bottomNavigationBarItem(

@@ -1,11 +1,24 @@
 import 'package:get/get.dart';
+import 'package:screenshot/screenshot.dart';
 
 class BadgeDetailsController extends GetxController {
-  //TODO: Implement BadgeDetailsController
+  
+   ScreenshotController screenshotController = ScreenshotController();
 
-  final count = 0.obs;
+    RxString badgeTitle = "".obs;
+   RxString  readingTime = "".obs;
+   RxString badgeIcon = "".obs;
+   
+
   @override
   void onInit() {
+     final arguments = Get.arguments;
+    if (arguments != null) {
+      badgeTitle.value = arguments['title'] ?? 'Default Title';
+      readingTime.value = arguments['time'] ?? '0';
+      badgeIcon.value = arguments['Icon'] ?? 'default_icon';
+    }
+    
     super.onInit();
   }
 
@@ -19,5 +32,4 @@ class BadgeDetailsController extends GetxController {
     super.onClose();
   }
 
-  void increment() => count.value++;
 }

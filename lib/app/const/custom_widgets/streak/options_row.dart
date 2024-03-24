@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';
 
 class OptionsRowWidget extends StatelessWidget {
-  const OptionsRowWidget({super.key, required this.iconName, required this.title, required this.subtitle, required this.iconSize, required this.textSize});
+const OptionsRowWidget({super.key, required this.iconName, required this.title, required this.subtitle, required this.iconSize, required this.textSize});
  
  final String iconName;
  final String title;
@@ -16,8 +16,8 @@ class OptionsRowWidget extends StatelessWidget {
           child: Row(
             children: [
               Container(
-                height: 26,
-                width: 26,
+                height: 35,
+                width: 35,
                 margin: EdgeInsets.all(3),
                 padding: EdgeInsets.all(3),
                 decoration: BoxDecoration(

@@ -1,9 +1,7 @@
-import 'dart:io';
-
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:screenshot/screenshot.dart';
-import 'package:path_provider/path_provider.dart';
+
 class StreakController extends GetxController {
    RxInt totalReadingTimeHours = 0.obs;
    RxInt totalReadingTimeMinutes = 0.obs;

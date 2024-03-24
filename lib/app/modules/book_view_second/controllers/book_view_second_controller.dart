@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:readerkit/app/const/theme/app_colors.dart';
+import 'package:readerkit/app/modules/streak/controllers/streak_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart';
 
@@ -17,6 +18,9 @@ class BookViewSecondController extends GetxController {
   RxBool isBionicMode = true.obs;
   RxBool isSpeedReadingMode = false.obs;
   RxBool isAppBarVisible = true.obs;
+
+  Timer? streakReadingTimer;
+  DateTime? streakStartTime;
 
   //page view
   PageController pageController = PageController();
@@ -120,11 +124,38 @@ class BookViewSecondController extends GetxController {
     }
   }
 
+   void startReadingSession() {
+    streakStartTime = DateTime.now(); // Record start time
+    // Optionally, start a timer if you want to update something in real-time
+    streakReadingTimer = Timer.periodic(Duration(seconds: 60), (timer) {
+      // Update some state every minute, if needed
+    });
+  }
+   void endReadingSession() async {
+    streakReadingTimer?.cancel(); // Stop the timer
+    if (streakStartTime != null) {
+      final int secondsSpentReading = DateTime.now().difference(streakStartTime!).inSeconds;
+      
+      // Load existing reading time from SharedPreferences
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      int totalSeconds = prefs.getInt('totalReadingTime') ?? 0;
+
+      // Update total reading time
+      totalSeconds += secondsSpentReading;
+      await prefs.setInt('totalReadingTime', totalSeconds);
+
+      
+    }
+     SharedPreferences prefs = await SharedPreferences.getInstance();
+    print(prefs.getInt('totalReadingTime').toString()+"total time");
+  }
+
   @override
   void onInit() async {
     await initializePdfDocument();
     await initializeSharedPreferences();
     await loadCustomizationSettings();
+    startReadingSession();
     super.onInit();
   }
 
@@ -205,6 +236,7 @@ class BookViewSecondController extends GetxController {
   @override
   void onClose() async {
     await saveLastViewedPage();
+    endReadingSession();
     super.onClose();
   }
 

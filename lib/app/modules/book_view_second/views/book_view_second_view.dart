@@ -251,7 +251,14 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
           onTap: () {
             controller.isAppBarVisible.value =
                 !controller.isAppBarVisible.value;
-            SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+
+            if (controller.isAppBarVisible.value) {
+              // Show the system bars (toolbar, status bar etc.)
+              SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+            } else {
+              // Hide the system bars
+              SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+            }
           },
           child: controller.isLoading.value
               ? const Center(
@@ -284,7 +291,7 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
   }
 
   List<Widget> _buildPages() {
-    const int charactersPerPage = 900;
+    const int charactersPerPage = 1420;
 
     List<String> pages = [];
 
@@ -301,7 +308,7 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
       return SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Padding(
-          padding: const EdgeInsets.only(top: 6, right: 8, left: 8, bottom: 8),
+          padding: const EdgeInsets.only( right: 4, left: 8, top: 5, bottom: 4),
           child: Center(
               child: Html(
             data: controller.isBionicMode.value
@@ -330,8 +337,21 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
   }
 
   String _applyBionicReadingMode(String text) {
-    return text.split(" ").map((w) {
-      return '<b>${w.substring(0, (w.length / 2).ceil())}</b>${w.substring((w.length / 2).ceil())} ';
-    }).join();
+    // Define the approximate length of a "syllable"
+    int syllableLength = 3; // You can adjust this based on your needs
+
+    return text.split(" ").map((word) {
+      // We'll alternate bold and regular text every 'syllableLength' characters
+      List<String> parts = [];
+      for (int i = 0; i < word.length; i += syllableLength) {
+        int end = (i + syllableLength < word.length)
+            ? i + syllableLength
+            : word.length;
+        // We'll use bold for the first part, and regular text for the second part
+        String part = word.substring(i, end);
+        parts.add((i / syllableLength) % 2 == 0 ? '<b>$part</b>' : part);
+      }
+      return parts.join('');
+    }).join(' ');
   }
 }

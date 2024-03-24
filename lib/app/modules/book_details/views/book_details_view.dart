@@ -14,7 +14,12 @@ class BookDetailsView extends GetView<BookDetailsController> {
   const BookDetailsView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final Book book = Get.arguments as Book;
+    final Book? book = Get.arguments as Book?;
+    if (book == null) {
+      // If the book is null, show an error or navigate away
+      Future.microtask(() => Get.back()); // Go back or show an error
+      return Scaffold(body: Center(child: Text('No book found or incorrect data passed.')));
+    }
     final HomeController controller = Get.find<HomeController>();
    final BookDetailsController controllerBookDetails = Get.find<BookDetailsController>();
     void deleteBook() async {
