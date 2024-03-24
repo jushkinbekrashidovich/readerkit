@@ -68,34 +68,7 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
                     SizedBox(
                       width: 15,
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        controller.isImmersiveMode.value =
-                            !controller.isImmersiveMode.value;
-                        if (controller.isImmersiveMode.value) {
-                          controller.startImmersiveReading();
-                        } else {
-                          controller.stopImmersiveReading();
-                        }
-                      },
-                      child: Container(
-                        height: 20,
-                        width: 50,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.blue),
-                            borderRadius: BorderRadius.circular(2)),
-                        child: Text(
-                          controller.isImmersiveMode.value
-                              ? "Normal"
-                              : "Immersive",
-                          style: TextStyle(fontSize: 13, color: Colors.blue),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 3,
-                    ),
+
                     GestureDetector(
                       onTap: () {
                         controller.isBionicMode.value =
@@ -310,73 +283,51 @@ class BookViewSecondView extends GetView<BookViewSecondController> {
     );
   }
 
- List<Widget> _buildPages() {
-  const int charactersPerPage = 900;
+  List<Widget> _buildPages() {
+    const int charactersPerPage = 900;
 
-  List<String> pages = [];
+    List<String> pages = [];
 
-  for (int i = 0; i < controller.extractedText.value.length; i += charactersPerPage) {
-    int endIndex = i + charactersPerPage;
-    endIndex = endIndex > controller.extractedText.value.length
-        ? controller.extractedText.value.length
-        : endIndex;
-    pages.add(controller.extractedText.value.substring(i, endIndex));
-  }
-
-  List<Widget> pageWidgets = pages.map((pageText) {
-    List<String> words = pageText.split(' ');
-
-    return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Center(
-          child: controller.isImmersiveMode.value ? RichText(
-            text: TextSpan(
-              children: words.asMap().entries.map((entry) {
-                int index = entry.key; // Current word index
-                String word = entry.value; // Current word
-                // Determine if this word or the next one should be highlighted
-                bool isHighlighted = index == controller.currentWordIndex.value || index == controller.currentWordIndex.value + 1;
-                return TextSpan(
-                  text: '$word ',
-                  style: TextStyle(
-                    fontSize: controller.textFontSize.value,
-                    color: isHighlighted ? Colors.red : controller.backgroundTheme.value == AppColors.themeDark ? AppColors.white : AppColors.black,
-                    fontWeight: isHighlighted ? FontWeight.bold : FontWeight.normal,
-                    // Apply other styles as necessary
-                  ),
-                );
-              }).toList(),
-              style: TextStyle(
-                fontFamily: controller.fontFamily.value,
-                letterSpacing: controller.letterSpacing.value,
-                wordSpacing: controller.wordSpacing.value,
-                height: controller.letterHeight.value,
-              ),
-            ),
-          ) : Html(
-            data: pageText,
+    for (int i = 0;
+        i < controller.extractedText.value.length;
+        i += charactersPerPage) {
+      int endIndex = i + charactersPerPage;
+      endIndex = endIndex > controller.extractedText.value.length
+          ? controller.extractedText.value.length
+          : endIndex;
+      pages.add(controller.extractedText.value.substring(i, endIndex));
+    }
+    List<Widget> pageWidgets = pages.map((page) {
+      return SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 6, right: 8, left: 8, bottom: 8),
+          child: Center(
+              child: Html(
+            data: controller.isBionicMode.value
+                ? page
+                : _applyBionicReadingMode(page),
             style: {
               "html": Style(
                 fontSize: FontSize(controller.textFontSize.value),
                 letterSpacing: controller.letterSpacing.value,
                 wordSpacing: controller.wordSpacing.value,
                 lineHeight: LineHeight(controller.letterHeight.value),
-                fontWeight: controller.availableFontWeights[controller.fontWeightIndex.value],
-                color: controller.backgroundTheme.value == AppColors.themeDark ? AppColors.white : AppColors.black,
+                fontWeight: controller
+                    .availableFontWeights[controller.fontWeightIndex.value],
+                color: controller.backgroundTheme.value == AppColors.themeDark
+                    ? AppColors.white
+                    : AppColors.black,
                 fontFamily: controller.fontFamily.value,
               ),
             },
-          ),
+          )),
         ),
-      ),
-    );
-  }).toList();
+      );
+    }).toList();
 
-  return pageWidgets;
-}
-
+    return pageWidgets;
+  }
 
   String _applyBionicReadingMode(String text) {
     return text.split(" ").map((w) {

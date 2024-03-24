@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -33,7 +33,7 @@ class HomeView extends GetView<HomeController> {
                         onTap: () {
                           Get.toNamed(Routes.STREAK);
                         },
-                        child: SvgPicture.asset("assets/svg/fire.svg")),
+                        child: SvgPicture.asset("assets/svg/fire.svg", height: 23,)),
                     const SizedBox(
                       width: 19,
                     ),
