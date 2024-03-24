@@ -14,6 +14,7 @@ abstract class Routes {
   static const SOCIAL_MEDIA_PAGES = _Paths.SOCIAL_MEDIA_PAGES;
   static const STREAK = _Paths.STREAK;
   static const BADGE_DETAILS = _Paths.BADGE_DETAILS;
+  static const READERKIT_PRO = _Paths.READERKIT_PRO;
 }
 
 abstract class _Paths {
@@ -29,4 +30,5 @@ abstract class _Paths {
   static const SOCIAL_MEDIA_PAGES = '/social-media-pages';
   static const STREAK = '/streak';
   static const BADGE_DETAILS = '/badge-details';
+  static const READERKIT_PRO = '/readerkit-pro';
 }

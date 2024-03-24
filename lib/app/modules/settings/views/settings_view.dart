@@ -27,6 +27,36 @@ class SettingsView extends GetView<SettingsController> {
               ),
               ListTile(
                 shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)),
+                leading: Container(
+                  padding: EdgeInsets.all(5),
+                  child: SvgPicture.asset(
+                    "assets/logo_svg.svg",
+                    height: 32,
+                  ),
+                ),
+                title: Text(
+                  "Subscribe to ReaderKit Pro",
+                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+                ),
+                subtitle: Container(
+                  width: 40,
+                  child: Text(
+                    "Adding books without limits, bionic reading, statistics",
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(fontSize: 13),
+                  ),
+                ),
+                trailing: Icon(
+                  Icons.chevron_right,
+                ),
+                onTap: () {
+                  Get.toNamed(Routes.READERKIT_PRO);
+                },
+              ),
+              SizedBox(height: 15),
+              ListTile(
+                shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(8),
                         topRight: Radius.circular(8))),
@@ -83,7 +113,7 @@ class SettingsView extends GetView<SettingsController> {
                   } else if (Platform.isIOS) {
                     if (!await launchUrl(playStoreUrl)) {
                       throw Exception('Could not launch url');
-                    } 
+                    }
                   }
                 },
               ),

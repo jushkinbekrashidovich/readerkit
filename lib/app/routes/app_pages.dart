@@ -14,6 +14,8 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/main/bindings/main_binding.dart';
 import '../modules/main/views/main_view.dart';
+import '../modules/readerkit_pro/bindings/readerkit_pro_binding.dart';
+import '../modules/readerkit_pro/views/readerkit_pro_view.dart';
 import '../modules/settings/bindings/settings_binding.dart';
 import '../modules/settings/views/settings_view.dart';
 import '../modules/social_media_pages/bindings/social_media_pages_binding.dart';
@@ -78,6 +80,11 @@ class AppPages {
       name: _Paths.BADGE_DETAILS,
       page: () => const BadgeDetailsView(),
       binding: BadgeDetailsBinding(),
+    ),
+    GetPage(
+      name: _Paths.READERKIT_PRO,
+      page: () => const ReaderkitProView(),
+      binding: ReaderkitProBinding(),
     ),
   ];
 }
