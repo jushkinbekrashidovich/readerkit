@@ -23,7 +23,7 @@ class ReaderkitProView extends GetView<ReaderkitProController> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               
-              Text(
+              const Text(
                 'Make your reading immersive and faster with ReaderKit Pro!',
                 textAlign: TextAlign.center,
                 style: TextStyle(
