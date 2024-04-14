@@ -1,12 +1,41 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:purchases_flutter/models/offerings_wrapper.dart';
+import 'package:purchases_flutter/purchases_flutter.dart';
+import 'package:readerkit/app/const/api/purchase_api.dart';
 
 class ReaderkitProController extends GetxController {
-  //TODO: Implement ReaderkitProController
+  RxList<Offering> offerings = <Offering>[].obs;
+  List<Package> packages = [];
 
-  final count = 0.obs;
+  Future<void> fetchOffers() async {
+    try {
+      final fetchedOfferings = await PurchaseApi.fetchOffers();
+      if (fetchedOfferings.isNotEmpty) {
+
+        offerings.assignAll(fetchedOfferings);
+        updatePackages();
+     } 
+      else {
+        print("No offerings found");
+
+      }
+    } catch (e) {
+      print("Error fetching offerings $e");
+    }
+  }
+
+  void updatePackages() {
+    packages = offerings
+        .map((offer) => offer.availablePackages)
+        .expand((pair) => pair)
+        .toList();
+  }
+
   @override
   void onInit() {
     super.onInit();
+    fetchOffers();
   }
 
   @override
@@ -18,6 +47,4 @@ class ReaderkitProController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }
