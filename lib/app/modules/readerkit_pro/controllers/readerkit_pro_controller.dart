@@ -7,21 +7,21 @@ import 'package:readerkit/app/const/api/purchase_api.dart';
 class ReaderkitProController extends GetxController {
   RxList<Offering> offerings = <Offering>[].obs;
   List<Package> packages = [];
+  RxBool isLoading = true.obs;
 
-  Future<void> fetchOffers() async {
+Future<void> fetchOffers() async {
     try {
       final fetchedOfferings = await PurchaseApi.fetchOffers();
       if (fetchedOfferings.isNotEmpty) {
-
         offerings.assignAll(fetchedOfferings);
         updatePackages();
-     } 
-      else {
+      } else {
         print("No offerings found");
-
       }
     } catch (e) {
       print("Error fetching offerings $e");
+    } finally {
+      isLoading.value = false; // Set loading state to false after fetching
     }
   }
 

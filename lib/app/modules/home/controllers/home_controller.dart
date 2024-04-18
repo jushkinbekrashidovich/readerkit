@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:readerkit/app/const/api/purchase_api.dart';
 import 'package:readerkit/app/const/rating_service.dart';
 import 'package:readerkit/app/data/book_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -41,28 +42,32 @@ class HomeController extends GetxController {
   }
 
   Future<void> addBook() async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles(
-      type: FileType.any, // Allow any type of file
-    );
+    if (await PurchaseApi.isProUser() || books.length < 5) {
+      FilePickerResult? result = await FilePicker.platform.pickFiles(
+        type: FileType.any, // Allow any type of file
+      );
 
-    if (result != null) {
-      String path = result.files.single.path!;
-      String fileName = result.files.single.name;
-      String format = fileName.split('.').last.toLowerCase();
-      File file = File(path);
-      int pdfSize = await file.length();
-      books.add(Book(
-          title: fileName,
-          path: path,
-          pageNumber: 1,
-          format: format,
-          pdfSize: pdfSize,
-          isFinished: false));
+      if (result != null) {
+        String path = result.files.single.path!;
+        String fileName = result.files.single.name;
+        String format = fileName.split('.').last.toLowerCase();
+        File file = File(path);
+        int pdfSize = await file.length();
+        books.add(Book(
+            title: fileName,
+            path: path,
+            pageNumber: 1,
+            format: format,
+            pdfSize: pdfSize,
+            isFinished: false));
 
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      List<String> bookJsonList =
-          books.map((book) => jsonEncode(book.toJson())).toList();
-      prefs.setStringList('books', bookJsonList);
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        List<String> bookJsonList =
+            books.map((book) => jsonEncode(book.toJson())).toList();
+        prefs.setStringList('books', bookJsonList);
+      }
+    } else {
+      Get.snackbar("Subscribe pls", "Subscribe to ReaderKit pro");
     }
   }
 

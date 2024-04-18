@@ -21,23 +21,26 @@ class OfferingsWidget extends StatelessWidget {
           final product = package.storeProduct;
           return InkWell(
             onTap: () {
-              onClickedPackage(package);
+               onClickedPackage(package);
             },
             child: Container(
+              
               height: 60,
               decoration: BoxDecoration(
                 color: AppColors.lightContainerColor,
                 borderRadius: BorderRadius.circular(6),
               ),
-              padding: EdgeInsets.only(left: 10, right: 10),
+              padding: EdgeInsets.only(left: 10, right: 10,),
+              margin: EdgeInsets.only(top: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    width: 20,
-                    child: Text(
-                      product.title,
-                      style: TextStyle(color: AppColors.black),
+                    width: 100,
+                    child: 
+                    Text(
+                      product.title.split('(')[0].trim(),
+                      style: TextStyle(color: AppColors.black, fontSize: 15),
                     ),
                   ),
                   Container(
@@ -60,6 +63,7 @@ class OfferingsWidget extends StatelessWidget {
               ),
             ),
           );
-        });
+        }
+        );
   }
 }
